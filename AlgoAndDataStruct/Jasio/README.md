@@ -10,3 +10,7 @@ Dla porządku możemy też przyjąć, że liczba skarbonek n jest większa od 0 
 ### Output
 
 Program na wyjściu powinien podać ile skarbonek trzeba stłuc (chodzi o podanie minimalnej liczby). Opcjonalnie można też podać, które skarbonki trzeba stłuc.
+
+# Cute Drawing:
+
+[cute](cuteDrawingSmug.png)
