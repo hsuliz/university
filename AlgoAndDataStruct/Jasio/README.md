@@ -13,4 +13,4 @@ Program na wyjściu powinien podać ile skarbonek trzeba stłuc (chodzi o podani
 
 # Cute Drawing:
 
-[cute](cuteDrawingSmug.png)
+![cute](cuteDrawingSmug.png)
