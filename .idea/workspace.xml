@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="776d06e7-a6a4-4f77-92ff-aa9d135a71a1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex1/array/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex1/array/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex1/array/set_arr.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex1/array/set_arr.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex1/array/set_arr.h" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex1/array/set_arr.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex1/pointer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex1/pointer/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex1/pointer/set_list.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex1/pointer/set_list.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex1/pointer/set_list.h" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex1/pointer/set_list.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex2/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex2/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex2/queue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex2/queue.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex2/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex2/queue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/list/graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/list/graph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/list/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/list/graph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/list/list_graph_tests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/list/list_graph_tests.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/list/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/list/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/matrix/edge.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/matrix/edge.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/matrix/edge.h" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/matrix/edge.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/matrix/graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/matrix/graph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/matrix/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/matrix/graph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/matrix/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/matrix/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/matrix/matrix_graph_tests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/matrix/matrix_graph_tests.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/tests/graph_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/tests/graph_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Ex3/tests/graph_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Ex3/tests/graph_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Jasio/Jasio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Jasio/Jasio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Jasio/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Jasio/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Jasio/compiled/Jasio.class" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Jasio/compiled/Jasio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Jasio/cuteDrawingSmug.png" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Jasio/cuteDrawingSmug.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Jasio/tasteCases/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Jasio/tasteCases/test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Jasio/tasteCases/test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Jasio/tasteCases/test2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Jasio/tasteCases/test2Rezultat.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Jasio/tasteCases/test2Rezultat.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Jasio/tasteCases/test3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Jasio/tasteCases/test3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/Jasio/tasteCases/test3Rezultat.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/Jasio/tasteCases/test3Rezultat.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/MazeGenerator/MazeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/MazeGenerator/MazeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoAndDataStruct/MazeGenerator/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/AlgoAndDataStruct/MazeGenerator/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_1/Decode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_1/Decode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_1/DecoderInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_1/DecoderInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_1/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_10/Kasjer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_10/Kasjer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_10/KasjerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_10/KasjerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_10/Nominal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_10/Nominal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_10/Pieniadz.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_10/Pieniadz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_10/RozmieniaczInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_10/RozmieniaczInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_10/Rozmienialnosc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_10/Rozmienialnosc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_10/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_10/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_10/Test10.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_10/Test10.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_11/PasswordComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_11/PasswordComponents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_11/PasswordCracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_11/PasswordCracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_11/PasswordCrackerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_11/PasswordCrackerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_2/GeneralLoops.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_2/GeneralLoops.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_2/Loops.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_2/Loops.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_2/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_2/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_3/Decrypter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_3/Decrypter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_3/DecrypterInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_3/DecrypterInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_3/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_3/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_5/CanvasInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_5/CanvasInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_5/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_5/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_5/Graphics.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_5/Graphics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_5/GraphicsInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_5/GraphicsInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_5/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_5/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_5/Retard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_5/Retard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_5/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_5/Tester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_6/Compression.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_6/Compression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_6/CompressionInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_6/CompressionInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_6/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_6/Tester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_7/HidingPlaceSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_7/HidingPlaceSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_7/HidingPlaceSupplierSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_7/HidingPlaceSupplierSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_7/ParallelSearcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_7/ParallelSearcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_7/ParallelSearcherInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_7/ParallelSearcherInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_7/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_7/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_7/Test07.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_7/Test07.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_8/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_8/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaEx/ex_9/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/JavaEx/ex_9/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/MusicGetter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/MusicGetter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/MusicGetter/src/main/java/org/example/ArtistGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/MusicGetter/src/main/java/org/example/ArtistGetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/MusicGetter/target/classes/org/example/ArtistGetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/MusicGetter/target/classes/org/example/ArtistGetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/MusicGetter/target/classes/org/example/MusicGetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/MusicGetter/target/classes/org/example/MusicGetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/HELP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/rest.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/src/main/java/com/example/rest/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/src/main/java/com/example/rest/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/src/main/java/com/example/rest/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/src/main/java/com/example/rest/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/src/main/java/com/example/rest/PersonRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/src/main/java/com/example/rest/PersonRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/src/main/java/com/example/rest/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/src/main/java/com/example/rest/PersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/src/main/java/com/example/rest/RestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/src/main/java/com/example/rest/RestApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/src/test/java/com/example/rest/RestApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/src/test/java/com/example/rest/RestApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/target/classes/com/example/rest/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/target/classes/com/example/rest/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/target/classes/com/example/rest/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/target/classes/com/example/rest/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/target/classes/com/example/rest/PersonRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/target/classes/com/example/rest/PersonRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/target/classes/com/example/rest/PersonService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/target/classes/com/example/rest/PersonService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/RestExample/target/classes/com/example/rest/RestApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/RestExample/target/classes/com/example/rest/RestApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/TCPServer/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/TCPServer/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/TCPServer/test/test_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/TCPServer/test/test_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/TCPServer/test/test_1_res.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/TCPServer/test/test_1_res.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/TCPServer/test_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/TCPServer/test_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/WeatherGetter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/WeatherGetter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/WeatherGetter/src/main/java/org/weather/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/WeatherGetter/src/main/java/org/weather/Weather.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/WeatherGetter/target/classes/org/weather/Weather.class" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/WeatherGetter/target/classes/org/weather/Weather.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/WeatherGetter/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/WeatherGetter/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/WeatherGetter/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/WeatherGetter/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/WeatherGetter/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/WeatherGetter/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetProg/WeatherGetter/target/weather-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NetProg/WeatherGetter/target/weather-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/Ex2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/Ex2/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/Ex3/README" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/Ex3/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/Ex3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/Ex3/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/Ex3/num3_rep.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/Ex3/num3_rep.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/Ex4/README" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/Ex4/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/Ex4/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/Ex4/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/Ex4/num4_rep.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/Ex4/num4_rep.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/zips/num2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/zips/num2.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/zips/num3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/zips/num3.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NumMethods/zips/num4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Year 2022/NumMethods/zips/num4.zip" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2FcsoZ2xAz3HsPRDF6129xzPOqQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.keymap"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Year 2022" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="RestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rest" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.rest.RestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="776d06e7-a6a4-4f77-92ff-aa9d135a71a1" name="Changes" comment="" />
+      <created>1664802881491</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664802881491</updated>
+      <workItem from="1664802882633" duration="272000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
