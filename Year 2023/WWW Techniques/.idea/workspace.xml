@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4822fcc7-55dc-4aed-bf4a-9afcb592fcb6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/.ipynb_checkpoints/Assignment_1_without_code-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/.ipynb_checkpoints/assignment-0-numpy-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/.ipynb_checkpoints/assignment-0-numpy-matplotlib-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/.ipynb_checkpoints/assignment-0-pandas-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/.ipynb_checkpoints/assignment-0-python-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/Assignment_1_without_code.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/DS22.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/assignment-0-numpy-matplotlib.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/assignment-0-numpy.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/assignment-0-pandas.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data Science/DS22/assignment-0-python.ipynb" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2GBNrOh8iKkxc018tX1eh0e7nvP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/mymytre/Programming/University/Year 2023/WWW Techniques",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.keymap"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4822fcc7-55dc-4aed-bf4a-9afcb592fcb6" name="Changes" comment="" />
+      <created>1665858214285</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665858214285</updated>
+      <workItem from="1665858215420" duration="1064000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
