@@ -3,6 +3,7 @@ body {
 }
 
 .header {
+    margin: 20px 80px;
     opacity: 70%;
     padding: 10px;
     text-align: center;
@@ -17,15 +18,11 @@ body {
 }
 
 .box{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-right: 80px;
-    margin-left: 80px;
+    margin: 20px 80px;
     box-sizing: border-box;
-    border: 3px solid rgba(208, 252, 217, 0.6);
+    border: 1px solid rgba(208, 252, 217, 0.6);
     background-color: rgba(252,208,243,0.6);
-    border-radius: 6px;
+    border-radius: 10px;
 }
 
 .spacer{

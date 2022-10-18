@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Ohh god please help me">
-      <change afterPath="$PROJECT_DIR$/images/fumos/baka.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/fumos/patchouli.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/fumos/reimu.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/fumos/reisen.jpeg" afterDir="false" />
+    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Im a retarded">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -208,7 +203,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666023190472</updated>
       <workItem from="1666023191659" duration="11045000" />
-      <workItem from="1666090366820" duration="4026000" />
+      <workItem from="1666090366820" duration="5758000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1666034812005</created>
@@ -238,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666092896470</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Im a retarded">
+      <created>1666095509942</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1666095509942</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,6 +260,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
     <MESSAGE value="Ohh god please help me" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ohh god please help me" />
+    <MESSAGE value="Im a retarded" />
+    <option name="LAST_COMMIT_MESSAGE" value="Im a retarded" />
   </component>
 </project>
