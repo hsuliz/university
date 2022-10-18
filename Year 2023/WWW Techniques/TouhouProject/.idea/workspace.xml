@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/images/coolBackground.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Ohh god please help me">
+      <change afterPath="$PROJECT_DIR$/images/fumos/baka.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/fumos/patchouli.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/fumos/reimu.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/fumos/reisen.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
@@ -47,7 +49,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/mymytre/Programming/University/Year 2023/WWW Techniques/TouhouProject/images",
+    "last_opened_file_path": "/Users/mymytre/Programming/University/Year 2023/WWW Techniques/TouhouProject/images/fumos",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -57,6 +59,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images/fumos" />
+      <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/images/buttons" />
       <recent name="$PROJECT_DIR$/pics/buttons" />
     </key>
@@ -204,7 +208,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666023190472</updated>
       <workItem from="1666023191659" duration="11045000" />
-      <workItem from="1666090366820" duration="1948000" />
+      <workItem from="1666090366820" duration="4026000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1666034812005</created>
@@ -227,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666090388166</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Ohh god please help me">
+      <created>1666092896470</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666092896470</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +257,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="Ohh god please help me" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ohh god please help me" />
   </component>
 </project>
