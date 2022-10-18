@@ -1,9 +1,13 @@
+body {
+    background-image: url("images/coolBackground.gif");
+}
+
 .header {
-    padding: 60px;
+    padding: 10px;
     text-align: center;
     background: #F5D2F1;
     color: black;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .buttons {
