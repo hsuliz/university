@@ -17,25 +17,26 @@ body {
     text-align: center;
 }
 
-.box{
+.box {
     margin: 20px 80px;
     box-sizing: border-box;
     border: 1px solid rgba(208, 252, 217, 0.6);
-    background-color: rgba(252,208,243,0.6);
+    background-color: rgba(252, 208, 243, 0.6);
     border-radius: 10px;
 }
 
-.spacer{
-    position:relative;
-    display:inline-block;
-    vertical-align:middle;
-    width:200px;
+.spacer {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 250px;
     padding: 20px;
 }
 
-.zoom{
-    transition: transform .3s;
+.zoom {
+    transition: transform .5s;
 }
-.zoom:hover{
+
+.zoom:hover {
     transform: scale(1.2);
 }
