@@ -1,12 +1,52 @@
+body {
+    scale: 70%;
+    background-image: url("images/coolBackground.gif");
+}
+
+.gtc3 {
+    grid-template-columns: auto auto auto;
+}
+
+.dude4 {
+    grid-template-columns: auto auto auto auto;
+}
+
+
 .header {
-    padding: 60px;
-    text-align: center;
+    display: grid;
+    justify-content: space-evenly;
+    margin: 20px 80px;
+    opacity: 70%;
+    padding: 10px;
     background: #F5D2F1;
     color: black;
-    font-size: 30px;
+    font-size: 40px;
+    align-items: center;
 }
 
 .buttons {
     padding: 10px;
     text-align: center;
+}
+
+.box {
+    margin: 20px 80px;
+    box-sizing: border-box;
+    border: 1px solid rgba(208, 252, 217, 0.6);
+    background-color: rgba(252, 208, 243, 0.6);
+    border-radius: 10px;
+}
+
+.footer {
+    display: grid;
+    margin: 20px 80px;;
+    align-content: center;
+}
+
+.zoom {
+    transition: transform .5s;
+}
+
+.zoom:hover {
+    transform: scale(1.2);
 }
