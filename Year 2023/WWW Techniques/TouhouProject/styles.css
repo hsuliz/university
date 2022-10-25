@@ -1,40 +1,34 @@
 body {
-    scale: 70%;
     background-image: url("images/coolBackground.gif");
 }
 
-.gtc3 {
-    grid-template-columns: auto auto auto;
+* {
+    box-sizing: border-box;
 }
 
-.dude4 {
-    grid-template-columns: auto auto auto auto;
+.flex-container {
+    display: flex;
+    flex-direction: row;
 }
 
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+    .flex-container {
+        flex-direction: column;
+    }
+}
 
 .header {
-    display: grid;
+    display: flex;
     justify-content: space-evenly;
-    margin: 20px 80px;
-    opacity: 70%;
     padding: 10px;
-    background: #F5D2F1;
-    color: black;
-    font-size: 40px;
-    align-items: center;
-}
-
-.buttons {
-    padding: 10px;
-    text-align: center;
 }
 
 .box {
     margin: 20px 80px;
-    box-sizing: border-box;
     border: 1px solid rgba(208, 252, 217, 0.6);
-    background-color: rgba(252, 208, 243, 0.6);
     border-radius: 10px;
+    background-color: rgba(252, 208, 243, 0.6);
 }
 
 .footer {
