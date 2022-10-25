@@ -1,6 +1,7 @@
 body {
     background-image: url("images/coolBackground.gif");
     color: #c92b71;
+    font-size: 40px;
 }
 
 img {
@@ -30,7 +31,7 @@ img {
 
 .column {
     flex: 25%;
-    padding: 5px;
+    padding: 20px;
 }
 
 .footer {
