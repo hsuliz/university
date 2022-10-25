@@ -3,14 +3,14 @@ body {
     color: #c92b71;
 }
 
+img {
+
+}
+
 * {
     box-sizing: border-box;
 }
 
-.flex-container {
-    display: flex;
-    flex-direction: row;
-}
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 800px) {
@@ -19,17 +19,23 @@ body {
     }
 }
 
+.box {
+    margin: 20px 80px;
+    border: 1px solid rgba(208, 252, 217, 0.6);
+    border-radius: 10px;
+    background-color: rgba(252, 208, 243, 0.6);
+}
+
 .header {
     display: flex;
     justify-content: space-evenly;
     padding: 10px;
 }
 
-.box {
-    margin: 20px 80px;
-    border: 1px solid rgba(208, 252, 217, 0.6);
-    border-radius: 10px;
-    background-color: rgba(252, 208, 243, 0.6);
+.fumos {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
 }
 
 .footer {
