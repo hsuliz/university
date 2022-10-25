@@ -1,4 +1,5 @@
 body {
+    scale: 80%;
     background-image: url("images/coolBackground.gif");
     color: #c92b71;
     font-size: 40px;
@@ -42,4 +43,10 @@ body {
 
 .zoom:hover {
     transform: scale(1.2);
+}
+
+@media (max-width: 1024px) {
+    .box {
+        background-color: green;
+    }
 }
