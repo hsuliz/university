@@ -11,14 +11,6 @@ img {
     box-sizing: border-box;
 }
 
-
-/* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 800px) {
-    .flex-container {
-        flex-direction: column;
-    }
-}
-
 .box {
     margin: 20px 80px;
     border: 1px solid rgba(208, 252, 217, 0.6);
@@ -33,14 +25,17 @@ img {
 }
 
 .fumos {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 10px;
+    display: flex;
+}
+
+.column {
+    flex: 25%;
+    padding: 5px;
 }
 
 .footer {
     display: grid;
-    margin: 20px 80px;;
+    margin: 20px 80px;
     align-content: center;
 }
 
