@@ -27,7 +27,7 @@ body {
     display: flex;
 }
 
-.column {
+.row {
     flex: 25%;
     padding: 20px;
 }
