@@ -38,15 +38,13 @@ body {
     align-content: center;
 }
 
-.zoom {
-    transition: transform .5s;
-}
-
-.zoom:hover {
-    transform: scale(1.2);
-}
 
 /* */
+
+.fumo-text {
+    font-size: 90px;
+}
+
 .flex-container {
     display: flex;
     flex-direction: row;
