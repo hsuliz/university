@@ -1,0 +1,73 @@
+body {
+    scale: 80%;
+    background-image: url("images/coolBackground.gif");
+    color: #c92b71;
+    font-size: 40px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.box {
+    margin: 20px 80px;
+    border: 1px solid rgba(208, 252, 217, 0.6);
+    border-radius: 10px;
+    background-color: rgba(252, 208, 243, 0.6);
+}
+
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    align-items: center;
+}
+
+.fumos {
+    display: flex;
+}
+
+.row {
+    flex: 25%;
+    padding: 20px;
+}
+
+.footer {
+    display: grid;
+    margin: 20px 80px;
+    align-content: center;
+}
+
+.zoom {
+    transition: transform .5s;
+}
+
+.zoom:hover {
+    transform: scale(1.2);
+}
+
+/* */
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
+}
+
+.flex-item-left {
+    padding: 10px;
+    flex: 50%;
+}
+
+.flex-item-right {
+    padding: 10px;
+    flex: 50%;
+}
+
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+    .flex-container {
+        flex-direction: column;
+    }
+}
+
