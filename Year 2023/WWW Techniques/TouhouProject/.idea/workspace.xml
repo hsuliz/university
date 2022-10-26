@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Css change">
+    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Reimu was added">
+      <change afterPath="$PROJECT_DIR$/src/baka.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Data Science/DS22/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Data Science/DS22/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reimu.html" beforeDir="false" afterPath="$PROJECT_DIR$/reimu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reimustyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/reimustyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reimu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/reimu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reimustyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop-style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,10 +67,11 @@
       <recent name="$PROJECT_DIR$/pics/buttons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/reimu" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/.idea" />
-      <recent name="$PROJECT_DIR$/images/buttons" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -212,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666808098276</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Reimu was added">
+      <created>1666815099710</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1666815099710</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,7 +249,8 @@
     <MESSAGE value="Response thing" />
     <MESSAGE value="Zoom" />
     <MESSAGE value="Css change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Css change" />
+    <MESSAGE value="Reimu was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reimu was added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
