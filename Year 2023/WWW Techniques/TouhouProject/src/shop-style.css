@@ -1,6 +1,6 @@
 body {
     scale: 80%;
-    background-image: url("images/coolBackground.gif");
+    background-image: url("../images/coolBackground.gif");
     color: #c92b71;
     font-size: 40px;
 }
@@ -9,6 +9,7 @@ a {
     color: inherit; /* blue colors for links too */
     text-decoration: inherit; /* no underline */
 }
+
 
 * {
     box-sizing: border-box;
@@ -43,30 +44,34 @@ a {
     align-content: center;
 }
 
-.zoom {
-    transition: transform .5s;
+
+/* */
+
+.fumo-text {
+    font-size: 90px;
 }
 
-.zoom:hover {
-    transform: scale(1.2);
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
 }
 
-@media (max-width: 1024px) {
-    body {
-        scale: 100%;
-    }
+.flex-item-left {
+    padding: 10px;
+    flex: 50%;
+}
 
-    .fumos .row {
-        display: grid;
-        grid-auto-flow: column;
-        gap: 4px;
-        align-items: center;
-        justify-items: center;
-        width: 50%;
-    }
+.flex-item-right {
+    padding: 10px;
+    flex: 50%;
+}
 
-    img {
-        max-width: 80%;
-        height: auto;
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+    .flex-container {
+        flex-direction: column;
     }
 }
+
