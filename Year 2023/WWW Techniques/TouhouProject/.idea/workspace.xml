@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Zoom">
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Science/DS22/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Data Science/DS22/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Science/DS22/Assignment_1_without_code.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Science/DS22/useless/.ipynb_checkpoints/assignment-0-numpy-matplotlib-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Science/DS22/useless/assignment-0-numpy-matplotlib.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Data Science/DS22/assignment-0-numpy-matplotlib.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Science/DS22/useless/assignment-0-numpy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Data Science/DS22/assignment-0-numpy.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Science/DS22/useless/assignment-0-pandas.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Data Science/DS22/assignment-0-pandas.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Science/DS22/useless/assignment-0-python.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Data Science/DS22/assignment-0-python.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

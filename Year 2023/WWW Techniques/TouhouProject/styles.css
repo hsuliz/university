@@ -47,7 +47,21 @@ body {
 }
 
 @media (max-width: 1024px) {
-    .box {
-        background-color: green;
+    body {
+        scale: 100%;
+    }
+
+    .fumos .row {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 4px;
+        align-items: center;
+        justify-items: center;
+        width: 50%;
+    }
+
+    img {
+        max-width: 80%;
+        height: auto;
     }
 }
