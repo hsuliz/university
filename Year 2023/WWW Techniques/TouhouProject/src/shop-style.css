@@ -10,7 +10,6 @@ a {
     text-decoration: inherit; /* no underline */
 }
 
-
 * {
     box-sizing: border-box;
 }
@@ -44,9 +43,6 @@ a {
     align-content: center;
 }
 
-
-/* */
-
 .fumo-text {
     font-size: 90px;
 }
@@ -69,6 +65,27 @@ a {
 }
 
 /* Responsive layout - makes a one column-layout instead of two-column layout */
+
+@media (max-width: 1024px) {
+    body {
+        scale: 100%;
+    }
+
+    .fumos .row {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 4px;
+        align-items: center;
+        justify-items: center;
+        width: 50%;
+    }
+
+    img {
+        max-width: 80%;
+        height: auto;
+    }
+}
+
 @media (max-width: 800px) {
     .flex-container {
         flex-direction: column;
