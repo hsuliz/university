@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Started a js" />
+    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Last one">
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/../../.." value="WWW" />
+        <entry key="$PROJECT_DIR$/../../.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
@@ -61,9 +63,9 @@
       <recent name="$PROJECT_DIR$/pics/buttons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/reimu" />
-      <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/.idea" />
     </key>
@@ -229,14 +231,84 @@
       <option name="project" value="LOCAL" />
       <updated>1666817706087</updated>
     </task>
-    <task id="LOCAL-00022" summary="Started a js">
-      <created>1666821978096</created>
+    <task id="LOCAL-00022" summary="Java script for your data">
+      <created>1667221884750</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1666821978096</updated>
+      <updated>1667221884750</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Something">
+      <created>1667310840858</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1667310840858</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Idk">
+      <created>1667311399468</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1667311399468</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Idk">
+      <created>1667311584622</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1667311584622</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Button were added!">
+      <created>1667312498375</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1667312498375</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Button">
+      <created>1667312935363</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1667312935363</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Button">
+      <created>1667314305134</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1667314305134</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Button">
+      <created>1667314949449</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1667314949449</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Reimu">
+      <created>1667315168559</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1667315168559</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Patchauli">
+      <created>1667315467173</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1667315467173</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Last one">
+      <created>1667315573796</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1667315573796</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,14 +332,20 @@
     <MESSAGE value="Updated README.md" />
     <MESSAGE value="Header" />
     <MESSAGE value="Color" />
-    <MESSAGE value="Idk" />
     <MESSAGE value="Response thing" />
     <MESSAGE value="Zoom" />
     <MESSAGE value="Css change" />
     <MESSAGE value="Reimu was added" />
     <MESSAGE value="Link added" />
-    <MESSAGE value="Started a js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started a js" />
+    <MESSAGE value="Java script for your data" />
+    <MESSAGE value="Something" />
+    <MESSAGE value="Idk" />
+    <MESSAGE value="Button were added!" />
+    <MESSAGE value="Button" />
+    <MESSAGE value="Reimu" />
+    <MESSAGE value="Patchauli" />
+    <MESSAGE value="Last one" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last one" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

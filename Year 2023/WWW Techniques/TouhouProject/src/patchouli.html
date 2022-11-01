@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Touhou fumos</title>
+    <title>Patchouli</title>
     <link href="shop-style.css" rel="stylesheet" type="text/css"/>
     <meta charset="UTF-8">
+    <script src="../main.js"></script>
 </head>
 <body>
 <div class="box">
@@ -12,7 +13,7 @@
             <img src="../images/nyn-nazrin.gif" style="width:80px;height:80px;">
         </div>
         <div>
-            <a href="../index.html">Touhou fumos</a>
+            <a href="index.html">Touhou fumos</a>
         </div>
         <div>
             <img src="../images/nyn-rat-nyn.gif" style="width:80px;height:80px;">
@@ -24,32 +25,46 @@
     <div class="flex-container">
         <div class="flex-item-left">
             <div class="row zoom">
-                <img alt="reimu" height="550" src="../images/fumos/patchouli.png" style="width:100%" width="350">
-                <h2>
-                    [Bonus] Touhou Plush Series 54 [Reimu Hakurei (ver.1.5)]
-                    Fumofumo Reimu. (Sono Ittengo)(Released)
-                </h2>
-                <p>【特典】東方ぬいぐるみシリーズ 54 [博麗霊夢(ver.1.5)]ふもふもれいむ。(そのいってんご)</p>
-                <p>
-                    <span>4,400<span style="font-size: 20px;">JPY</span></span>
+                <img alt="baka" height="550" src="../images/fumos/patchouli.png" style="width:100%" width="350">
+                <p style="margin: 10px">
+                    Product price: <span id="prodPrice"></span><span style="font-size: 20px;">JPY</span>
                 </p>
+                <p>
+                    Delivery price: <span id="delPrice"></span><span style="font-size: 20px;">JPY</span>
+                </p>
+                <p>
+                    Total price: <span id="totalPrice"></span><span style="font-size: 20px;">JPY</span>
+                </p>
+                <button class="button button1"></button>
             </div>
         </div>
-        <p class="flex-item-right">
-            Події ігор відбуваються у вигаданому світі Генсокьо (яп. 幻想郷, букв. «Село-ілюзія»),
-            що нагадує феодальну Японію і населений фольклорними істотами. У минулому це була непривітна
-            місцевість Японії, наповнена йокаями, які нападали на заблукалих мандрівників і тероризували населення
-            прилеглих земель. В якийсь момент на захист людських поселень стали могутні маги. Врешті люди і йокаї дійшли
-            компромісу і був створений магічний Хакурейський Бар'єр (яп. 博麗大結界), який відділив Генсокьо від
-            навколишнього світу. Ізольований світ продовжував розвиватися і згодом в нього стали прибувати йокаї, для
-            яких світ людей став ворожим, та інші «гості». Тому там, як і раніше, нерідкі сутички, причому не лише між
-            людьми і йокаями, а і йокаїв між собою. Єдиний відомий портал в наш світ перебуває в храмі Хакурей (яп.
-            博麗神社), розташованому на східному кордоні Генсокьо. Проте численні персонажі і навіть цілі споруди
-            впродовж ігор таємно потрапляли в Генсокьо ззовні
-            , а підтримувач бар'єру — Юкарі Якумо, може вільно переміщуватися з Генсокьо в наш світ і назад.
-        </p>
+        <div class="flex-item-right">
+            <dl>
+                <dt>
+                    <h1>Information</h1>
+                </dt>
+                <dd>
+                    <h3>[Bonus] Touhou Plush Series 36 [Patchouli Knowledge (ver.1.5)] FumoFumo Pache. (Sono
+                        Ittengo)(Pre-order)</h3>
+                </dd>
+                <dd>
+                    <h4>【特典】東方ぬいぐるみシリーズ 36 [パチュリー・ノーレッジ(ver.1.5)]ふもふもぱちぇ。(そのいってんご)</h4>
+                </dd>
+                <dt>
+                    <h1>Details</h1>
+                </dt>
+                <dd>
+                    <h4>40cm tall FumoFumo plushies are here!</h4>
+                </dd>
+                <dd>
+                    <h4>Even the character's outfit is carefully recreated!</h4>
+                </dd>
+                <dd>
+                    <h4>Enjoy displaying it alongside the 20cm size plushies of the series!</h4>
+                </dd>
+            </dl>
+        </div>
     </div>
 </div>
-
 </body>
 </html>
