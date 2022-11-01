@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Reimu">
-      <change beforePath="$PROJECT_DIR$/images/fumos/rabit.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/fumos/reisen.png" afterDir="false" />
+    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Last one">
       <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rabit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/rabit.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +294,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667315168559</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Patchauli">
+      <created>1667315467173</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1667315467173</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Last one">
+      <created>1667315573796</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1667315573796</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +343,9 @@
     <MESSAGE value="Button were added!" />
     <MESSAGE value="Button" />
     <MESSAGE value="Reimu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reimu" />
+    <MESSAGE value="Patchauli" />
+    <MESSAGE value="Last one" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last one" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
