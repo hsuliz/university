@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Idk">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/buttons/logo4-ebay.gif" beforeDir="false" afterPath="$PROJECT_DIR$/images/logo4-ebay.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/baka.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/baka.html" afterDir="false" />
+    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Button were added!">
       <change beforePath="$PROJECT_DIR$/src/shop-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop-style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -262,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667311584622</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Button were added!">
+      <created>1667312498375</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1667312498375</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,7 +298,8 @@
     <MESSAGE value="Java script for your data" />
     <MESSAGE value="Something" />
     <MESSAGE value="Idk" />
-    <option name="LAST_COMMIT_MESSAGE" value="Idk" />
+    <MESSAGE value="Button were added!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Button were added!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

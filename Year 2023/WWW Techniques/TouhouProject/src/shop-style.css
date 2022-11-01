@@ -80,16 +80,11 @@ a {
 .button1 {
     background-image: url("../images/logo4-ebay.gif");
     background-repeat: no-repeat;
-    background-size: 110px 50px;
-    color: black;
-    border: 2px solid #4CAF50;
+    background-size: 115px 80px;
+    width: 115px;
+    height: 80px;
+    border: 2px solid #c92b71;
 }
-
-.button1:hover {
-    background-color: #4CAF50;
-    color: white;
-}
-
 
 /* Responsive layout - makes a one column-layout instead of two-column layout */
 
