@@ -1,6 +1,6 @@
 const fumosPriceMap = {
-    "Cirno": 4400,
-    "Yuku": 5900,
+    "Cirno": 16500,
+    "Reimu": 4400,
 
 }
 

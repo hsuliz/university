@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Button">
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/baka.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/baka.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reimu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/reimu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667314305134</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Button">
+      <created>1667314949449</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1667314949449</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
