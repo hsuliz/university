@@ -10,7 +10,7 @@ name or just by code.
 #### 1. [WWW techniques](https://github.com/hsuliz/University/tree/main/Year%202023/WWW%20Techniques)
 
 - My bery cool
-  static [webpage](https://hsuliz.github.io/University/Year%202023/WWW%20Techniques/TouhouProject/index.html)
+  static [webpage](https://hsuliz.github.io/University/Year%202023/WWW%20Techniques/TouhouProject/src/index.html)
   for WWW techniques with classic stack(HTML, CSS, JavaScript)
 
 #### 2. [Data Science](https://github.com/hsuliz/University/tree/main/Year%202023/Data%20Science)
