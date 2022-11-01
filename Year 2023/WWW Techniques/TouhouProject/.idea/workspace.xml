@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="JavaScript for stealing your data, cute and funny">
+    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Something">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/patchouli.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchouli.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rabit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/rabit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reimu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/reimu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/baka.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/baka.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667221884750</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Something">
+      <created>1667310840858</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1667310840858</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +277,8 @@
     <MESSAGE value="Reimu was added" />
     <MESSAGE value="Link added" />
     <MESSAGE value="Java script for your data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Java script for your data" />
+    <MESSAGE value="Something" />
+    <option name="LAST_COMMIT_MESSAGE" value="Something" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
