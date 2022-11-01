@@ -6,8 +6,7 @@ const fumosPriceMap = {
 
 
 const calculatePrice = (position) => {
-    const latitude = position.coords.latitude
-    const longitude = position.coords.longitude
+    const [latitude, longitude] = [position.coords.latitude, position.coords.longitude]
     const [prodPrice, delPrice] = calculating(latitude, longitude)
     const totalPrice = Number(prodPrice) + Number(delPrice)
     document.getElementById("prodPrice").innerText = prodPrice.toString()
