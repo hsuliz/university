@@ -32,9 +32,8 @@ const locationError = error => {
     const message = error.message;
 };
 
-if (!document.getElementById("main")) {
-    navigator.geolocation.getCurrentPosition(calculateDeliveryPrice, locationError);
-}
+navigator.geolocation.getCurrentPosition(calculateDeliveryPrice, locationError)
+
 
 
 
