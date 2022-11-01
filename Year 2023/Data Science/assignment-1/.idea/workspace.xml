@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac5a561b-910b-45dd-9562-c24b7217061a" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ac5a561b-910b-45dd-9562-c24b7217061a" name="Changes" comment="Idk" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +65,7 @@
       <workItem from="1667130790548" duration="384000" />
       <workItem from="1667133816763" duration="995000" />
       <workItem from="1667134946182" duration="2200000" />
-      <workItem from="1667320129601" duration="492000" />
+      <workItem from="1667320129601" duration="799000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1667131162284</created>
@@ -84,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667137333125</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Idk">
+      <created>1667320916781</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667320916781</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,6 +107,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="Idk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Idk" />
   </component>
 </project>
