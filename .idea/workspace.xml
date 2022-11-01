@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="776d06e7-a6a4-4f77-92ff-aa9d135a71a1" name="Changes" comment="Updated README.md">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Year 2023/Python/Week01/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Year 2023/Python/Week01/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Year 2023/Python/Week01/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Year 2023/Python/Week01/.idea/other.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Year 2023/Python/Week01/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Year 2023/Python/Week01/Week01.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Year 2023/Python/Week01/console.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Year 2023/Python/Week01/ide.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Year 2023/Python/Week01/main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/mymytre/Programming/University",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,6 +83,7 @@
       <workItem from="1664802882633" duration="272000" />
       <workItem from="1666207002515" duration="634000" />
       <workItem from="1667152657769" duration="367000" />
+      <workItem from="1667322139524" duration="224000" />
     </task>
     <task id="LOCAL-00001" summary="Updated README.md">
       <created>1667152960147</created>
