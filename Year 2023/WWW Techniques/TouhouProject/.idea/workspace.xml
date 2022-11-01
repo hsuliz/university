@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Something">
+    <list default="true" id="03be6ad0-89d6-4e95-9747-b7764581d36c" name="Changes" comment="Idk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/buttons/logo4-ebay.gif" beforeDir="false" afterPath="$PROJECT_DIR$/images/logo4-ebay.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/baka.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/baka.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shop-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop-style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,9 +66,9 @@
       <recent name="$PROJECT_DIR$/pics/buttons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/reimu" />
-      <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/.idea" />
     </key>
@@ -246,7 +248,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667310840858</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Idk">
+      <created>1667311399468</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1667311399468</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Idk">
+      <created>1667311584622</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1667311584622</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +286,6 @@
     <MESSAGE value="Updated README.md" />
     <MESSAGE value="Header" />
     <MESSAGE value="Color" />
-    <MESSAGE value="Idk" />
     <MESSAGE value="Response thing" />
     <MESSAGE value="Zoom" />
     <MESSAGE value="Css change" />
@@ -278,7 +293,8 @@
     <MESSAGE value="Link added" />
     <MESSAGE value="Java script for your data" />
     <MESSAGE value="Something" />
-    <option name="LAST_COMMIT_MESSAGE" value="Something" />
+    <MESSAGE value="Idk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Idk" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

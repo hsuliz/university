@@ -64,6 +64,33 @@ a {
     flex: 50%;
 }
 
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-image: url("../images/logo4-ebay.gif");
+    background-repeat: no-repeat;
+    background-size: 110px 50px;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
 /* Responsive layout - makes a one column-layout instead of two-column layout */
 
 @media (max-width: 1024px) {
