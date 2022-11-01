@@ -1,9 +1,9 @@
 const fumosPriceMap = {
     "Cirno": 16500,
     "Reimu": 4400,
-
+    "Reisen": 4750,
+    "Patchouli": 5600
 }
-
 
 const calculatePrice = (position) => {
     const [latitude, longitude] = [position.coords.latitude, position.coords.longitude]
@@ -17,7 +17,6 @@ const calculatePrice = (position) => {
 const calculating = (lat1, lon1) => {
     // some random japan location
     const [lat2, lon2] = [35.55724734257086, 137.74741764337156]
-
 
     const calcDelPrice = () => {
         const distance = () => {
@@ -50,7 +49,3 @@ const locationError = error => {
 };
 
 navigator.geolocation.getCurrentPosition(calculatePrice, locationError)
-
-
-
-
