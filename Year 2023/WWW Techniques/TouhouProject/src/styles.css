@@ -5,13 +5,13 @@ body {
     font-size: 40px;
 }
 
+.fumo-text {
+    font-size: 90px;
+}
+
 a {
     color: inherit; /* blue colors for links too */
     text-decoration: inherit; /* no underline */
-}
-
-* {
-    box-sizing: border-box;
 }
 
 .box {
@@ -37,6 +37,24 @@ a {
     padding: 20px;
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
+}
+
+.flex-item-left {
+    padding: 10px;
+    flex: 50%;
+}
+
+.flex-item-right {
+    padding: 10px;
+    flex: 50%;
+}
+
+
 .footer {
     display: grid;
     margin: 20px 80px;
@@ -51,22 +69,30 @@ a {
     transform: scale(1.2);
 }
 
-@media (max-width: 1024px) {
-    body {
-        scale: 100%;
-    }
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
 
-    .fumos .row {
-        display: grid;
-        grid-auto-flow: column;
-        gap: 4px;
-        align-items: center;
-        justify-items: center;
-        width: 50%;
-    }
+.button1 {
+    background-image: url("../images/logo4-ebay.gif");
+    background-repeat: no-repeat;
+    background-size: 115px 50px;
+    width: 115px;
+    height: 50px;
+    border: 2px solid #c92b71;
+}
 
-    img {
-        max-width: 80%;
-        height: auto;
-    }
+.footer {
+    display: grid;
+    margin: 20px 80px;
+    align-content: center;
 }
