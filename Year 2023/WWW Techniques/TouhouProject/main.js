@@ -9,10 +9,14 @@ const calculatePrice = (position) => {
     const [latitude, longitude] = [position.coords.latitude, position.coords.longitude]
     const [prodPrice, delPrice] = calculating(latitude, longitude)
     const totalPrice = Number(prodPrice) + Number(delPrice)
+    setPrices(prodPrice, delPrice, totalPrice)
+};
+
+const setPrices = (prodPrice, delPrice, totalPrice) => {
     document.getElementById("prodPrice").innerText = prodPrice.toString()
     document.getElementById("delPrice").innerText = delPrice.toString()
     document.getElementById("totalPrice").innerText = totalPrice.toString()
-}
+};
 
 const calculating = (lat1, lon1) => {
     // some random japan location
@@ -41,11 +45,6 @@ const calculating = (lat1, lon1) => {
     }
 
     return [calcProdPrice(), calcDelPrice()]
-};
-
-const locationError = error => {
-    const code = error.code
-    const message = error.message
 };
 
 navigator.geolocation.getCurrentPosition(calculatePrice, locationError)
