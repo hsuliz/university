@@ -1,7 +1,7 @@
 const fumosPriceMap = {
     "Cirno": 16500,
     "Reimu": 4400,
-    "Reisen": 4750,
+    "Reisen": 12750,
     "Patchouli": 5600
 }
 
@@ -46,5 +46,17 @@ const calculating = (lat1, lon1) => {
 
     return [calcProdPrice(), calcDelPrice()]
 };
+
+const loading = () => {
+    document.getElementById("loading").innerText = "Loading"
+    const dots = [".", "..", "..."]
+    var c = 0
+    setInterval(() => {
+        document.getElementById("loadingDots").innerText = dots[c++]
+        if (c === 3) {
+            c = 0
+        }
+    }, 1000)
+}
 
 navigator.geolocation.getCurrentPosition(calculatePrice, locationError)

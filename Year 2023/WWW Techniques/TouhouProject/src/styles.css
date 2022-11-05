@@ -14,7 +14,7 @@ a {
 }
 
 .box {
-    margin: 30px 200px;
+    margin: 50px 250px;
     border: 1px solid rgba(208, 252, 217, 0.6);
     border-radius: 10px;
     background-color: rgba(252, 208, 243, 0.6);
@@ -85,7 +85,7 @@ a {
     background-image: url("../images/logo4-ebay.gif");
     background-repeat: no-repeat;
     background-size: 115px 50px;
-    width: 115px;
+    width: 119px;
     height: 50px;
     border: 2px solid #c92b71;
 }
