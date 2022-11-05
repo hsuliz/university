@@ -9,13 +9,13 @@ const calculatePrice = (position) => {
     const [latitude, longitude] = [position.coords.latitude, position.coords.longitude]
     const [prodPrice, delPrice] = calculating(latitude, longitude)
     const totalPrice = Number(prodPrice) + Number(delPrice)
-    setPrices(prodPrice, delPrice, totalPrice)
-};
-
-const setPrices = (prodPrice, delPrice, totalPrice) => {
     document.getElementById("prodPrice").innerText = prodPrice.toString()
     document.getElementById("delPrice").innerText = delPrice.toString()
     document.getElementById("totalPrice").innerText = totalPrice.toString()
+};
+
+const locationError = (error) => {
+    console.log(error.message)
 };
 
 const calculating = (lat1, lon1) => {
