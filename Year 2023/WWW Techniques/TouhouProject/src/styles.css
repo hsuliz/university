@@ -95,3 +95,21 @@ a {
     margin: 20px 80px;
     align-content: center;
 }
+
+@media screen and (min-width: 768px) {
+    body {
+        background-image: url("../images/nyn-nazrin.gif");
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        background-image: url("../images/logo4-ebay.gif");
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        background-image: url("../images/fumos/patchouli.png");
+    }
+}
