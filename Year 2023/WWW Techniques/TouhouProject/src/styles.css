@@ -37,7 +37,6 @@ a {
 }
 
 .flex-container {
-    display: flex;
     flex-direction: row;
     font-size: 30px;
     text-align: center;
@@ -100,16 +99,25 @@ a {
     .fumos {
         flex-direction: column;
     }
+    .flex-container {
+        display: table;
+    }
 }
 
 @media screen and (min-width: 992px) {
     .fumos {
         flex-direction: row;
     }
+    .flex-container {
+        display: table;
+    }
 }
 
 @media screen and (min-width: 1200px) {
     .fumos {
         flex-direction: row;
+    }
+    .flex-container {
+        display: flex;
     }
 }

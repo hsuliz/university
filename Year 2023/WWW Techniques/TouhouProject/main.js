@@ -47,14 +47,14 @@ const calculating = (lat1, lon1) => {
     return [calcProdPrice(), calcDelPrice()]
 };
 
-let ifLoading = false
+let isLoading = false
 const loading = () => {
-    if (!ifLoading) {
-        ifLoading = true
+    if (!isLoading) {
+        isLoading = true
     } else {
         return
     }
-    console.log(ifLoading)
+    console.log(isLoading)
     document.getElementById("loading").innerText = "Loading"
     const dots = [".", "..", "..."]
     let c = 0
