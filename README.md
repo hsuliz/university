@@ -7,12 +7,12 @@ name or just by code.
 
 ## 2023
 
-#### 1. [WWW techniques](https://github.com/hsuliz/University/tree/main/Year%202023/WWW%20Techniques)
+#### 1. [WWW techniques](https://github.com/hsuliz/university/tree/main/year-2023/www-techniques)
 
 - My bery cool
-  static [webpage](https://hsuliz.github.io/University/Year%202023/WWW%20Techniques/TouhouProject/src/index.html)
+static [webpage](https://hsuliz.github.io/university/year-2023/www-techniques/touhou-project/src/index.html)
   for WWW techniques with classic stack(HTML, CSS, JavaScript)
 
-#### 2. [Data Science](https://github.com/hsuliz/University/tree/main/Year%202023/Data%20Science)
+#### 2. [Data Science](https://github.com/hsuliz/university/tree/main/year-2023/data-science)
 
 - Assignments. Used conda for virtual environment and jupyter notebooks. All exercises and solutions are in notebooks.
