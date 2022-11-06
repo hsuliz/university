@@ -1,7 +1,7 @@
 const fumosPriceMap = {
     "Cirno": 16500,
     "Reimu": 4400,
-    "Reisen": 4750,
+    "Reisen": 12750,
     "Patchouli": 5600
 }
 
@@ -12,7 +12,11 @@ const calculatePrice = (position) => {
     document.getElementById("prodPrice").innerText = prodPrice.toString()
     document.getElementById("delPrice").innerText = delPrice.toString()
     document.getElementById("totalPrice").innerText = totalPrice.toString()
-}
+};
+
+const locationError = (error) => {
+    console.log(error.message)
+};
 
 const calculating = (lat1, lon1) => {
     // some random japan location
@@ -43,9 +47,23 @@ const calculating = (lat1, lon1) => {
     return [calcProdPrice(), calcDelPrice()]
 };
 
-const locationError = error => {
-    const code = error.code
-    const message = error.message
-};
+let isLoading = false
+const loading = () => {
+    if (!isLoading) {
+        isLoading = true
+    } else {
+        return
+    }
+    console.log(isLoading)
+    document.getElementById("loading").innerText = "Loading"
+    const dots = [".", "..", "..."]
+    let c = 0
+    setInterval(() => {
+        document.getElementById("loadingDots").innerText = dots[c++]
+        if (c === 3) {
+            c = 0
+        }
+    }, 1000)
+}
 
 navigator.geolocation.getCurrentPosition(calculatePrice, locationError)
