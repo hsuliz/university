@@ -11,8 +11,12 @@ name or just by code.
 
 - My bery cool
 static [webpage](https://hsuliz.github.io/university/year-2023/www-techniques/touhou-project/src/index.html)
-  for WWW techniques with classic stack(HTML, CSS, JavaScript)
+  for WWW techniques with classic stack(HTML, CSS, JavaScript).
 
 #### 2. [Data Science](https://github.com/hsuliz/university/tree/main/year-2023/data-science)
 
 - Assignments. Used conda for virtual environment and jupyter notebooks. All exercises and solutions are in notebooks.
+
+#### 3. [Python](https://github.com/hsuliz/university/tree/main/year-2023/python)
+
+- Assignments.
