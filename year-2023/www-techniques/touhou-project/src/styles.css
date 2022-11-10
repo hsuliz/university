@@ -93,6 +93,15 @@ a {
     border: 2px solid #c92b71;
 }
 
+.buttons {
+    flex: 25%;
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 .footer {
     display: grid;
     margin: 20px 80px;
