@@ -57,12 +57,6 @@ a {
 }
 
 
-.footer {
-    display: grid;
-    margin: 20px 80px;
-    align-content: center;
-}
-
 .zoom {
     transition: transform .5s;
 }
