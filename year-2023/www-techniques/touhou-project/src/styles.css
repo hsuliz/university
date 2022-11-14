@@ -38,6 +38,7 @@ a {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    font-size: 40px;
 }
 
 .flex-container {
@@ -83,7 +84,7 @@ a {
     background-repeat: no-repeat;
     background-size: 115px 50px;
     width: 119px;
-    height: 50px;
+    height: 54px;
     border: 2px solid #c92b71;
 }
 
