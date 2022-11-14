@@ -122,6 +122,7 @@ img {
     .fumos {
         flex-direction: column;
     }
+
     .flex-container {
         display: table;
     }
@@ -140,9 +141,15 @@ img {
 }
 
 @media screen and (min-width: 1024px) {
+
+    .box {
+        margin: 30px 100px;
+    }
+
     .fumos {
         flex-direction: row;
     }
+
     .flex-container {
         display: flex;
     }
