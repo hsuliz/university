@@ -102,15 +102,17 @@ a {
     width: 50%;
 }
 
-.footer {
-    display: grid;
-    margin: 20px 80px;
-    align-content: center;
-}
+
 
 img {
     height: 100%;
     width: 100%;
+}
+
+.footer-content {
+    display: grid;
+    grid-auto-flow: column;
+    place-items: start center;
 }
 
 @media screen and (min-width: 425px) {
