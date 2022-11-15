@@ -54,6 +54,13 @@ zero_list = [
     ([2, 0], -1, "given with strange denominator should return -1"),
 ]
 
+cmp_list = [
+    ([1, 4], [5, 4], -1, "given frac should return -1"),
+    ([1, 4], [-5, 4], 1, "given frac should return 1"),
+    ([1, 1], [2, 2], 0, "given frac should return 0"),
+    ([1, 3], [1, 0], "Error!!", "given with strange denominator should return -1"),
+]
+
 
 class TestFractions(unittest.TestCase):
 
@@ -91,7 +98,9 @@ class TestFractions(unittest.TestCase):
                 self.assertEqual(fracs.is_zero(p1), expected)
 
     def test_cmp_frac(self):
-        pass
+        for p1, p2, expected, test_descr in cmp_list:
+            with self.subTest(msg=test_descr, p1=p1, p2=p2, expected=expected):
+                self.assertEqual(fracs.cmp_frac(p1, p2), expected)
 
     def test_frac2float(self):
         pass
@@ -101,4 +110,4 @@ class TestFractions(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()  # uruchamia wszystkie testy
+    unittest.main()

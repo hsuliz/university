@@ -45,18 +45,26 @@ def is_positive(frac: list):
         return False
 
 
-def positive_check(frac):
+def positive_check(frac: list):
     return (frac[0] > 0 and frac[1] > 0) or (frac[0] < 0 and frac[1] < 0)
 
 
-def is_zero(frac):
+def is_zero(frac: list):
     if frac[1] == 0:
         return -1
     else:
         return frac[0] == 0
 
 
-def cmp_frac(frac1, frac2): pass
+def cmp_frac(frac1: list, frac2: list):
+    if denominator_check(frac1, frac2):
+        return "Error!!"
+    elif frac1[0] / frac1[1] > frac2[0] / frac2[1]:
+        return 1
+    elif frac1[0] / frac1[1] < frac2[0] / frac2[1]:
+        return -1
+    else:
+        return 0
 
 
 def frac2float(frac): pass
