@@ -8,7 +8,7 @@ add_list = [
     ([1, 2], [1, 3], [5, 6], "given with different denominator should return correct frac"),
     ([1, 3], [1, 1], [4, 3], "given with different denominator should return correct frac"),
     ([0, 3], [1, 1], [3, 3], "given with strange numerator should return correct frac"),
-    ([1, 3], [1, 0], -1, "given with strange denominator should return -1"),
+    ([1, 3], [1, 0], "Error!!", "given with strange denominator should return error"),
 ]
 
 sub_list = [
@@ -17,7 +17,7 @@ sub_list = [
     ([1, 3], [1, 2], [-1, 6], "given with different denominator should return correct frac"),
     ([1, 3], [1, 1], [-2, 3], "given with different denominator should return correct frac"),
     ([0, 3], [1, 1], [-3, 3], "given with strange numerator should return correct frac"),
-    ([1, 3], [1, 0], -1, "given with strange denominator should return -1"),
+    ([1, 3], [1, 0], "Error!!", "given with strange denominator should return error"),
 ]
 
 mul_list = [
@@ -27,7 +27,7 @@ mul_list = [
     ([-4, 7], [2, 5], [-8, 35], "given frac should return correct frac"),
     ([-4, -7], [-2, -5], [8, 35], "given frac should return correct frac"),
     ([0, 2], [8, 3], [0, 6], "given frac with 0 should return correct frac"),
-    ([1, 3], [1, 0], -1, "given with strange denominator should return -1"),
+    ([1, 3], [1, 0], "Error!!", "given with strange denominator should return error"),
 ]
 
 div_list = [
@@ -35,7 +35,7 @@ div_list = [
     ([2, 5], [3, -5], [-10, 15], "given frac should return correct frac"),
     ([2, 5], [3, -5], [-10, 15], "given frac should return correct frac"),
     ([-4, -7], [-2, -5], [20, 14], "given frac should return correct frac"),
-    ([1, 3], [1, 0], -1, "given with strange denominator should return -1"),
+    ([1, 3], [1, 0], "Error!!", "given with strange denominator should return error"),
     ([0, 2], [8, 3], [0, 16], "given frac with 0 should return correct frac"),
 ]
 
@@ -45,13 +45,13 @@ pos_list = [
     ([1, -4], False, "given frac should return false"),
     ([-1, -4], True, "given frac should return true"),
     ([0, -4], False, "given frac should return true"),
-    ([2, 0], -1, "given with strange denominator should return -1"),
+    ([2, 0], "Error!!", "given with strange denominator should return error"),
 ]
 
 zero_list = [
     ([1, 4], False, "given frac should return false"),
     ([0, 1], True, "given frac should return true"),
-    ([2, 0], -1, "given with strange denominator should return -1"),
+    ([2, 0], "Error!!", "given with strange denominator should return error"),
 ]
 
 cmp_list = [

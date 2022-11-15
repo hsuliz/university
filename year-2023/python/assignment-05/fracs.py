@@ -1,6 +1,6 @@
 def add_frac(frac1: list, frac2: list):
     if denominator_check(frac1, frac2):
-        return -1
+        return "Error!!"
     elif frac1[1] == frac2[1]:
         return [frac1[0] + frac2[0], frac2[1]]
     else:
@@ -12,7 +12,7 @@ def add_frac(frac1: list, frac2: list):
 
 def sub_frac(frac1: list, frac2: list):
     if denominator_check(frac1, frac2):
-        return -1
+        return "Error!!"
     elif frac1[1] == frac2[1]:
         return [frac1[0] - frac2[0], frac2[1]]
     else:
@@ -24,21 +24,21 @@ def sub_frac(frac1: list, frac2: list):
 
 def mul_frac(frac1: list, frac2: list):
     if denominator_check(frac1, frac2):
-        return -1
+        return "Error!!"
     else:
         return [frac1[0] * frac2[0], frac1[1] * frac2[1]]
 
 
 def div_frac(frac1: list, frac2: list):
     if denominator_check(frac1, frac2):
-        return -1
+        return "Error!!"
     else:
         return [frac1[0] * frac2[1], frac1[1] * frac2[0]]
 
 
 def is_positive(frac: list):
     if frac[1] == 0:
-        return -1
+        return "Error!!"
     elif positive_check(frac):
         return True
     else:
@@ -51,7 +51,7 @@ def positive_check(frac: list):
 
 def is_zero(frac: list):
     if frac[1] == 0:
-        return -1
+        return "Error!!"
     else:
         return frac[0] == 0
 
