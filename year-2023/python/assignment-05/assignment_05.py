@@ -61,6 +61,15 @@ cmp_list = [
     ([1, 3], [1, 0], "Error!!", "given with strange denominator should return -1"),
 ]
 
+float_list = [
+    ([-1, 2], -0.5, "given frac should return correct float"),
+    ([1, -2], -0.5, "given frac should return correct float"),
+    ([3, 1], 3, "given frac should return correct float"),
+    ([0, 3], 0, "given frac should return correct float"),
+    ([6, 2], 3, "given frac should return correct float"),
+    ([2, 0], "Error!!", "given with strange denominator should return error"),
+]
+
 
 class TestFractions(unittest.TestCase):
 
@@ -103,7 +112,9 @@ class TestFractions(unittest.TestCase):
                 self.assertEqual(fracs.cmp_frac(p1, p2), expected)
 
     def test_frac2float(self):
-        pass
+        for p1, expected, test_descr in float_list:
+            with self.subTest(msg=test_descr, p1=p1, expected=expected):
+                self.assertEqual(fracs.frac2float(p1), expected)
 
     def tearDown(self):
         pass

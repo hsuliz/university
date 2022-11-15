@@ -67,7 +67,11 @@ def cmp_frac(frac1: list, frac2: list):
         return 0
 
 
-def frac2float(frac): pass
+def frac2float(frac):
+    if frac[1] == 0:
+        return "Error!!"
+    else:
+        return float(frac[0] / frac[1])
 
 
 def denominator_check(frac1, frac2):
