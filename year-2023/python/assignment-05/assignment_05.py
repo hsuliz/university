@@ -20,6 +20,25 @@ sub_list = [
     ([1, 3], [1, 0], -1, "given with strange denominator should return -1"),
 ]
 
+mul_list = [
+    ([1, 2], [2, 5], [2, 10], "given frac should return correct frac"),
+    ([2, 5], [3, -5], [6, -25], "given frac should return correct frac"),
+    ([4, -7], [2, -5], [8, 35], "given frac should return correct frac"),
+    ([-4, 7], [2, 5], [-8, 35], "given frac should return correct frac"),
+    ([-4, -7], [-2, -5], [8, 35], "given frac should return correct frac"),
+    ([0, 2], [8, 3], [0, 6], "given frac with 0 should return correct frac"),
+    ([1, 3], [1, 0], -1, "given with strange denominator should return -1"),
+]
+
+div_list = [
+    ([1, 4], [5, 4], [4, 20], "given frac should return correct frac"),
+    ([2, 5], [3, -5], [-10, 15], "given frac should return correct frac"),
+    ([2, 5], [3, -5], [-10, 15], "given frac should return correct frac"),
+    ([-4, -7], [-2, -5], [20, 14], "given frac should return correct frac"),
+    ([1, 3], [1, 0], -1, "given with strange denominator should return -1"),
+    ([0, 2], [8, 3], [0, 16], "given frac with 0 should return correct frac"),
+]
+
 
 class TestFractions(unittest.TestCase):
 
@@ -37,10 +56,14 @@ class TestFractions(unittest.TestCase):
                 self.assertEqual(fracs.sub_frac(p1, p2), expected)
 
     def test_mul_frac(self):
-        pass
+        for p1, p2, expected, test_descr in mul_list:
+            with self.subTest(msg=test_descr, p1=p1, p2=p2, expected=expected):
+                self.assertEqual(fracs.mul_frac(p1, p2), expected)
 
     def test_div_frac(self):
-        pass
+        for p1, p2, expected, test_descr in div_list:
+            with self.subTest(msg=test_descr, p1=p1, p2=p2, expected=expected):
+                self.assertEqual(fracs.div_frac(p1, p2), expected)
 
     def test_is_positive(self):
         pass
