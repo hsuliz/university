@@ -49,7 +49,11 @@ def positive_check(frac):
     return (frac[0] > 0 and frac[1] > 0) or (frac[0] < 0 and frac[1] < 0)
 
 
-def is_zero(frac): pass
+def is_zero(frac):
+    if frac[1] == 0:
+        return -1
+    else:
+        return frac[0] == 0
 
 
 def cmp_frac(frac1, frac2): pass

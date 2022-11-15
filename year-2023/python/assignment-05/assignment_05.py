@@ -48,6 +48,12 @@ pos_list = [
     ([2, 0], -1, "given with strange denominator should return -1"),
 ]
 
+zero_list = [
+    ([1, 4], False, "given frac should return false"),
+    ([0, 1], True, "given frac should return true"),
+    ([2, 0], -1, "given with strange denominator should return -1"),
+]
+
 
 class TestFractions(unittest.TestCase):
 
@@ -80,7 +86,9 @@ class TestFractions(unittest.TestCase):
                 self.assertEqual(fracs.is_positive(p1), expected)
 
     def test_is_zero(self):
-        pass
+        for p1, expected, test_descr in zero_list:
+            with self.subTest(msg=test_descr, p1=p1, expected=expected):
+                self.assertEqual(fracs.is_zero(p1), expected)
 
     def test_cmp_frac(self):
         pass
