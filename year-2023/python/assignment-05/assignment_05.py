@@ -116,9 +116,6 @@ class TestFractions(unittest.TestCase):
             with self.subTest(msg=test_descr, p1=p1, expected=expected):
                 self.assertEqual(fracs.frac2float(p1), expected)
 
-    def tearDown(self):
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()
