@@ -39,6 +39,15 @@ div_list = [
     ([0, 2], [8, 3], [0, 16], "given frac with 0 should return correct frac"),
 ]
 
+pos_list = [
+    ([1, 4], True, "given frac should return true"),
+    ([-1, 4], False, "given frac should return false"),
+    ([1, -4], False, "given frac should return false"),
+    ([-1, -4], True, "given frac should return true"),
+    ([0, -4], False, "given frac should return true"),
+    ([2, 0], -1, "given with strange denominator should return -1"),
+]
+
 
 class TestFractions(unittest.TestCase):
 
@@ -66,7 +75,9 @@ class TestFractions(unittest.TestCase):
                 self.assertEqual(fracs.div_frac(p1, p2), expected)
 
     def test_is_positive(self):
-        pass
+        for p1, expected, test_descr in pos_list:
+            with self.subTest(msg=test_descr, p1=p1, expected=expected):
+                self.assertEqual(fracs.is_positive(p1), expected)
 
     def test_is_zero(self):
         pass
