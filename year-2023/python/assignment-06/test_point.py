@@ -54,7 +54,7 @@ class TestPoint(unittest.TestCase):
                 self.assertEqual(
                     p.Point(p1[0], p1[1])
                     .__eq__(p.Point(p2[0], p2[1])),
-                    not expected
+                    expected
                 )
 
     def test_ne(self):
