@@ -143,6 +143,13 @@ class TestPoint(unittest.TestCase):
                     expected
                 )
 
+    def test_hash(self):
+        # given
+        x, y = p.Point(2, 6), p.Point(2, 6)
+        # when, then
+        self.assertEqual(x, y, msg="given 2 identical points should be equal")
+        self.assertEqual(x.__hash__(), y.__hash__(), msg="given 2 identical points should return same hash code")
+
 
 if __name__ == '__main__':
     unittest.main()

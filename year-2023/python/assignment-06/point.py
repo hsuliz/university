@@ -35,4 +35,4 @@ class Point:
         return math.sqrt(pow(self.x, 2) + pow(self.y, 2))
 
     def __hash__(self):
-        return hash((self.x, self.y))  # bazujemy na tuple, immutable points
+        return hash((self.x, self.y))
