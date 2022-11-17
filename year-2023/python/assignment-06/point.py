@@ -7,9 +7,11 @@ class Point:
     def __str__(self) -> str:
         return "(" + str(self.x) + ", " + str(self.y) + ")"
 
-    def __repr__(self): pass  # zwraca string "Point(x, y)"
+    def __repr__(self) -> str:
+        return "Point(" + str(self.x) + ", " + str(self.y) + ")"
 
-    def __eq__(self, other): pass  # obsługa point1 == point2
+    def __eq__(self, other) -> bool:
+        return (self.x == other.x) and (self.y == other.y)
 
     def __ne__(self, other):  # obsługa point1 != point2
         return not self == other
