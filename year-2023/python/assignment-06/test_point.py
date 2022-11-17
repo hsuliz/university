@@ -38,6 +38,18 @@ class TestPoint(unittest.TestCase):
         # then
         self.assertFalse(actual, msg="given diff points should return false")
 
+    def test_ne(self):
+        # given
+        x, y = 5, 5
+        # when
+        actual = p.Point(x, y).__ne__(p.Point(x, y))
+        # then
+        self.assertFalse(actual, msg="given same points should return true")
+
+        # when
+        actual = p.Point(x, y).__ne__(p.Point(-5, -5))
+        # then
+        self.assertTrue(actual, msg="given diff points should return false")
 
 
 if __name__ == '__main__':

@@ -13,7 +13,7 @@ class Point:
     def __eq__(self, other) -> bool:
         return (self.x == other.x) and (self.y == other.y)
 
-    def __ne__(self, other):  # obsługa point1 != point2
+    def __ne__(self, other):
         return not self == other
 
     # Punkty jako wektory 2D.
