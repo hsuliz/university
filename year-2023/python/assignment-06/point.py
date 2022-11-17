@@ -4,13 +4,13 @@ class Point:
         self.x = x
         self.y = y
 
-    def __str__(self) -> str:
+    def __str__(self):
         return "(" + str(self.x) + ", " + str(self.y) + ")"
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return "Point(" + str(self.x) + ", " + str(self.y) + ")"
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other):
         return (self.x == other.x) and (self.y == other.y)
 
     def __ne__(self, other):
@@ -22,7 +22,8 @@ class Point:
     def __sub__(self, other):
         return Point(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other): pass  # v1 * v2, iloczyn skalarny, zwraca liczbę
+    def __mul__(self, other):
+        return self.x * other.x + self.y * other.y
 
     def cross(self, other):  # v1 x v2, iloczyn wektorowy 2D, zwraca liczbę
         return self.x * other.y - self.y * other.x

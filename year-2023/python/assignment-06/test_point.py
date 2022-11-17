@@ -20,6 +20,12 @@ sub_list = [
     ([-2, -2], [-2, 2], p.Point(0, -4)),
 ]
 
+mul_list = [
+    ([1, 2], [3, -5], -7),
+    ([1, 2], [-4, 2], 0),
+    ([2, 2], [3, -1], 4)
+]
+
 
 class TestPoint(unittest.TestCase):
 
@@ -84,6 +90,18 @@ class TestPoint(unittest.TestCase):
                 self.assertEqual(
                     p.Point(p1[0], p1[1])
                     .__sub__(p.Point(p2[0], p2[1])),
+                    expected
+                )
+
+    def test_mul(self):
+        for p1, p2, expected in mul_list:
+            with self.subTest(
+                    msg="given points " + p1.__str__() + " " + p2.__str__() +
+                        " should return " + expected.__str__()
+            ):
+                self.assertEqual(
+                    p.Point(p1[0], p1[1])
+                    .__mul__(p.Point(p2[0], p2[1])),
                     expected
                 )
 
