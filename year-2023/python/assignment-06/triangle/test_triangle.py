@@ -5,9 +5,6 @@ import triangle as t
 
 class MyTestCase(unittest.TestCase):
 
-    def test_something(self):
-        self.assertEqual(True, False)  # add assertion here
-
     def test_str(self):
         # given
         x = t.Triangle(2, 2, 3, 3, 4, 4)

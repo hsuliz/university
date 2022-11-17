@@ -12,7 +12,10 @@ class Triangle:
         return "[" + str(self.pt1) + ", " + str(self.pt2) + ", " + str(self.pt3) + "]"
 
     def __repr__(self):
-        return "Triangle(" + str(self.pt1.x) + ", " + str(self.pt1.y)
+        return "Triangle(" \
+               + str(self.pt1.x) + ", " + str(self.pt1.y) + ", "\
+               + str(self.pt2.x) + ", " + str(self.pt2.y) + ", " \
+               + str(self.pt3.x) + ", " + str(self.pt3.y) + ")"
 
     def __eq__(self, other): pass  # obsługa tr1 == tr2
 
