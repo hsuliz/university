@@ -66,9 +66,9 @@ class TestPoint(unittest.TestCase):
                         " should return " + expected.__str__()
             ):
                 self.assertEqual(
+                    expected,
                     p.Point(p1[0], p1[1])
-                    .__eq__(p.Point(p2[0], p2[1])),
-                    expected
+                    .__eq__(p.Point(p2[0], p2[1]))
                 )
 
     def test_ne(self):
@@ -78,9 +78,9 @@ class TestPoint(unittest.TestCase):
                         " should return " + expected.__str__()
             ):
                 self.assertEqual(
+                    not expected,
                     p.Point(p1[0], p1[1])
-                    .__ne__(p.Point(p2[0], p2[1])),
-                    not expected
+                    .__ne__(p.Point(p2[0], p2[1]))
                 )
 
     def test_add(self):
@@ -90,9 +90,9 @@ class TestPoint(unittest.TestCase):
                         " should return " + expected.__str__()
             ):
                 self.assertEqual(
+                    expected,
                     p.Point(p1[0], p1[1])
-                    .__add__(p.Point(p2[0], p2[1])),
-                    expected
+                    .__add__(p.Point(p2[0], p2[1]))
                 )
 
     def test_sub(self):
@@ -102,9 +102,9 @@ class TestPoint(unittest.TestCase):
                         " should return " + expected.__str__()
             ):
                 self.assertEqual(
+                    expected,
                     p.Point(p1[0], p1[1])
-                    .__sub__(p.Point(p2[0], p2[1])),
-                    expected
+                    .__sub__(p.Point(p2[0], p2[1]))
                 )
 
     def test_mul(self):
@@ -114,9 +114,9 @@ class TestPoint(unittest.TestCase):
                         " should return " + expected.__str__()
             ):
                 self.assertEqual(
+                    expected,
                     p.Point(p1[0], p1[1])
-                    .__mul__(p.Point(p2[0], p2[1])),
-                    expected
+                    .__mul__(p.Point(p2[0], p2[1]))
                 )
 
     def test_cross(self):
@@ -126,9 +126,9 @@ class TestPoint(unittest.TestCase):
                         " should return " + expected.__str__()
             ):
                 self.assertEqual(
+                    expected,
                     p.Point(p1[0], p1[1])
-                    .cross(p.Point(p2[0], p2[1])),
-                    expected
+                    .cross(p.Point(p2[0], p2[1]))
                 )
 
     def test_length(self):
@@ -138,9 +138,8 @@ class TestPoint(unittest.TestCase):
                         " should return " + expected.__str__()
             ):
                 self.assertEqual(
-                    p.Point(p1[0], p1[1])
-                    .length(),
-                    expected
+                    expected,
+                    p.Point(p1[0], p1[1]).length()
                 )
 
     def test_hash(self):
