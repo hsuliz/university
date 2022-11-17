@@ -16,8 +16,8 @@ class Point:
     def __ne__(self, other):
         return not self == other
 
-    # Punkty jako wektory 2D.
-    def __add__(self, other): pass  # v1 + v2
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other): pass  # v1 - v2
 
