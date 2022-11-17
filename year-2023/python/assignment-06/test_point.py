@@ -1,3 +1,4 @@
+import math
 import unittest
 
 import point as p
@@ -23,7 +24,20 @@ sub_list = [
 mul_list = [
     ([1, 2], [3, -5], -7),
     ([1, 2], [-4, 2], 0),
-    ([2, 2], [3, -1], 4)
+    ([2, 2], [3, -1], 4),
+]
+
+cross_list = [
+    ([1, 2], [3, -5], -11),
+    ([1, 2], [-4, 2], 10),
+    ([2, 2], [3, -1], -8),
+]
+
+length_list = [
+    ([6, 3], math.sqrt(45)),
+    ([3, 4], 5),
+    ([5, -4], math.sqrt(41)),
+    ([0, 0], 0),
 ]
 
 
@@ -102,6 +116,30 @@ class TestPoint(unittest.TestCase):
                 self.assertEqual(
                     p.Point(p1[0], p1[1])
                     .__mul__(p.Point(p2[0], p2[1])),
+                    expected
+                )
+
+    def test_cross(self):
+        for p1, p2, expected in cross_list:
+            with self.subTest(
+                    msg="given points " + p1.__str__() + " " + p2.__str__() +
+                        " should return " + expected.__str__()
+            ):
+                self.assertEqual(
+                    p.Point(p1[0], p1[1])
+                    .cross(p.Point(p2[0], p2[1])),
+                    expected
+                )
+
+    def test_length(self):
+        for p1, expected in length_list:
+            with self.subTest(
+                    msg="given point " + p1.__str__() +
+                        " should return " + expected.__str__()
+            ):
+                self.assertEqual(
+                    p.Point(p1[0], p1[1])
+                    .length(),
                     expected
                 )
 
