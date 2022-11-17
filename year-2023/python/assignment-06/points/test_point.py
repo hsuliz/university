@@ -145,10 +145,11 @@ class TestPoint(unittest.TestCase):
 
     def test_hash(self):
         # given
-        x, y = p.Point(2, 6), p.Point(2, 6)
+        x, y, z = p.Point(2, 6), p.Point(2, 6), p.Point(1, -2)
         # when, then
         self.assertEqual(x, y, msg="given 2 identical points should be equal")
         self.assertEqual(x.__hash__(), y.__hash__(), msg="given 2 identical points should return same hash code")
+        self.assertNotEqual(x.__hash__(), z.__hash__(), msg="given 2 diff points should return diff hash code")
 
 
 if __name__ == '__main__':
