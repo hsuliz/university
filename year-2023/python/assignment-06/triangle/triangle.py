@@ -13,14 +13,15 @@ class Triangle:
 
     def __repr__(self):
         return "Triangle(" \
-               + str(self.pt1.x) + ", " + str(self.pt1.y) + ", "\
+               + str(self.pt1.x) + ", " + str(self.pt1.y) + ", " \
                + str(self.pt2.x) + ", " + str(self.pt2.y) + ", " \
                + str(self.pt3.x) + ", " + str(self.pt3.y) + ")"
 
-    def __eq__(self, other): pass  # obsługa tr1 == tr2
-
-    # Trójkąty powinny być równe, jeżeli mają ten sam zbiór wierzchołków,
-    # niezależnie od kolejności pt1, pt2, pt3.
+    def __eq__(self, other):
+        x = self.to_list()
+        y = other.to_list()
+        x.sort(), y.sort()
+        return x == y
 
     def __ne__(self, other):  # obsługa tr1 != tr2
         return not self == other
@@ -30,3 +31,10 @@ class Triangle:
     def area(self): pass  # pole powierzchni
 
     def move(self, x, y): pass  # przesunięcie o (x, y)
+
+    def to_list(self):
+        return [
+            (self.pt1.x, self.pt1.y),
+            (self.pt2.x, self.pt2.y),
+            (self.pt3.x, self.pt3.y),
+        ]
