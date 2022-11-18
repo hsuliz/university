@@ -1,11 +1,19 @@
 import unittest
 
+import points.point as p
 import triangle as t
 
 eq_list = [
     ([1, 1, 2, 2, 3, 3], [1, 1, 2, 2, 3, 3], True),
     ([1, 1, 9, 2, 3, 3], [1, 1, 2, 2, 3, 3], False),
     ([3, 1, 2, 2, 9, -3], [2, 2, 3, 1, 9, -3], True),
+]
+
+center_list = [
+    ([1, 0, 4, 1, 3, 5], p.Point(8 / 3, 2)),
+    ([1, 0, -4, 1, -3, 5], p.Point(-2, 2)),
+    ([0, 5, 0, -5, 0, -9], p.Point(0, -3)),
+    ([0, 0, 0, 0, 0, 0], p.Point(0, 0)),
 ]
 
 
@@ -59,6 +67,18 @@ class TestTriangle(unittest.TestCase):
                     not expected,
                     self.list_constructor(t1)
                     .__ne__(self.list_constructor(t2))
+                )
+
+    def test_center(self):
+        for t1, expected in center_list:
+            with self.subTest(
+                    msg="given triangle " + t1.__str__() +
+                        " should return " + expected.__str__()
+            ):
+                self.assertEqual(
+                    expected,
+                    self.list_constructor(t1)
+                    .center()
                 )
 
     @staticmethod

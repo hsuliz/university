@@ -26,7 +26,10 @@ class Triangle:
     def __ne__(self, other):  # obsługa tr1 != tr2
         return not self == other
 
-    def center(self): pass  # zwraca środek (masy) trójkąta
+    def center(self):
+        x = (self.pt1.x + self.pt2.x + self.pt3.x) / 3
+        y = (self.pt1.y + self.pt2.y + self.pt3.y) / 3
+        return Point(x, y)
 
     def area(self): pass  # pole powierzchni
 
