@@ -49,6 +49,18 @@ class TestTriangle(unittest.TestCase):
                     .__eq__(self.list_constructor(t2))
                 )
 
+    def test_ne(self):
+        for t1, t2, expected in eq_list:
+            with self.subTest(
+                    msg="given triangles " + t1.__str__() + " " + t2.__str__() +
+                        " should return " + expected.__str__()
+            ):
+                self.assertEqual(
+                    not expected,
+                    self.list_constructor(t1)
+                    .__ne__(self.list_constructor(t2))
+                )
+
     @staticmethod
     def list_constructor(t1):
         return t.Triangle(t1[0], t1[1], t1[2], t1[3], t1[4], t1[5])
