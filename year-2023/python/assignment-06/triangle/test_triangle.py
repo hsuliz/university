@@ -23,6 +23,12 @@ area_list = [
     ([4, 0, -9, 2, 4, 5], 32.5),
 ]
 
+move_list = [
+    ([1, 1, 2, 2, 3, 3], [0, 0], [(1, 1), (2, 2), (3, 3)]),
+    ([1, 1, 2, 2, 3, 3], [-1, -1], [(0, 0), (1, 1), (2, 2)]),
+    ([0, 0, 0, 0, 0, 0], [-5, 5], [(-5, 5), (-5, 5), (-5, 5)]),
+]
+
 
 class TestTriangle(unittest.TestCase):
 
@@ -94,6 +100,18 @@ class TestTriangle(unittest.TestCase):
                     expected,
                     self.list_constructor(t1)
                     .area()
+                )
+
+    def test_move(self):
+        for t1, p1, expected in move_list:
+            with self.subTest(
+                    msg="given triangle " + t1.__str__() + " move " + p1.__str__() +
+                        " should return " + expected.__str__()
+            ):
+                self.assertEqual(
+                    expected,
+                    self.list_constructor(t1)
+                    .move(p1[0], p1[1])
                 )
 
     @staticmethod

@@ -40,7 +40,14 @@ class Triangle:
         s = (a + b + c) / 2
         return math.sqrt(s * (s - a) * (s - b) * (s - c)).__round__(4)
 
-    def move(self, x, y): pass  # przesunięcie o (x, y)
+    def move(self, x, y):
+        self.pt1.x += x
+        self.pt2.x += x
+        self.pt3.x += x
+        self.pt1.y += y
+        self.pt2.y += y
+        self.pt3.y += y
+        return self.__to_list()
 
     def __to_list(self):
         return [
