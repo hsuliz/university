@@ -1,3 +1,5 @@
+import math
+
 from points.point import Point
 
 
@@ -18,12 +20,12 @@ class Triangle:
                + str(self.pt3.x) + ", " + str(self.pt3.y) + ")"
 
     def __eq__(self, other):
-        x = self.to_list()
-        y = other.to_list()
+        x = self.__to_list()
+        y = other.__to_list()
         x.sort(), y.sort()
         return x == y
 
-    def __ne__(self, other):  # obsługa tr1 != tr2
+    def __ne__(self, other):
         return not self == other
 
     def center(self):
@@ -31,13 +33,22 @@ class Triangle:
         y = (self.pt1.y + self.pt2.y + self.pt3.y) / 3
         return Point(x, y)
 
-    def area(self): pass  # pole powierzchni
+    def area(self):
+        a = self.__pythagorean_theorem(self.pt2, self.pt3)
+        b = self.__pythagorean_theorem(self.pt1, self.pt3)
+        c = self.__pythagorean_theorem(self.pt1, self.pt2)
+        s = (a + b + c) / 2
+        return math.sqrt(s * (s - a) * (s - b) * (s - c)).__round__(4)
 
     def move(self, x, y): pass  # przesunięcie o (x, y)
 
-    def to_list(self):
+    def __to_list(self):
         return [
             (self.pt1.x, self.pt1.y),
             (self.pt2.x, self.pt2.y),
             (self.pt3.x, self.pt3.y),
         ]
+
+    @staticmethod
+    def __pythagorean_theorem(x, y):
+        return math.sqrt((x.x - y.x) ** 2 + (x.y - y.y) ** 2)

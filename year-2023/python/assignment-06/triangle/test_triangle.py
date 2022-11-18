@@ -16,9 +16,12 @@ center_list = [
     ([0, 0, 0, 0, 0, 0], p.Point(0, 0)),
 ]
 
-
-def list_decode(x):
-    return x[0], x[1], x[2], x[3], x[4], x[5]
+area_list = [
+    ([2, 1, 5, 5, -4, 3], 15),
+    ([5, 5, 0, 0, 4, -8], 30),
+    ([-3, -1, -7, -3, -1, -9], 18),
+    ([4, 0, -9, 2, 4, 5], 32.5),
+]
 
 
 class TestTriangle(unittest.TestCase):
@@ -79,6 +82,18 @@ class TestTriangle(unittest.TestCase):
                     expected,
                     self.list_constructor(t1)
                     .center()
+                )
+
+    def test_area(self):
+        for t1, expected in area_list:
+            with self.subTest(
+                    msg="given triangle " + t1.__str__() +
+                        " should return " + expected.__str__()
+            ):
+                self.assertEqual(
+                    expected,
+                    self.list_constructor(t1)
+                    .area()
                 )
 
     @staticmethod
