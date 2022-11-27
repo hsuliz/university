@@ -1,3 +1,5 @@
+import math
+
 from point import Point
 
 
@@ -18,8 +20,40 @@ class Circle:
     def __ne__(self, other):
         return not self == other
 
-    def area(self): pass  # pole powierzchni
+    def area(self):
+        return (math.pi * math.pow(self.radius, 2)).__round__(2)
 
-    def move(self, x, y): pass  # przesuniecie o (x, y)
+    def move(self, x, y):
+        self.pt.x += x
+        self.pt.y += y
 
-    def cover(self, other): pass  # najmniejszy okrąg pokrywający oba
+    # int rad = Math.Sqrt(
+    # Math.Pow(a.X - b.X, 2) + Math.Pow(a.Y - b.Y, 2)
+    # ) / 2;
+
+    def cover(self, other):
+        angle = math.atan2(
+            other.pt.y - self.pt.y,
+            other.pt.x - self.pt.x
+        )
+        a = Point(
+            other.pt.x + math.cos(angle) * other.radius,
+            (other.pt.y + math.sin(angle) * other.radius)
+        )
+        angle += math.pi
+        b = Point(
+            self.pt.x + math.cos(angle) * self.radius,
+            (self.pt.y + math.sin(angle) * self.radius)
+        )
+        rad = math.pow(a.x - b.x, 2) + math.pow(a.y - b.y, 2)
+        rad = math.sqrt(rad) / 2
+        if rad < self.radius:
+            return self
+        elif rad < other.radius:
+            return other
+        else:
+            return Circle(
+                (a.x + b.x) / 2,
+                (a.y + b.y) / 2,
+                rad
+            )

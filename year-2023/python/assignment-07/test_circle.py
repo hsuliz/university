@@ -51,5 +51,25 @@ class TestCircle(unittest.TestCase):
                     not expected
                 )
 
+    def test_area(self):
+        # given
+        given = Circle(2, 1, 5)
+        # when, then
+        self.assertEqual(78.54, given.area())
+
+    def test_move(self):
+        # given
+        given = Circle(1, 1, 5)
+        # when
+        given.move(1, 1)
+        # then
+        self.assertEqual(Circle(2, 2, 5), given)
+
+    def test_cover(self):
+        x = Circle(1, 1, 1)
+        y = Circle(6, 6, 1)
+        print(x.cover(y))
+
+
 if __name__ == '__main__':
     unittest.main()
