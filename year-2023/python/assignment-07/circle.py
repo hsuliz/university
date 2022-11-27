@@ -9,7 +9,8 @@ class Circle:
         self.pt = Point(x, y)
         self.radius = radius
 
-    def __repr__(self): pass  # "Circle(x, y, radius)"
+    def __repr__(self):
+        return "Circle(" + str(self.pt.x) + ", " + str(self.pt.y) + ", " + str(self.radius) + ")"
 
     def __eq__(self, other):
         return self.pt == other.pt and self.radius == other.radius

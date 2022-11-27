@@ -17,6 +17,12 @@ class TestCircle(unittest.TestCase):
         except ValueError:
             self.fail()
 
+    def test_repr(self):
+        # given, when
+        given = (Circle(1, 1, 1).__repr__())
+        # then
+        self.assertEqual('Circle(1, 1, 1)', given)
+
 
 if __name__ == '__main__':
     unittest.main()
