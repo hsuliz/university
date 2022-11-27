@@ -40,6 +40,16 @@ class TestCircle(unittest.TestCase):
                     expected
                 )
 
+    def test_ne(self):
+        for c1, c2, expected in eq_list:
+            with self.subTest(
+                    'Given ' + c1.__repr__() + ' ' + c2.__repr__() +
+                    ' should return ' + expected.__repr__()
+            ):
+                self.assertEqual(
+                    c1.__ne__(c2),
+                    not expected
+                )
 
 if __name__ == '__main__':
     unittest.main()
