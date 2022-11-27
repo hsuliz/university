@@ -27,10 +27,6 @@ class Circle:
         self.pt.x += x
         self.pt.y += y
 
-    # int rad = Math.Sqrt(
-    # Math.Pow(a.X - b.X, 2) + Math.Pow(a.Y - b.Y, 2)
-    # ) / 2;
-
     def cover(self, other):
         angle = math.atan2(
             other.pt.y - self.pt.y,
@@ -53,7 +49,7 @@ class Circle:
             return other
         else:
             return Circle(
-                (a.x + b.x) / 2,
-                (a.y + b.y) / 2,
-                rad
+                ((a.x + b.x) / 2).__round__(2),
+                ((a.y + b.y) / 2).__round__(2),
+                rad.__round__(2)
             )
