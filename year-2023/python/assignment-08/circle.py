@@ -1,4 +1,4 @@
-from math import sqrt
+from math import sqrt, cos, sin
 
 from point import Point
 
@@ -26,8 +26,43 @@ class Circle:
     def bottom(self):
         return self.pt.y - self.radius
 
+    @property
     def right(self):
         return self.pt.x + self.radius
+
+    # width and height in circle is the same,
+    # so just using diameter
+    @property
+    def diameter(self):
+        return self.radius * 2
+
+    @property
+    def top_left(self):
+        return Point(
+            round(self.pt.x + self.radius * cos(135), 3),
+            round(self.pt.y + self.radius * sin(135), 3)
+        )
+
+    @property
+    def bottom_left(self):
+        return Point(
+            round(self.pt.x + self.radius * cos(225), 3),
+            round(self.pt.y + self.radius * sin(225), 3)
+        )
+
+    @property
+    def top_right(self):
+        return Point(
+            round(self.pt.x + self.radius * cos(45), 3),
+            round(self.pt.y + self.radius * sin(45), 3)
+        )
+
+    @property
+    def bottom_right(self):
+        return Point(
+            round(self.pt.x + self.radius * cos(315), 3),
+            round(self.pt.y + self.radius * sin(315), 3)
+        )
 
     @staticmethod
     def from_points(point_list):
