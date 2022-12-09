@@ -1,4 +1,4 @@
-import math
+from math import sqrt
 
 from point import Point
 
@@ -14,45 +14,59 @@ class Circle:
     def __repr__(self):
         return "Circle(" + str(self.pt.x) + ", " + str(self.pt.y) + ", " + str(self.radius) + ")"
 
-    def __eq__(self, other):
-        return self.pt == other.pt and self.radius == other.radius
+    @property
+    def top(self):
+        return self.pt.y + self.radius
 
-    def __ne__(self, other):
-        return not self == other
+    @property
+    def left(self):
+        return self.pt.x - self.radius
 
-    def area(self):
-        return (math.pi * math.pow(self.radius, 2)).__round__(2)
+    @property
+    def bottom(self):
+        return self.pt.y - self.radius
 
-    def move(self, x, y):
-        self.pt.x += x
-        self.pt.y += y
+    def right(self):
+        return self.pt.x + self.radius
 
-    def cover(self, other):
-        angle = math.atan2(
-            other.pt.y - self.pt.y,
-            other.pt.x - self.pt.x
-        )
-        a = Point(
-            other.pt.x + math.cos(angle) * other.radius,
-            (other.pt.y + math.sin(angle) * other.radius)
-        )
-        angle += math.pi
-        b = Point(
-            self.pt.x + math.cos(angle) * self.radius,
-            (self.pt.y + math.sin(angle) * self.radius)
-        )
-        rad = math.pow(a.x - b.x, 2) + math.pow(a.y - b.y, 2)
-        rad = math.sqrt(rad) / 2
-        if rad < self.radius:
-            return self
-        elif rad < other.radius:
-            return other
-        else:
-            return Circle(
-                ((a.x + b.x) / 2).__round__(2),
-                ((a.y + b.y) / 2).__round__(2),
-                rad.__round__(2)
-            )
+    @staticmethod
+    def from_points(point_list):
+        x1 = point_list[0].x
+        x2 = point_list[1].x
+        x3 = point_list[2].x
 
-    def from_points(self):
-        pass
+        y1 = point_list[0].y
+        y2 = point_list[1].y
+        y3 = point_list[2].y
+
+        x12 = x1 - x2
+        x13 = x1 - x3
+        y12 = y1 - y2
+        y13 = y1 - y3
+        y31 = y3 - y1
+        y21 = y2 - y1
+        x31 = x3 - x1
+        x21 = x2 - x1
+
+        sx13 = pow(x1, 2) - pow(x3, 2)
+        sy13 = pow(y1, 2) - pow(y3, 2)
+        sx21 = pow(x2, 2) - pow(x1, 2)
+        sy21 = pow(y2, 2) - pow(y1, 2)
+
+        f = ((sx13 * x12 + sy13 *
+              x12 + sx21 * x13 +
+              sy21 * x13) // (2 * (y31 * x12 - y21 * x13)))
+
+        g = ((sx13 * y12 + sy13 * y12 +
+              sx21 * y13 + sy21 * y13) //
+             (2 * (x31 * y12 - x21 * y13)))
+
+        c = (-pow(x1, 2) - pow(y1, 2) -
+             2 * g * x1 - 2 * f * y1)
+
+        h = -g
+        k = -f
+        sqr_of_r = h * h + k * k - c
+        radius = sqrt(sqr_of_r)
+
+        return Circle(h, k, radius)
