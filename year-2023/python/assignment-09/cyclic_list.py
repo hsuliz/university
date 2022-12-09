@@ -1,7 +1,7 @@
 class CyclicList:
 
     def __init__(self):
-        self.head = None  # łącze do dowolnego węzła listy
+        self.head = None
         # nie potrzeba mieć self.tail
 
     def is_empty(self):

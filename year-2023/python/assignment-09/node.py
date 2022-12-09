@@ -6,4 +6,4 @@ class Node:
         self.next = next
 
     def __str__(self):
-        return str(self.data)   # bardzo ogólnie
+        return str(self.data)  # bardzo ogólnie
