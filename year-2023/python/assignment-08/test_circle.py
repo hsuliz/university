@@ -36,3 +36,7 @@ def test_from_points_should_throw():
     points = (Point(0, 0), Point(2, 2), Point(2, 2))
     with pytest.raises(Exception):
         Circle.from_points(points)
+
+
+if __name__ == "__main__":
+    pytest.main()
