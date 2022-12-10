@@ -1,9 +1,9 @@
 class Node:
     """Klasa reprezentująca węzeł listy jednokierunkowej."""
 
-    def __init__(self, data=None, pointer=None):
+    def __init__(self, data=None, next=None):
         self.data = data
-        self.pointer = pointer
+        self.next = next
 
     def __str__(self):
         return str(self.data)  # bardzo ogólnie
@@ -51,3 +51,19 @@ class SingleList:
         node.next = None  # czyszczenie łącza
         self.length -= 1
         return node  # zwracamy usuwany node
+
+    def remove_tail(self):  # klasy O(n)
+        # Zwraca cały węzeł, skraca listę.
+        # Dla pustej listy rzuca wyjątek ValueError.
+        if self.is_empty():
+            raise ValueError("pusta lista")
+
+        tmp = self.head
+        while tmp.next.next:
+            tmp = tmp.next
+        tmp.next = None
+        tail = self.tail
+        self.tail = None
+        self.length -= 1
+
+        return tail
