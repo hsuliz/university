@@ -1,19 +1,22 @@
 import pytest
 
-from cyclic_list import CyclicList
-from node import Node
+from single_list import SingleList, Node
 
 
 @pytest.fixture
 def cyc_list():
-    return CyclicList()
+    return SingleList()
 
 
 def test_head(cyc_list):
     # given
-    given = [Node(i) for i in range(5)]
+    given = [Node(data=i) for i in range(3)]
     # when
-    cyc_list.insert_head(given)
+    for node in given:
+        cyc_list.insert_head(node)
+    # then
+    assert cyc_list.is_empty() is False
+    assert cyc_list.__len__() is 3
 
 
 if __name__ == "__main__":

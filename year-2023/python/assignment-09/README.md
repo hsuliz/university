@@ -1,4 +1,6 @@
-## ZADANIE 9 (CYCLICLIST)
+## ZADANIE 9 (SINGLELIST)
 
-Na bazie list powiązanych pojedynczo lub podwójnie (to jest wygodniejsze) stworzyć klasę CyclicList, która przechowuje listę cykliczną. Atrybut head może wskazywać na dowolny węzeł listy cyklicznej, natomiast przez tail rozumiemy węzeł bezpośrednio poprzedzający head.
-
+Do klasy SingleList dodać nowe metody.
+- remove_tail
+- join (in O(n))
+- clear
