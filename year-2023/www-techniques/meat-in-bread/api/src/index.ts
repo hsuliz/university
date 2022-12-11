@@ -1,15 +1,29 @@
-import express, {Express} from 'express';
-import * as mongoose from 'mongoose';
+import express, {Express, NextFunction, Request, Response} from 'express';
+import mongoose from 'mongoose';
 import 'dotenv/config';
 import {json} from "body-parser";
 import {signupRouter} from "./controller/auth/sighnup";
+import {signinRouter} from "./controller/auth/sighnin";
+import {infoRouter} from "./controller/info";
 
 
 const app: Express = express();
 
 app.use(json());
-`/*app.use(signinRouter);*/`
+app.use(infoRouter);
+app.use(signinRouter);
 app.use(signupRouter);
+
+app.all('*', async (req: Request, res: Response, next: NextFunction) => {
+    return next(new Error('Invalid route'));
+})
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    res.json({
+        message: err.message || "an unknown error occurred!",
+    });
+});
+
 
 // Connecting to Mongodb
 const initializeConfig = async () => {
