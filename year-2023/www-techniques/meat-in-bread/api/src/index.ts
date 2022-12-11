@@ -1,33 +1,26 @@
 import express, {Express} from 'express';
 import * as mongoose from "mongoose";
-import authorRoutes from './route/test-route';
+import 'dotenv/config'
 
-const DB_URI: string = "mongodb://localhost:27017/meat?authSource=admin"
-const PORT_NUMBER: number = 3000;
+
 const app: Express = express();
-let db: mongoose.Connection;
-
 // server
 app
     .use(express.json())
     .use(express.urlencoded({extended: true}))
-    .use("/get", authorRoutes)
-    .listen(PORT_NUMBER, () => {
-        console.log(`⚡️[server]: Server is running at https://localhost:${PORT_NUMBER} ${process.env.DB_HOST}`);
-    });
+    .listen(
+        process.env.PORT,
+        () => console.log(`[server]: Server is running at https://localhost:${process.env.PORT}!!`)
+    );
 
 // connect to db
-mongoose
-    .connect(DB_URI, {
-        user: "meat",
-        pass: "meat"
-    })
-    .then(() => {
-        console.log("Connected to db!!")
-        db = mongoose.connection;
+mongoose.connect(process.env.DB_URI!, {
+    user: process.env.DB_USER,
+    pass: process.env.DB_PASS
+})
+    .then(async () => {
+        console.log("[server]: Connected to db!!")
     })
     .catch((e: Error) => {
         console.log(e)
     })
-
-
