@@ -2,9 +2,11 @@ import express, {Express, NextFunction, Request, Response} from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config';
 import {json} from "body-parser";
-import {signupRouter} from "./controller/auth/sighnup";
-import {signinRouter} from "./controller/auth/sighnin";
-import {infoRouter} from "./controller/info";
+
+import {signinRouter} from "./controller/user/auth/sighnin";
+import {infoRouter} from "./controller/user/info";
+import {orderAdd} from "./controller/order/add-order";
+import {signupRouter} from "./controller/user/auth/sighnup";
 
 
 const app: Express = express();
@@ -13,6 +15,7 @@ app.use(json());
 app.use(infoRouter);
 app.use(signinRouter);
 app.use(signupRouter);
+app.use(orderAdd);
 
 app.all('*', async (req: Request, res: Response, next: NextFunction) => {
     return next(new Error('Invalid route'));
