@@ -27,7 +27,7 @@ router.post(
                 id: existingUser.id,
                 username: existingUser.username,
             },
-            process.env.JWT_SECRET!, { expiresIn: '1h' }
+            process.env.JWT_SECRET!, {expiresIn: '1h'}
         );
 
         res.status(200).send(JSON.stringify(token))
