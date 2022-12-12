@@ -25,9 +25,9 @@ router.post(
         const token = jwt.sign(
             {
                 id: existingUser.id,
-                email: existingUser.username
+                username: existingUser.username,
             },
-            process.env.JWT_SECRET!
+            process.env.JWT_SECRET!, { expiresIn: '1h' }
         );
 
         res.status(200).send(JSON.stringify(token))
