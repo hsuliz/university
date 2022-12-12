@@ -13,7 +13,8 @@ interface UserModel extends mongoose.Model<UserDoc> {
 
 interface UserDoc extends mongoose.Document {
     username: string,
-    password: string
+    password: string,
+    orders: string
 }
 
 const user = new mongoose.Schema({
@@ -24,6 +25,10 @@ const user = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    orders: {
+        type: String,
+        required: false
     }
 }, {
     toJSON: {
@@ -31,6 +36,7 @@ const user = new mongoose.Schema({
             ret.id = ret._id;
             delete ret._id;
             delete ret.password;
+            delete ret.orders;
             delete ret.__v;
         }
         /*transform(doc, ret) {
