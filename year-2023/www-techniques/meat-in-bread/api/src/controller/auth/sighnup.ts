@@ -14,12 +14,11 @@ router.post(
             return next(new Error('Username in use'));
         }
 
-        // Create User
         const user = User.build({
             username,
             password,
-        })
-        // Save in MongoDB
+        });
+
         await user.save();
         res.status(201).send({user})
     }

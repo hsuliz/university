@@ -7,30 +7,30 @@ import {Password} from "../../service/password";
 
 const router = express.Router();
 
-router.post('/api/users/signin',
+router.post(
+    '/api/users/signin',
     async (req: Request, res: Response, next: NextFunction) => {
-        const {email, password} = req.body;
+        const {username, password} = req.body;
 
-        // Get user
-        const existingUser = await User.findOne({email});
+        const existingUser = await User.findOne({username});
         if (!existingUser) {
-            return next(new Error('Invalid credential'));
+            return next(new Error('Invalid username'));
         }
 
-        // Check the Passsword
         const passwordMatch = Password.compare(existingUser.password, password);
         if (!passwordMatch) {
-            return next(new Error('Invalid credential'));
+            return next(new Error('Invalid password'));
         }
 
-        // Generate JWT
-        const userJwt = jwt.sign({
-            id: existingUser.id,
-            email: existingUser.username
-        }, process.env.JWT_SECRET!);
+        const token = jwt.sign(
+            {
+                id: existingUser.id,
+                email: existingUser.username
+            },
+            process.env.JWT_SECRET!
+        );
 
-        res.status(200).send({token: userJwt})
-
+        res.status(200).send(JSON.stringify(token))
     });
 
 export {router as signinRouter};
