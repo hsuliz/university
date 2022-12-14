@@ -10,22 +10,28 @@ import {signupRouter} from "./controller/user/auth/sighnup";
 import {Menu} from "./model/menu";
 import {meatMenu} from "./controller/menu/menu";
 
-
 const app: Express = express();
 
 app.use(json());
+
 app.use(infoRouter);
 app.use(signinRouter);
 app.use(signupRouter);
+
 app.use(ordersCRUD);
 app.use(meatMenu);
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.all('*', async (req: Request, res: Response, next: NextFunction) => {
     return next(new Error('Invalid route'));
 })
 
-app.use((err: Error, req: Request, res: Response,
-         next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     res.json({
         message: err.message || "an unknown error occurred!",
     });
@@ -36,8 +42,7 @@ app.use((err: Error, req: Request, res: Response,
 const initializeConfig = async () => {
     try {
         await mongoose.connect(process.env.DB_URI!, {
-            user: process.env.DB_USER,
-            pass: process.env.DB_PASS
+            user: process.env.DB_USER, pass: process.env.DB_PASS
         })
         console.log('[server]: Connected to mongo db.');
 
@@ -46,10 +51,11 @@ const initializeConfig = async () => {
         Menu.count({}, function (err, count) {
             numberOfDocs = count;
             if (numberOfDocs == 0) {
-                Menu.insertMany([
-                    {name: "Chebureki", price: "12.50", vegan: false},
-                    {name: "Sarburma", price: "15.50", vegan: true}
-                ])
+                Menu.insertMany([{name: "Chebureki", price: "12.50", vegan: false}, {
+                    name: "Sarburma",
+                    price: "15.50",
+                    vegan: true
+                }])
             }
         });
 
