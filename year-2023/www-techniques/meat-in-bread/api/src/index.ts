@@ -7,6 +7,8 @@ import {signinRouter} from "./controller/user/auth/sighnin";
 import {infoRouter} from "./controller/user/info";
 import {ordersCRUD} from "./controller/order/order";
 import {signupRouter} from "./controller/user/auth/sighnup";
+import {Menu} from "./model/menu";
+import {meatMenu} from "./controller/menu/menu";
 
 
 const app: Express = express();
@@ -16,6 +18,7 @@ app.use(infoRouter);
 app.use(signinRouter);
 app.use(signupRouter);
 app.use(ordersCRUD);
+app.use(meatMenu);
 
 app.all('*', async (req: Request, res: Response, next: NextFunction) => {
     return next(new Error('Invalid route'));
@@ -36,9 +39,22 @@ const initializeConfig = async () => {
             user: process.env.DB_USER,
             pass: process.env.DB_PASS
         })
-        console.log('[server]: Connected to mongo db.')
+        console.log('[server]: Connected to mongo db.');
+
+        // init meat in bread
+        let numberOfDocs;
+        Menu.count({}, function (err, count) {
+            numberOfDocs = count;
+            if (numberOfDocs == 0) {
+                Menu.insertMany([
+                    {name: "Chebureki", price: "12.50", vegan: false},
+                    {name: "Sarburma", price: "15.50", vegan: true}
+                ])
+            }
+        });
+
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 

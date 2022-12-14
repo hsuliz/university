@@ -19,10 +19,18 @@ const orderSchema = new Schema<IOrder>({
 });
 
 const userSchema = new Schema<IUser>({
-    username: {type: String, required: true},
-    password: {type: String, required: true},
-    orders: [orderSchema]
-});
+        username: {type: String, required: true},
+        password: {type: String, required: true},
+        orders: [orderSchema]
+    },
+    {
+        toJSON: {
+            transform(doc, ret) {
+                delete ret.password;
+                delete ret.__v;
+            }
+        }
+    });
 
 userSchema.pre('save', async function (done) {
     if (this.isModified('password')) {
