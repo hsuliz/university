@@ -11,7 +11,7 @@ router.post(
         const existingUser = await User.findOne({username});
 
         if (existingUser) {
-            return next(new Error('Username in use'));
+            return res.status(202).send('Username in use!!');
         }
 
         const user = new User({
@@ -20,7 +20,7 @@ router.post(
         });
         await user.save();
 
-        res.status(201).send({user})
+        return res.status(201).send("Created!!");
     }
 );
 

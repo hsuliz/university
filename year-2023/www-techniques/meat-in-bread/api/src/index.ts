@@ -9,10 +9,12 @@ import {ordersCRUD} from "./controller/order/order";
 import {signupRouter} from "./controller/user/auth/sighnup";
 import {Menu} from "./model/menu";
 import {meatMenu} from "./controller/menu/menu";
+import cors from "cors";
 
 const app: Express = express();
 
 app.use(json());
+app.use(cors())
 
 app.use(infoRouter);
 app.use(signinRouter);
@@ -21,11 +23,6 @@ app.use(signupRouter);
 app.use(ordersCRUD);
 app.use(meatMenu);
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 
 app.all('*', async (req: Request, res: Response, next: NextFunction) => {
     return next(new Error('Invalid route'));
