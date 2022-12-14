@@ -5,7 +5,7 @@ import {json} from "body-parser";
 
 import {signinRouter} from "./controller/user/auth/sighnin";
 import {infoRouter} from "./controller/user/info";
-import {ordersCRUD} from "./controller/order/add-order";
+import {ordersCRUD} from "./controller/order/order";
 import {signupRouter} from "./controller/user/auth/sighnup";
 
 
