@@ -5,7 +5,7 @@ import {json} from "body-parser";
 
 import {signinRouter} from "./controller/user/auth/sighnin";
 import {infoRouter} from "./controller/user/info";
-import {orderCreate} from "./controller/order/add-order";
+import {ordersCRUD} from "./controller/order/add-order";
 import {signupRouter} from "./controller/user/auth/sighnup";
 
 
@@ -15,13 +15,14 @@ app.use(json());
 app.use(infoRouter);
 app.use(signinRouter);
 app.use(signupRouter);
-app.use(orderCreate);
+app.use(ordersCRUD);
 
 app.all('*', async (req: Request, res: Response, next: NextFunction) => {
     return next(new Error('Invalid route'));
 })
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response,
+         next: NextFunction) => {
     res.json({
         message: err.message || "an unknown error occurred!",
     });

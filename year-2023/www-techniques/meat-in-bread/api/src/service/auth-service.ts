@@ -19,7 +19,6 @@ export const verification = async (req: Request, next: NextFunction) => {
     } catch (e: any) {
         return next(new Error('Invalid token!!'));
     }
-    console.log(user.id)
 
     return User.findById(user.id);
 };
