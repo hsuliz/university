@@ -14,12 +14,12 @@ router.post(
             return next(new Error('Username in use'));
         }
 
-        const user = User.build({
+        const user = new User({
             username,
             password,
         });
-
         await user.save();
+
         res.status(201).send({user})
     }
 );

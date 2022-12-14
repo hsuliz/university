@@ -1,29 +1,16 @@
 import express, {NextFunction, Request, Response} from 'express';
-import jwt from 'jsonwebtoken'
-
-import {User} from "../../model/user";
+import {verification} from "../../service/auth-service";
 
 
 const router = express.Router();
 
 router.get('/api/users',
     async (req: Request, res: Response, next: NextFunction) => {
-        if (!req.headers.authorization?.startsWith('Bearer ')) {
-            return next(new Error('No bearer token!!'));
-        }
+        const user = await verification(req, next);
 
-        const token = req.headers.authorization.substring(7, req.headers.authorization?.length);
-        let tokenUser;
+        await user?.update({$push: {orders: {name: "Food", price: "23"}}})
 
-        try {
-            tokenUser = jwt.verify(token, process.env.JWT_SECRET!)
-        } catch (e: any) {
-            return next(new Error('Invalid token!!'));
-        }
-
-        const existingUser = await User.findOne({tokenUser})
-
-        res.status(200).send(existingUser)
+        res.status(200).send(user);
     });
 
 export {router as infoRouter};

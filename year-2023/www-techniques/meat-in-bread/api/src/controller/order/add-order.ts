@@ -1,20 +1,18 @@
 import express, {NextFunction, Request, Response} from 'express';
-import {Order} from "../../model/order";
+import {verification} from "../../service/auth-service";
+import {User} from "../../model/user";
 
 const router = express.Router();
 
 router.post(
-    '/api/order',
+    '/api/orders',
     async (req: Request, res: Response, next: NextFunction) => {
-        const price = req.body.price;
+        const user = await verification(req, next);
+        const {name, price} = req.body;
 
-        console.log(price);
-        const order = new Order({
-            price: price
-        });
-        await order.save();
-        res.status(200).send(price.stringify);
+
+        res.status(200).send(user);
     }
 );
 
-export {router as orderAdd};
+export {router as orderCreate};
