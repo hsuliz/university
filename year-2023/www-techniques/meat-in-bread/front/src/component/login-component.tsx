@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Container from "react-bootstrap/Container";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {TUser} from "../type/user-type";
@@ -7,15 +7,20 @@ import {registerUser} from "../service/user-auth";
 const LoginComponent: React.FC = () => {
 
     const initialValues: TUser = {password: "", username: ""}
+    const [errorMessage, setErrorMessage] = useState("");
+
 
     const handleRegister = (user: TUser) => {
         registerUser(user)
             .then((data) => {
-                console.log(data);
+                console.log(data.status);
+                if (data.status === 202) {
+                    setErrorMessage(data.data);
+                }
             })
             .catch(() => {
                 console.log("Error");
-            })
+            });
     };
 
     return (
@@ -57,6 +62,11 @@ const LoginComponent: React.FC = () => {
                     </Formik>
                 </div>
             </div>
+            {errorMessage &&
+                <div>
+                    {errorMessage}
+                </div>
+            }
         </Container>
     );
 };
