@@ -5,7 +5,8 @@ import NavigationComponent from './component/navigation/navigation-component';
 import HomeComponent from './component/home/home-component';
 import ContactComponent from './component/contact/contact-component';
 import React from 'react';
-import LoginComponent from './component/auth/login/login-component';
+import SignUpComponent from './component/auth/signup/signup-component';
+import LogInComponent from './component/auth/login/login-component';
 
 
 const App: React.FC = () => {
@@ -16,7 +17,8 @@ const App: React.FC = () => {
                 <Route path="/" element={<HomeComponent/>}/>
                 <Route path="/menu" element={<MenuComponent/>}/>
                 <Route path="/contact" element={<ContactComponent/>}/>
-                <Route path="/login" element={<LoginComponent/>}/>
+                <Route path="/signup" element={<SignUpComponent/>}/>
+                <Route path="/login" element={<LogInComponent/>}/>
             </Routes>
         </>
     );

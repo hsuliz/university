@@ -1,28 +1,30 @@
-import React from 'react';
 import {Button, Card, Container} from 'react-bootstrap';
-import {TUser} from '../../../type/user-type';
-import {userLogIn} from '../../../service/user-auth';
+import React from 'react';
+import '../style.css';
 import {Field, Form, Formik} from 'formik';
+import {TUser} from '../../../type/user-type';
+import {userSignUp} from '../../../service/user-auth';
 
-const LogInComponent: React.FC = () => {
+
+const SignUpComponent: React.FC = () => {
 
     const initialValues: TUser = {
         password: '', username: ''
     };
 
     const submitSignUp = (data: TUser) => {
-        userLogIn(data)
+        userSignUp(data)
             .then((r) => {
                 console.log(data);
                 console.log(r);
-                //window.location.reload();
+                window.location.reload();
             });
     };
 
     return (
         <Container>
             <Card>
-                <h1>Log in</h1>
+                <h1>Sign Up</h1>
                 <Formik
                     initialValues={initialValues}
                     onSubmit={(values) => submitSignUp(values)}
@@ -39,7 +41,7 @@ const LogInComponent: React.FC = () => {
                         <br/>
                         <Container className="form-group">
                             <Button type="submit" className="btn btn-primary">
-                                Log in!
+                                Sign up!
                             </Button>
                         </Container>
                         <br/>
@@ -49,7 +51,6 @@ const LogInComponent: React.FC = () => {
         </Container>
     );
 
-
 };
 
-export default LogInComponent;
+export default SignUpComponent;

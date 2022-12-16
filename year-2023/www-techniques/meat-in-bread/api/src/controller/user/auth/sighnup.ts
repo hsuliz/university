@@ -1,11 +1,11 @@
-import express, {NextFunction, Request, Response} from "express";
-import {User} from "../../../model/user";
+import express, {NextFunction, Request, Response} from 'express';
+import {User} from '../../../model/user';
 
 
 const router = express.Router();
 
 router.post(
-    "/api/users/signup",
+    '/api/users/signup',
     async (req: Request, res: Response, next: NextFunction) => {
         const {username, password} = req.body;
         const existingUser = await User.findOne({username});
@@ -20,7 +20,7 @@ router.post(
         });
         await user.save();
 
-        return res.status(201).send("Created!!");
+        return res.status(201).send('Created!!');
     }
 );
 

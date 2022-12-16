@@ -1,14 +1,14 @@
 import express, {NextFunction, Request, Response} from 'express';
 import jwt from 'jsonwebtoken'
 
-import {User} from "../../../model/user";
-import {Password} from "../../../service/password";
+import {User} from '../../../model/user';
+import {Password} from '../../../service/password';
 
 
 const router = express.Router();
 
 router.post(
-    '/api/users/signin',
+    '/api/users/login',
     async (req: Request, res: Response, next: NextFunction) => {
         const {username, password} = req.body;
 
