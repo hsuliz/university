@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import LoginComponent from "./component/login-component";
+import SignupComponent from "./component/signup-component";
 import {Link, Route, Routes} from "react-router-dom";
 import './App.css';
 import UserInfo from "./component/user-info";
@@ -26,7 +26,7 @@ const App: React.FC = () => {
             <Container>
                 <Routes>
                     <Route path='/home' element={<UserInfo/>}></Route>
-                    <Route path='/login' element={< LoginComponent/>}></Route>
+                    <Route path='/login' element={< SignupComponent/>}></Route>
                     <Route path='/menu' element={<MenuComponent/>}></Route>
                 </Routes>
             </Container>

@@ -3,8 +3,9 @@ import Container from "react-bootstrap/Container";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {TUser} from "../type/user-type";
 import {registerUser} from "../service/user-auth";
+import {redirect} from "react-router-dom";
 
-const LoginComponent: React.FC = () => {
+const SignupComponent: React.FC = () => {
 
     const initialValues: TUser = {password: "", username: ""}
     const [errorMessage, setErrorMessage] = useState("");
@@ -13,9 +14,11 @@ const LoginComponent: React.FC = () => {
     const handleRegister = (user: TUser) => {
         registerUser(user)
             .then((data) => {
-                console.log(data.status);
                 if (data.status === 202) {
                     setErrorMessage(data.data);
+                } else {
+                    console.log("here");
+                    redirect("/api/menu");
                 }
             })
             .catch(() => {
@@ -60,15 +63,15 @@ const LoginComponent: React.FC = () => {
                             </div>
                         </Form>
                     </Formik>
+                    {errorMessage &&
+                        <Container>
+                            {errorMessage}
+                        </Container>
+                    }
                 </div>
             </div>
-            {errorMessage &&
-                <div>
-                    {errorMessage}
-                </div>
-            }
         </Container>
     );
 };
 
-export default LoginComponent;
+export default SignupComponent;
