@@ -5,7 +5,12 @@ import "./style.css";
 
 const NavigationBar = () => {
     return (
-        <Navbar collapseOnSelect className='nav-color' expand='sm' variant='dark'>
+        <Navbar
+            collapseOnSelect
+            className='nav-color'
+            expand='sm'
+            variant='dark'
+        >
             <Container>
                 <Navbar.Brand as={Link} to='/'>React-Bootstrap</Navbar.Brand>
                 <Navbar.Toggle aria-controls='responsive-navbar-nav'/>
