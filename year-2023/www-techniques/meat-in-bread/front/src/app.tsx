@@ -7,6 +7,7 @@ import ContactComponent from './component/contact/contact-component';
 import React from 'react';
 import SignUpComponent from './component/auth/signup/signup-component';
 import LogInComponent from './component/auth/login/login-component';
+import ProfileComponent from './component/profile/profile-component';
 
 
 const App: React.FC = () => {
@@ -14,11 +15,12 @@ const App: React.FC = () => {
         <>
             <NavigationComponent/>
             <Routes>
-                <Route path="/" element={<HomeComponent/>}/>
-                <Route path="/menu" element={<MenuComponent/>}/>
-                <Route path="/contact" element={<ContactComponent/>}/>
-                <Route path="/signup" element={<SignUpComponent/>}/>
-                <Route path="/login" element={<LogInComponent/>}/>
+                <Route path='/' element={<HomeComponent/>}/>
+                <Route path='/menu' element={<MenuComponent/>}/>
+                <Route path='/contact' element={<ContactComponent/>}/>
+                <Route path='/signup' element={<SignUpComponent/>}/>
+                <Route path='/login' element={<LogInComponent/>}/>
+                <Route path='/profile' element={<ProfileComponent/>}/>
             </Routes>
         </>
     );

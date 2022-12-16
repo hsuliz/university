@@ -1,15 +1,15 @@
 import express, {Express, NextFunction, Request, Response} from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import {json} from "body-parser";
+import {json} from 'body-parser';
 
-import {signinRouter} from "./controller/user/auth/sighnin";
-import {infoRouter} from "./controller/user/info";
-import {ordersCRUD} from "./controller/order/order";
-import {signupRouter} from "./controller/user/auth/sighnup";
-import {Menu} from "./model/menu";
-import {meatMenu} from "./controller/menu/menu";
-import cors from "cors";
+import {signinRouter} from './controller/user/auth/sighnin';
+import {infoRouter} from './controller/user/info';
+import {ordersCRUD} from './controller/order/order';
+import {signupRouter} from './controller/user/auth/sighnup';
+import {Menu} from './model/menu';
+import {meatMenu} from './controller/menu/menu';
+import cors from 'cors';
 
 const app: Express = express();
 
@@ -30,7 +30,7 @@ app.all('*', async (req: Request, res: Response, next: NextFunction) => {
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     res.json({
-        message: err.message || "an unknown error occurred!",
+        message: err.message || 'an unknown error occurred!',
     });
 });
 
@@ -44,15 +44,16 @@ const initializeConfig = async () => {
         console.log('[server]: Connected to mongo db.');
 
         // init meat in bread
-        let numberOfDocs;
         Menu.count({}, function (err, count) {
-            numberOfDocs = count;
-            if (numberOfDocs == 0) {
-                Menu.insertMany([{name: "Chebureki", price: "12.50", vegan: false}, {
-                    name: "Sarburma",
-                    price: "15.50",
-                    vegan: true
-                }])
+            if (count == 0) {
+                Menu.insertMany([
+                        {name: 'Chebureki', price: '12.50', vegan: false},
+                        {name: 'Sarburma', price: '15.50', vegan: false},
+                        {name: 'Börek', price: '8.50', vegan: true},
+                        {name: 'Khachapuri', price: '10.00', vegan: true},
+                        {name: 'Khabizgini', price: '12.00', vegan: true}
+                    ]
+                )
             }
         });
 

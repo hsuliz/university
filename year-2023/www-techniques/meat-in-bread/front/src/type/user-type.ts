@@ -1,4 +1,5 @@
 export type TUser = {
     username: string,
-    password: string;
+    password: string,
+    orders?: []
 };
