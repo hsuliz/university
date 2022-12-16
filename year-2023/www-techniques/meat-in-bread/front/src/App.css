@@ -1,7 +1,8 @@
 .color-nav {
-  background-color: darkred;
+    background-color: darkred;
 }
 
-body {
-  color: white;
+.navbar-nav .nav-link {
+    color: white;
+    font-size: 40px;
 }
