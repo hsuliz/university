@@ -1,15 +1,26 @@
-import {Card, Container} from 'react-bootstrap';
-import React from 'react';
+import {Button, Card, Container} from 'react-bootstrap';
+import React, {useState} from 'react';
 import './style.css';
 import {Field, Form, Formik} from 'formik';
+import {TUser} from '../../../type/user-type';
+import {registerUser} from '../../../service/user-auth';
 
 
 const LoginComponent: React.FC = () => {
 
+    const [valid, setValid] = useState<boolean>(false);
 
-    const initialValues = {
+    const initialValues: TUser = {
         password: '', username: ''
     };
+
+    const submitLogIn = (data: TUser) => {
+        registerUser(data)
+            .then((r) => {
+                console.log(data);
+                console.log(r);
+            })
+    }
 
     return (
         <Container>
@@ -17,44 +28,30 @@ const LoginComponent: React.FC = () => {
                 <h1>Log in</h1>
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={(values, {setSubmitting}) => {
-                        setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
-                            setSubmitting(false);
-                            window.location.reload();
-                        }, 1000);
+                    onSubmit={(values) => {
+                        submitLogIn(values);
+                        alert(JSON.stringify(values, null, 2));
                     }}
                 >
-                    {({isSubmitting}) => (
-                        <Form>
-                            <Container className="form-group">
-                                <label htmlFor="name">Name</label>
-                                <Field name="name" className="form-control" type="text"/>
-                            </Container>
-
-                            <Container className="form-group">
-                                <label htmlFor="email">Email Address</label>
-                                <Field name="email" className="form-control" type="email"/>
-                            </Container>
-
-                            <Container className="form-group">
-                                <label htmlFor="subject">Subject</label>
-                                <Field name="subject" className="form-control" type="text"/>
-                            </Container>
-
-                            <Container className="form-group">
-                                <label htmlFor="content">Content</label>
-                                <Field name="content" className="form-control" as="textarea"/>
-                            </Container>
-                            <Container className="form-group">
-                                <button type="submit" className="btn btn-primary"
-                                        disabled={isSubmitting}>{isSubmitting ? 'Please wait...' : 'Submit'}</button>
-                            </Container>
-                        </Form>
-                    )}
+                    <Form>
+                        <Container className="form-group">
+                            <label htmlFor="username">Username</label>
+                            <Field name="username" className="form-control" type="text"/>
+                        </Container>
+                        <Container className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <Field name="password" className="form-control" type="password"/>
+                        </Container>
+                        <br/>
+                        <Container className="form-group">
+                            <Button type="submit" className="btn btn-primary">
+                                Log in!
+                            </Button>
+                        </Container>
+                        <br/>
+                    </Form>
                 </Formik>
             </Card>
-
         </Container>
     );
 
