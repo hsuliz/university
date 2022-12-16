@@ -7,7 +7,7 @@ const router = express.Router();
 router.post(
     '/api/orders',
     async (req: Request, res: Response, next: NextFunction) => {
-        const user = await verification(req, next);
+        const user = await verification(req, res);
         const {name, price} = req.body;
 
         await user?.updateOne({$push: {orders: {name: name, price: price}}})
@@ -18,7 +18,7 @@ router.post(
 router.get(
     '/api/orders',
     async (req: Request, res: Response, next: NextFunction) => {
-        const user = await verification(req, next);
+        const user = await verification(req, res);
 
         res.status(200).send(user?.get("orders"));
     }

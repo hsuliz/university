@@ -12,10 +12,8 @@ const LogInComponent: React.FC = () => {
 
     const submitSignUp = (data: TUser) => {
         userLogIn(data)
-            .then((r) => {
-                console.log(data);
-                console.log(r);
-                //window.location.reload();
+            .then((response) => {
+                localStorage.setItem('token', response.data);
             });
     };
 
