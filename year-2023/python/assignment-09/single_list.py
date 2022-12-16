@@ -52,7 +52,8 @@ class SingleList:
         self.length -= 1
         return node  # zwracamy usuwany node
 
-    def remove_tail(self):  # klasy O(n)
+    def remove_tail(self):
+        # klasy O(n)
         # Zwraca cały węzeł, skraca listę.
         # Dla pustej listy rzuca wyjątek ValueError.
         if self.is_empty():
@@ -62,19 +63,22 @@ class SingleList:
         while tmp.next.next:
             tmp = tmp.next
         tmp.next = None
-        tail = self.tail
-        self.tail = None
+        self.tail = tmp
         self.length -= 1
 
-        return tail
-
-    def join(self, other):  # klasy O(1)
+    def join(self, other):
+        # klasy O(1)
         # Węzły z listy other są przepinane do listy self na jej koniec.
         # Po zakończeniu operacji lista other ma być pusta.
+        if self.is_empty():
+            self.head = other.head
+            self.tail = other.tail
+            self.length = other.length
+            return
         self.tail.next = other.head
         self.tail = other.tail
         self.length += other.length
-        other.clear()
+        other.head = other.tail = None
 
     def clear(self):
         tmp = self.head
