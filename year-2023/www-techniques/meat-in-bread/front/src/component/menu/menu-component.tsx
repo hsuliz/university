@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {TMenu} from "../../type/menu-type";
-import {readMenu} from "../../service/menu-service";
-import {Container, Table} from "react-bootstrap";
+import React, {useEffect, useState} from 'react';
+import {TMenu} from '../../type/menu-type';
+import {readMenu} from '../../service/menu-service';
+import {Container, Table} from 'react-bootstrap';
 
 const MenuComponent: React.FC = () => {
 
@@ -14,21 +14,21 @@ const MenuComponent: React.FC = () => {
                 console.log(response.data);
             })
             .catch(() => {
-                console.log("Error here");
+                console.log('Error here');
             })
     }, []);
 
     const type = (x: boolean) => {
         if (x) {
-            return "🌱"
+            return '🌱';
         } else {
-            return "🥩"
+            return '🥩';
         }
-    }
+    };
 
     return (
         <Container>
-            <h1 className="text-center">Menu</h1>
+            <h1 className='text-center'>Menu</h1>
             <Container>
                 <Table>
                     <thead>
