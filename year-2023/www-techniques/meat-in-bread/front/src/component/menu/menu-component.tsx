@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {TMenu} from "../type/menu-type";
-import {readMenu} from "../service/menu-service";
+import {TMenu} from "../../type/menu-type";
+import {readMenu} from "../../service/menu-service";
 import {Container, Table} from "react-bootstrap";
 
 const MenuComponent: React.FC = () => {
