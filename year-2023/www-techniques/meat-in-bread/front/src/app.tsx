@@ -33,6 +33,9 @@ const App: React.FC = () => {
         isAuth()
             .then((r) => {
                 setAuth(r);
+            })
+            .catch(() => {
+                localStorage.clear();
             });
     }, []);
 

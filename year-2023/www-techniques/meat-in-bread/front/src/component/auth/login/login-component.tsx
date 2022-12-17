@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Card, Container} from 'react-bootstrap';
 import {TUser} from '../../../type/user-type';
 import {userLogIn} from '../../../service/user-auth';
@@ -6,15 +6,21 @@ import {Field, Form, Formik} from 'formik';
 
 const LogInComponent: React.FC = () => {
 
+    const [errorMessage, setErrorMessage] = useState<string>('');
+
     const initialValues: TUser = {
         password: '', username: ''
     };
 
-    const submitSignUp = (data: TUser) => {
+    const submitLogIn = (data: TUser) => {
         userLogIn(data)
             .then((response) => {
-                localStorage.setItem('token', response.data);
-                window.location.reload();
+                if (typeof response.data !== 'string') {
+                    setErrorMessage(response.data.message);
+                } else {
+                    localStorage.setItem('token', response.data);
+                    window.location.reload();
+                }
             });
     };
 
@@ -24,7 +30,7 @@ const LogInComponent: React.FC = () => {
                 <h1>Log in</h1>
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={(values) => submitSignUp(values)}
+                    onSubmit={(values) => submitLogIn(values)}
                 >
                     <Form>
                         <Container className='form-group'>
@@ -44,6 +50,8 @@ const LogInComponent: React.FC = () => {
                         <br/>
                     </Form>
                 </Formik>
+                {errorMessage &&
+                    <div>{errorMessage}</div>}
             </Card>
         </Container>
     );
