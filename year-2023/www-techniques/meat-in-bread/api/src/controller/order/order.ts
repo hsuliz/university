@@ -9,7 +9,7 @@ router.post(
     '/api/orders',
     async (req: Request, res: Response, next: NextFunction) => {
         const user = await verification(req, res);
-        const {list} = req.body;
+        const list = req.body;
         JSON.parse(JSON.stringify(list));
         const orders: any = [];
         let price = 0;

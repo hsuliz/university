@@ -3,7 +3,11 @@ import {TMenu} from '../../type/menu-type';
 import {readMenu} from '../../service/menu-service';
 import {Container, Table} from 'react-bootstrap';
 
-const MenuComponent: React.FC = () => {
+interface IProps {
+    auth: boolean;
+}
+
+const MenuComponent: React.FC<IProps> = (props) => {
 
     const [menu, setMenu] = useState<Array<TMenu>>([]);
 
@@ -36,6 +40,9 @@ const MenuComponent: React.FC = () => {
                         <th>Name</th>
                         <th>Price</th>
                         <th>Type</th>
+                        {
+                            props.auth && <th>Order</th>
+                        }
                     </tr>
                     </thead>
                     <tbody>
@@ -44,12 +51,17 @@ const MenuComponent: React.FC = () => {
                             <td>{m.name}</td>
                             <td>{m.price}</td>
                             <td>{type(m.vegan)}</td>
+                            {
+                                props.auth &&
+                                <td>Order</td>
+                            }
                         </tr>)}
                     </tbody>
                 </Table>
             </Container>
         </Container>
-    )
+    );
+
 };
 
 export default MenuComponent;

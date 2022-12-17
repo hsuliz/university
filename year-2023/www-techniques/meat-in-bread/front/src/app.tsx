@@ -41,7 +41,7 @@ const App: React.FC = () => {
             <NavigationComponent auth={auth}/>
             <Routes>
                 <Route path='/' element={<HomeComponent/>}/>
-                <Route path='/menu' element={<MenuComponent/>}/>
+                <Route path='/menu' element={<MenuComponent auth={auth}/>}/>
                 <Route path='/contact' element={<ContactComponent/>}/>
 
                 <Route
