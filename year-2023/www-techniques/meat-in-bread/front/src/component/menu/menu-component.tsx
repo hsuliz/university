@@ -3,6 +3,7 @@ import {TMenu} from '../../type/menu-type';
 import {readMenu} from '../../service/menu-service';
 import {Button, Container, Table} from 'react-bootstrap';
 import ButtonComponent from '../button/button-component';
+import {sendOrder} from '../../service/user-auth';
 
 interface IProps {
     auth: boolean;
@@ -11,21 +12,21 @@ interface IProps {
 const MenuComponent: React.FC<IProps> = (props) => {
 
     const [menu, setMenu] = useState<Array<TMenu>>([]);
-    const [orders, setOrders] = useState<Array<string>>([]);
+    const [order, setOrder] = useState<Array<string>>([]);
 
     const addItemOrder = (val) => {
-        setOrders(oldOrders => [...oldOrders, val])
-        console.log(orders);
+        setOrder(oldOrders => [...oldOrders, val])
+        console.log(order);
     };
 
     const removeItemOrder = (val) => {
-        const array = [...orders];
+        const array = [...order];
         const index = array.indexOf(val);
         if (index !== -1) {
             array.splice(index, 1);
-            setOrders(array);
+            setOrder(array);
         }
-        console.log(orders);
+        console.log(order);
     };
 
     useEffect(() => {
@@ -47,8 +48,11 @@ const MenuComponent: React.FC<IProps> = (props) => {
         }
     };
 
-    const fire = () => {
-        console.log(orders);
+    const buttonOnClickOrder = () => {
+        sendOrder(order)
+            .then((r) => {
+                console.log(r);
+            })
     };
 
     return (
@@ -84,7 +88,7 @@ const MenuComponent: React.FC<IProps> = (props) => {
                         </tr>)}
                     </tbody>
                 </Table>
-                <Button onClick={fire}>Order!!</Button>
+                <Button onClick={buttonOnClickOrder}>Order!!</Button>
             </Container>
         </Container>
     );

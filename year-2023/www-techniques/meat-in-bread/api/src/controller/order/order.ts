@@ -18,7 +18,6 @@ router.post(
             price += order?.price;
             orders.push(order.name);
         }
-
         await user?.updateOne({$push: {orders: {list: orders, price}}});
         res.status(200).send(JSON.stringify('Added!!'));
     }
