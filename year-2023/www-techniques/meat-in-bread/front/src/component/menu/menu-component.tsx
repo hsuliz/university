@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {TMenu} from '../../type/menu-type';
 import {readMenu} from '../../service/menu-service';
-import {Container, Table} from 'react-bootstrap';
+import {Button, Container, Table} from 'react-bootstrap';
+import ButtonComponent from '../button/button-component';
 
 interface IProps {
     auth: boolean;
@@ -30,6 +31,10 @@ const MenuComponent: React.FC<IProps> = (props) => {
         }
     };
 
+    const fire = () => {
+        console.log('Dude');
+    };
+
     return (
         <Container>
             <h1 className='text-center'>Menu</h1>
@@ -41,7 +46,8 @@ const MenuComponent: React.FC<IProps> = (props) => {
                         <th>Price</th>
                         <th>Type</th>
                         {
-                            props.auth && <th>Order</th>
+                            props.auth &&
+                            <th>Order</th>
                         }
                     </tr>
                     </thead>
@@ -53,11 +59,12 @@ const MenuComponent: React.FC<IProps> = (props) => {
                             <td>{type(m.vegan)}</td>
                             {
                                 props.auth &&
-                                <td>Order</td>
+                                <td><ButtonComponent/></td>
                             }
                         </tr>)}
                     </tbody>
                 </Table>
+                <Button onClick={fire}>Order!!</Button>
             </Container>
         </Container>
     );
