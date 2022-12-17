@@ -23,6 +23,15 @@ const ProfileComponent: React.FC = () => {
         return (dt + '-' + month + '-' + year);
     };
 
+    const listParser = (list) => {
+        const count = {};
+        list.forEach(x => {
+            count[x] = (count[x] || 0) + 1;
+        });
+        console.log(count);
+        return count;
+    }
+
     return (
         <Container>
             <Container>
@@ -43,7 +52,13 @@ const ProfileComponent: React.FC = () => {
                             {user.orders.map(m =>
                                 <tr key={m._id}>
                                     <td>{dateParser(m.createdAt)}</td>
-                                    <td>bababa</td>
+                                    <td>{
+                                        Object.keys(listParser(m.list)).map((keyName, i) => (
+                                            <li key={i}>
+                                                {keyName}{''}x{listParser(m.list)[keyName]}
+                                            </li>
+                                        ))
+                                    }</td>
                                     <td>{m.price}</td>
                                 </tr>)}
                             </tbody>
