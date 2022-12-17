@@ -50,7 +50,7 @@ const ProfileComponent: React.FC = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {user.orders.map(m =>
+                            {user.orders.reverse().map(m =>
                                 <tr key={m._id}>
                                     <td>{dateParser(m.createdAt)}</td>
                                     <td>{

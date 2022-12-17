@@ -4,6 +4,7 @@ import {readMenu} from '../../service/menu-service';
 import {Button, Container, Table} from 'react-bootstrap';
 import ButtonComponent from '../button/button-component';
 import {sendOrder} from '../../service/user-auth';
+import {useNavigate} from 'react-router-dom';
 
 interface IProps {
     auth: boolean;
@@ -13,7 +14,7 @@ const MenuComponent: React.FC<IProps> = (props) => {
 
     const [menu, setMenu] = useState<Array<TMenu>>([]);
     const [order, setOrder] = useState<Array<string>>([]);
-    //const [sum, setSum] = useState<number>(0);
+    let navigate = useNavigate();
     const aggroMap = new Map();
 
     const addItemOrder = (val) => {
@@ -50,8 +51,8 @@ const MenuComponent: React.FC<IProps> = (props) => {
     const buttonOnClickOrder = () => {
         sendOrder(order)
             .then((r) => {
-                sumAggregator()
-                //window.location.reload();
+                navigate('/profile');
+                window.location.reload();
             });
     };
 
@@ -109,7 +110,7 @@ const MenuComponent: React.FC<IProps> = (props) => {
                 </Table>
                 {props.auth &&
                     <>
-                        <Button onClick={buttonOnClickOrder}>Order!!</Button>{' '}
+                        <Button onClick={buttonOnClickOrder} disabled={sumAggregator() === 0}>Order!!</Button>{' '}
                         {sumAggregator()}
                     </>
                 }
