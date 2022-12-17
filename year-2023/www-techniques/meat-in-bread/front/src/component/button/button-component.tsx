@@ -12,11 +12,17 @@ const ButtonComponent: React.FC<IProps> = ({addItemOrder, removeItemOrder, order
     const [counter, setCounter] = useState(0)
 
     const handleClickPlus = () => {
+        if(counter === 10) {
+            return;
+        }
         setCounter(counter + 1);
         addItemOrder(orderId);
     }
 
     const handleClickMinus = () => {
+        if(counter === 0) {
+            return;
+        }
         setCounter(counter - 1);
         removeItemOrder(orderId);
     };
