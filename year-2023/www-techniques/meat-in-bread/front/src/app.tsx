@@ -22,6 +22,13 @@ const App: React.FC = () => {
         return children;
     };
 
+    const ProtectedRouteForAuth = ({auth, children}) => {
+        if (!auth) {
+            return <Navigate to='/profile' replace/>;
+        }
+        return children;
+    };
+
     useEffect(() => {
         isAuth()
             .then((r) => {
@@ -36,8 +43,23 @@ const App: React.FC = () => {
                 <Route path='/' element={<HomeComponent/>}/>
                 <Route path='/menu' element={<MenuComponent/>}/>
                 <Route path='/contact' element={<ContactComponent/>}/>
-                <Route path='/signup' element={<SignUpComponent/>}/>
-                <Route path='/login' element={<LogInComponent/>}/>
+
+                <Route
+                    path='/signup'
+                    element={
+                        <ProtectedRouteForAuth auth={!auth}>
+                            <SignUpComponent/>
+                        </ProtectedRouteForAuth>
+                    }
+                />
+                <Route
+                    path='/login'
+                    element={
+                        <ProtectedRouteForAuth auth={!auth}>
+                            <LogInComponent/>
+                        </ProtectedRouteForAuth>
+                    }
+                />
                 <Route
                     path='/profile'
                     element={
