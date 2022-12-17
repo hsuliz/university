@@ -38,7 +38,6 @@ const isAuth = async () => {
 };
 
 const sendOrder = (order: Array<string>) => {
-    console.log(order)
     return axios.post(
         'http://localhost:3001/api/orders', order, {headers: authHeader()}
     );

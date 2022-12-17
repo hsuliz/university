@@ -1,6 +1,6 @@
 export type TMenu = {
     _id: string,
     name: string,
-    price: string,
+    price: number,
     vegan: boolean
 };

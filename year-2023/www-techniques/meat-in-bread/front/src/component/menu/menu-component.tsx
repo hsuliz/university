@@ -13,10 +13,11 @@ const MenuComponent: React.FC<IProps> = (props) => {
 
     const [menu, setMenu] = useState<Array<TMenu>>([]);
     const [order, setOrder] = useState<Array<string>>([]);
+    //const [sum, setSum] = useState<number>(0);
+    const aggroMap = new Map();
 
     const addItemOrder = (val) => {
         setOrder(oldOrders => [...oldOrders, val])
-        console.log(order);
     };
 
     const removeItemOrder = (val) => {
@@ -26,14 +27,12 @@ const MenuComponent: React.FC<IProps> = (props) => {
             array.splice(index, 1);
             setOrder(array);
         }
-        console.log(order);
     };
 
     useEffect(() => {
         readMenu()
             .then((response) => {
                 setMenu(response.data);
-                console.log(response.data);
             })
             .catch(() => {
                 console.log('Error here');
@@ -51,8 +50,22 @@ const MenuComponent: React.FC<IProps> = (props) => {
     const buttonOnClickOrder = () => {
         sendOrder(order)
             .then((r) => {
-                console.log(r);
-            })
+                sumAggregator()
+                //window.location.reload();
+            });
+    };
+
+    const sumAggregator = () => {
+        let sum = 0;
+        aggroMap.forEach((value) => {
+            sum += value;
+        });
+        return sum;
+    };
+
+    const aggregator = (m) => {
+        aggroMap.set(m._id, (order.filter(o => o.includes(m._id))).length * m.price);
+        return (order.filter(o => o.includes(m._id))).length * m.price;
     };
 
     return (
@@ -67,7 +80,10 @@ const MenuComponent: React.FC<IProps> = (props) => {
                         <th>Type</th>
                         {
                             props.auth &&
-                            <th>Order</th>
+                            <>
+                                <th>Order</th>
+                                <th>Total</th>
+                            </>
                         }
                     </tr>
                     </thead>
@@ -79,16 +95,24 @@ const MenuComponent: React.FC<IProps> = (props) => {
                             <td>{type(m.vegan)}</td>
                             {
                                 props.auth &&
-                                <td><ButtonComponent
-                                    addItemOrder={addItemOrder}
-                                    removeItemOrder={removeItemOrder}
-                                    orderId={m._id}
-                                /></td>
+                                <>
+                                    <td><ButtonComponent
+                                        addItemOrder={addItemOrder}
+                                        removeItemOrder={removeItemOrder}
+                                        orderId={m._id}
+                                    /></td>
+                                    <td>{aggregator(m)}</td>
+                                </>
                             }
                         </tr>)}
                     </tbody>
                 </Table>
-                <Button onClick={buttonOnClickOrder}>Order!!</Button>
+                {props.auth &&
+                    <>
+                        <Button onClick={buttonOnClickOrder}>Order!!</Button>{' '}
+                        {sumAggregator()}
+                    </>
+                }
             </Container>
         </Container>
     );
