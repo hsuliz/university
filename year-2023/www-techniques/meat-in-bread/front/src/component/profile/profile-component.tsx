@@ -6,6 +6,23 @@ const ProfileComponent: React.FC = () => {
     // @ts-ignore
     const user = JSON.parse(localStorage.getItem('user'));
 
+    const dateParser = (date) => {
+        date = new Date(date);
+
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let dt = date.getDate();
+
+        if (dt < 10) {
+            dt = '0' + dt;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        return (dt + '-' + month + '-' + year);
+    };
+
     return (
         <Container>
             <Container>
@@ -17,15 +34,16 @@ const ProfileComponent: React.FC = () => {
                         <Table>
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Price</th>
+                                <th>Date</th>
                                 <th>Type</th>
+                                <th>Price</th>
                             </tr>
                             </thead>
                             <tbody>
                             {user.orders.map(m =>
                                 <tr key={m._id}>
-                                    <td>{m.name}</td>
+                                    <td>{dateParser(m.createdAt)}</td>
+                                    <td>bababa</td>
                                     <td>{m.price}</td>
                                 </tr>)}
                             </tbody>
