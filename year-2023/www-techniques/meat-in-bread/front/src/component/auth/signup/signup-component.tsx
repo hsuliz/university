@@ -1,5 +1,5 @@
 import {Button, Card, Container} from 'react-bootstrap';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../style.css';
 import {Field, Form, Formik} from 'formik';
 import {TUser} from '../../../type/user-type';
@@ -11,6 +11,7 @@ const SignUpComponent: React.FC = () => {
     const initialValues: TUser = {
         password: '', username: ''
     };
+
 
     const submitSignUp = (data: TUser) => {
         userSignUp(data)
