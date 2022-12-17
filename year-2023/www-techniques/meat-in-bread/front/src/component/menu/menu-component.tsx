@@ -11,6 +11,22 @@ interface IProps {
 const MenuComponent: React.FC<IProps> = (props) => {
 
     const [menu, setMenu] = useState<Array<TMenu>>([]);
+    const [orders, setOrders] = useState<Array<string>>([]);
+
+    const addItemOrder = (val) => {
+        setOrders(oldOrders => [...oldOrders, val])
+        console.log(orders);
+    };
+
+    const removeItemOrder = (val) => {
+        const array = [...orders];
+        const index = array.indexOf(val);
+        if (index !== -1) {
+            array.splice(index, 1);
+            setOrders(array);
+        }
+        console.log(orders);
+    };
 
     useEffect(() => {
         readMenu()
@@ -32,7 +48,7 @@ const MenuComponent: React.FC<IProps> = (props) => {
     };
 
     const fire = () => {
-        console.log('Dude');
+        console.log(orders);
     };
 
     return (
@@ -59,7 +75,11 @@ const MenuComponent: React.FC<IProps> = (props) => {
                             <td>{type(m.vegan)}</td>
                             {
                                 props.auth &&
-                                <td><ButtonComponent/></td>
+                                <td><ButtonComponent
+                                    addItemOrder={addItemOrder}
+                                    removeItemOrder={removeItemOrder}
+                                    orderId={m._id}
+                                /></td>
                             }
                         </tr>)}
                     </tbody>

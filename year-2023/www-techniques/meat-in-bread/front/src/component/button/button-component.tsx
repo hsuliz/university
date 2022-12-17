@@ -1,24 +1,31 @@
 import React, {useState} from 'react';
 import {Button} from 'react-bootstrap';
 
+interface IProps {
+    addItemOrder: any;
+    removeItemOrder: any;
+    orderId: string;
+}
 
-const ButtonComponent: React.FC = () => {
+const ButtonComponent: React.FC<IProps> = ({addItemOrder, removeItemOrder, orderId}) => {
 
     const [counter, setCounter] = useState(0)
 
-    const handleClick1 = () => {
+    const handleClickPlus = () => {
         setCounter(counter + 1);
+        addItemOrder(orderId);
     }
 
-    const handleClick2 = () => {
+    const handleClickMinus = () => {
         setCounter(counter - 1);
+        removeItemOrder(orderId);
     };
 
     return (
         <div>
-            <Button onClick={handleClick2}>-</Button>
+            <Button onClick={handleClickMinus}>-</Button>
             {counter}
-            <Button onClick={handleClick1}>+</Button>
+            <Button onClick={handleClickPlus}>+</Button>
         </div>
     );
 
