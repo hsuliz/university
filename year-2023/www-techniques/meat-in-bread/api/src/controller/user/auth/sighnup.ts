@@ -14,6 +14,10 @@ router.post(
             return res.status(202).send('Username in use!!');
         }
 
+        if (password.length === 0) {
+            return res.status(202).send('Password cant be empty !!');
+        }
+
         const user = new User({
             username,
             password,
