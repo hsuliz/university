@@ -14,6 +14,7 @@ const LogInComponent: React.FC = () => {
         userLogIn(data)
             .then((response) => {
                 localStorage.setItem('token', response.data);
+                window.location.reload();
             });
     };
 
