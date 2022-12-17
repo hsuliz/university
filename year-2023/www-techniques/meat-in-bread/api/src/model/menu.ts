@@ -1,14 +1,14 @@
 import {model, Schema} from "mongoose";
 
-interface IMenu {
-    name: String;
-    price: String;
+export interface IMenu {
+    name: string;
+    price: number;
     vegan: boolean;
 }
 
 const menySchema = new Schema<IMenu>({
         name: String,
-        price: String,
+        price: Number,
         vegan: "Boolean"
     },
     {

@@ -1,22 +1,23 @@
 import {model, Schema} from 'mongoose';
 import {Password} from '../service/password';
+import {IMenu} from './menu';
 
 
 interface IUser {
-    username: String;
+    username: string;
     password: string;
     orders: [];
 }
 
 interface IOrder {
-    name: String;
-    price: String;
+    list: IMenu[];
+    price: number;
 }
 
 const orderSchema = new Schema<IOrder>({
-    name: String,
-    price: String
-});
+    list: [],
+    price: Number,
+}, {timestamps: true});
 
 const userSchema = new Schema<IUser>({
         username: {type: String, required: true},
