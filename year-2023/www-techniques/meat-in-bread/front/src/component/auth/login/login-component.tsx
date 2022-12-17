@@ -26,17 +26,17 @@ const LogInComponent: React.FC = () => {
                     onSubmit={(values) => submitSignUp(values)}
                 >
                     <Form>
-                        <Container className="form-group">
-                            <label htmlFor="username">Username</label>
-                            <Field name="username" className="form-control" type="text"/>
+                        <Container className='form-group'>
+                            <label htmlFor='username'>Username</label>
+                            <Field name='username' className='form-control' type='text'/>
                         </Container>
-                        <Container className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <Field name="password" className="form-control" type="password"/>
+                        <Container className='form-group'>
+                            <label htmlFor='password'>Password</label>
+                            <Field name='password' className='form-control' type='password'/>
                         </Container>
                         <br/>
-                        <Container className="form-group">
-                            <Button type="submit" className="btn btn-primary">
+                        <Container className='form-group'>
+                            <Button type='submit' className='btn btn-primary'>
                                 Log in!
                             </Button>
                         </Container>

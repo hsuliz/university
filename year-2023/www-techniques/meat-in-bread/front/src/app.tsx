@@ -4,16 +4,27 @@ import MenuComponent from './component/menu/menu-component';
 import NavigationComponent from './component/navigation/navigation-component';
 import HomeComponent from './component/home/home-component';
 import ContactComponent from './component/contact/contact-component';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import SignUpComponent from './component/auth/signup/signup-component';
 import LogInComponent from './component/auth/login/login-component';
 import ProfileComponent from './component/profile/profile-component';
+import {isAuth} from './service/user-auth';
 
 
 const App: React.FC = () => {
+
+    const [auth, setAuth] = useState<boolean>(false);
+
+    useEffect(() => {
+        isAuth()
+            .then((r) => {
+                setAuth(r);
+            });
+    }, []);
+
     return (
         <>
-            <NavigationComponent/>
+            <NavigationComponent auth={auth}/>
             <Routes>
                 <Route path='/' element={<HomeComponent/>}/>
                 <Route path='/menu' element={<MenuComponent/>}/>

@@ -6,6 +6,7 @@ const ProfileComponent: React.FC = () => {
     // @ts-ignore
     const user = JSON.parse(localStorage.getItem('user'));
 
+
     const dateParser = (date) => {
         date = new Date(date);
 
@@ -44,7 +45,7 @@ const ProfileComponent: React.FC = () => {
                             <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Type</th>
+                                <th>Order</th>
                                 <th>Price</th>
                             </tr>
                             </thead>
@@ -55,7 +56,7 @@ const ProfileComponent: React.FC = () => {
                                     <td>{
                                         Object.keys(listParser(m.list)).map((keyName, i) => (
                                             <li key={i}>
-                                                {keyName}{''}x{listParser(m.list)[keyName]}
+                                                {keyName}{' '}x{listParser(m.list)[keyName]}
                                             </li>
                                         ))
                                     }</td>

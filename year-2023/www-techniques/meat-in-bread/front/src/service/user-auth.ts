@@ -28,8 +28,13 @@ const isAuth = async () => {
     const response = await axios.get(
         API_URL, {headers: authHeader()}
     )
-    localStorage.setItem('user', JSON.stringify(response.data));
-    return response.status === 200;
+    if (response.status === 200) {
+        localStorage.setItem('user', JSON.stringify(response.data));
+        return true
+    } else {
+        localStorage.clear();
+        return false;
+    }
 };
 
 export {userSignUp, userLogIn, isAuth};
