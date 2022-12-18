@@ -41,7 +41,7 @@ const ProfileComponent: React.FC = () => {
             {
                 (user.orders.length > 0)
                     ? <Container><h2>Your orders:</h2>
-                        <Table>
+                        <Table striped bordered hover size='sm'>
                             <thead>
                             <tr>
                                 <th>Date</th>

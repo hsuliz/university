@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {TMenu} from '../../type/menu-type';
 import {readMenu} from '../../service/menu-service';
 import {Button, Container, Table} from 'react-bootstrap';
-import ButtonComponent from '../button/button-component';
+import ButtonComponent from './button/button-component';
 import {sendOrder} from '../../service/user-auth';
 import {useNavigate} from 'react-router-dom';
 
@@ -70,51 +70,54 @@ const MenuComponent: React.FC<IProps> = (props) => {
     };
 
     return (
-        <Container>
+        <Container fluid='lg'>
             <h1 className='text-center'>Menu</h1>
-            <Container>
-                <Table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Type</th>
+            <Table striped bordered responsive='sm' size='sm'>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    {
+                        props.auth &&
+                        <>
+                            <th>Quantity</th>
+                            <th>Summary</th>
+                        </>
+                    }
+                </tr>
+                </thead>
+                <tbody>
+                {menu.map(m =>
+                    <tr key={m._id}>
+                        <td>{m.name}</td>
+                        <td>{m.price}</td>
+                        <td>{type(m.vegan)}</td>
                         {
                             props.auth &&
                             <>
-                                <th>Order</th>
-                                <th>Total</th>
+                                <td><ButtonComponent
+                                    addItemOrder={addItemOrder}
+                                    removeItemOrder={removeItemOrder}
+                                    orderId={m._id}
+                                /></td>
+                                <td><span className='price-table'>{aggregator(m)}</span></td>
                             </>
                         }
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {menu.map(m =>
-                        <tr key={m._id}>
-                            <td>{m.name}</td>
-                            <td>{m.price}</td>
-                            <td>{type(m.vegan)}</td>
-                            {
-                                props.auth &&
-                                <>
-                                    <td><ButtonComponent
-                                        addItemOrder={addItemOrder}
-                                        removeItemOrder={removeItemOrder}
-                                        orderId={m._id}
-                                    /></td>
-                                    <td>{aggregator(m)}</td>
-                                </>
-                            }
-                        </tr>)}
-                    </tbody>
-                </Table>
-                {props.auth &&
-                    <>
-                        <Button onClick={buttonOnClickOrder} disabled={sumAggregator() === 0}>Order!!</Button>{' '}
-                        {sumAggregator()}
-                    </>
-                }
-            </Container>
+                    </tr>)}
+                </tbody>
+            </Table>
+            {props.auth &&
+                <div className='d-flex flex-column'>
+                    <div>Total price:</div>
+                    <div>{sumAggregator()}</div>
+                    <Button
+                        onClick={buttonOnClickOrder}
+                        disabled={sumAggregator() === 0}
+                    >Order!!
+                    </Button>
+                </div>
+            }
         </Container>
     );
 

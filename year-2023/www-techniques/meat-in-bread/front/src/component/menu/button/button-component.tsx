@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button} from 'react-bootstrap';
+import {Button, ButtonGroup} from 'react-bootstrap';
 
 interface IProps {
     addItemOrder: any;
@@ -12,7 +12,7 @@ const ButtonComponent: React.FC<IProps> = ({addItemOrder, removeItemOrder, order
     const [counter, setCounter] = useState(0)
 
     const handleClickPlus = () => {
-        if(counter === 10) {
+        if (counter === 9) {
             return;
         }
         setCounter(counter + 1);
@@ -20,7 +20,7 @@ const ButtonComponent: React.FC<IProps> = ({addItemOrder, removeItemOrder, order
     }
 
     const handleClickMinus = () => {
-        if(counter === 0) {
+        if (counter === 0) {
             return;
         }
         setCounter(counter - 1);
@@ -28,10 +28,12 @@ const ButtonComponent: React.FC<IProps> = ({addItemOrder, removeItemOrder, order
     };
 
     return (
-        <div>
-            <Button onClick={handleClickMinus}>-</Button>
-            {counter}
-            <Button onClick={handleClickPlus}>+</Button>
+        <div className='d-flex flex-column'>
+            <ButtonGroup size='sm'>
+                <Button variant='light' size='sm' className='custom-btn' onClick={handleClickMinus}>-</Button>
+                <span className='text-center'>{counter}</span>
+                <Button variant='light' size='sm' className='custom-btn' onClick={handleClickPlus}>+</Button>
+            </ButtonGroup>
         </div>
     );
 
