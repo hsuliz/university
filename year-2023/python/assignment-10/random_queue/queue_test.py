@@ -33,13 +33,14 @@ def test_insert_10_elements_should_be_full(default_queue):
 
 def test_remove_should_remove_element(default_queue):
     # given
+    expected = 3
     for i in range(6):
         default_queue.insert(i)
     # when
-    with mock.patch('random.randint', lambda x, y: 3):
+    with mock.patch('random.randint', lambda x, y: expected):
         actual = default_queue.remove()
     # then
-    assert actual is 5
+    assert actual is expected
 
 
 def test_insert_and_remove_should_throw(empty_queue):
