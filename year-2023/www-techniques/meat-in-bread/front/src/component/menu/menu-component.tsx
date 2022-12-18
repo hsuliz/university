@@ -108,9 +108,10 @@ const MenuComponent: React.FC<IProps> = (props) => {
                 </tbody>
             </Table>
             {props.auth &&
-                <div className='d-flex flex-column'>
+                <div>
                     <div>Total price:</div>
                     <div>{sumAggregator()}</div>
+                    <br/>
                     <Button
                         onClick={buttonOnClickOrder}
                         disabled={sumAggregator() === 0}
