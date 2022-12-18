@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, {JsonWebTokenError} from 'jsonwebtoken';
 import {Request, Response} from 'express';
 import {User} from '../model/user';
 
@@ -15,12 +15,15 @@ export const verification = async (req: Request, res: Response) => {
 
     const token = req.headers.authorization.substring(7, req.headers.authorization?.length);
     let user;
-    console.log(token)
+
     try {
         user = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
-    } catch (e: any) {
-        console.log(e);
-        res.status(202).send('Invalid token or expired!!');
+    } catch (err: any) {
+        if (err instanceof JsonWebTokenError) {
+            res.status(202).send('Invalid token or expired!!');
+        } else {
+            res.status(500).send('Something went wrong with jwt verify!!');
+        }
         return;
     }
 
