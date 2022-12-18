@@ -1,10 +1,10 @@
-### ZADANIE 10.2 (STACK)
+## ZADANIE 10.2 (STACK)
 
 Poprawić implementację tablicową stosu tak, aby korzystała z wyjątków w przypadku pojawienia się błędu. Metoda pop() ma
 zgłaszać błąd w przypadku pustego stosu. Metoda push() ma zgłaszać błąd w przypadku przepełnienia stosu. Napisać kod
 testujący stos.
 
-### ZADANIE 10.8 (RANDOMQUEUE)
+## ZADANIE 10.8 (RANDOMQUEUE)
 
 Stworzyć ADT w postaci kolejki losowej, z której elementy będą pobierane w losowej kolejności. Zadbać o to, aby każda
 operacja była wykonywana w stałym czasie, niezależnie od liczby elementów w kolejce.
