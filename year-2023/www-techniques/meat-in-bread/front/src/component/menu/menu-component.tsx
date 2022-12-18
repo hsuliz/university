@@ -50,7 +50,7 @@ const MenuComponent: React.FC<IProps> = (props) => {
 
     const buttonOnClickOrder = () => {
         sendOrder(order)
-            .then((r) => {
+            .then(() => {
                 navigate('/profile');
                 window.location.reload();
             });
