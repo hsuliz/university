@@ -12,7 +12,7 @@ name or just by code.
 - My bery cool
   static [webpage](https://hsuliz.github.io/university/year-2023/www-techniques/touhou-project/src/index.html)
   with classic stack(HTML, CSS, JavaScript).
-- [Online store](https://hsuliz.github.io/university/year-2023/www-techniques/touhou-project/src/index.html) with
+- [Online store](https://github.com/hsuliz/university/tree/main/year-2023/www-techniques/meat-in-bread) with
   authorization for restaurant. Using TypeScript, Node, Express and React.
 
 #### 2. [Data Science](https://github.com/hsuliz/university/tree/main/year-2023/data-science)
