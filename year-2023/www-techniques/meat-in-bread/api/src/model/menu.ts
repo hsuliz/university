@@ -1,4 +1,4 @@
-import {model, Schema} from "mongoose";
+import {model, Schema} from 'mongoose';
 
 export interface IMenu {
     name: string;
@@ -9,7 +9,7 @@ export interface IMenu {
 const menySchema = new Schema<IMenu>({
         name: String,
         price: Number,
-        vegan: "Boolean"
+        vegan: 'Boolean'
     },
     {
         toJSON: {
