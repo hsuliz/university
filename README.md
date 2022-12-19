@@ -10,8 +10,10 @@ name or just by code.
 #### 1. [WWW techniques](https://github.com/hsuliz/university/tree/main/year-2023/www-techniques)
 
 - My bery cool
-static [webpage](https://hsuliz.github.io/university/year-2023/www-techniques/touhou-project/src/index.html)
-  for WWW techniques with classic stack(HTML, CSS, JavaScript).
+  static [webpage](https://hsuliz.github.io/university/year-2023/www-techniques/touhou-project/src/index.html)
+  with classic stack(HTML, CSS, JavaScript).
+- [Online store](https://hsuliz.github.io/university/year-2023/www-techniques/touhou-project/src/index.html) with
+  authorization for restaurant. Using TypeScript, Node, Express and React.
 
 #### 2. [Data Science](https://github.com/hsuliz/university/tree/main/year-2023/data-science)
 
