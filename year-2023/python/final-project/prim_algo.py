@@ -5,8 +5,7 @@ class PrimAlgo:
 
     def __init__(self, matrix=None):
         if matrix is None:
-            return
-
+            matrix = []
         self._G = matrix
         self._V = len(matrix)
 
@@ -14,7 +13,7 @@ class PrimAlgo:
         self.__init__(matrix)
 
     def calc(self):
-        if self._G is None:
+        if len(self._G) is 0:
             raise ValueError("Matrix is empty!!")
 
         visited = [False] * len(self._G)

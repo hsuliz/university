@@ -26,5 +26,10 @@ def test_given_matrix_should_return_cost(prim_algo):
     assert actual is 110
 
 
+def test_given_none_matrix_when_calc_should_throw(prim_algo):
+    with pytest.raises(ValueError):
+        prim_algo.calc()
+
+
 if __name__ == "__main__":
     pytest.main()
