@@ -19,9 +19,9 @@ class PrimAlgo:
 
         visited = [False] * len(self._G)
         visited[0] = True
-        cost = no_edge = 0
+        cost = edge_quantity = 0
 
-        while no_edge < self._V - 1:
+        while edge_quantity < self._V - 1:
             minimum = INF_NUMBER
             v = 0
             w = 0
@@ -35,5 +35,5 @@ class PrimAlgo:
                                 w = j
             cost += self._G[v][w]
             visited[w] = True
-            no_edge += 1
+            edge_quantity += 1
         return cost
