@@ -1,40 +1,39 @@
-from sys import maxsize as INF
+from sys import maxsize as INF_NUMBER
 
 
+class PrimAlgo:
 
-def prim_algo():
-    cost = 0
+    def __init__(self, matrix=None):
+        if matrix is None:
+            return
 
-    G = [[INF, 2, INF, 6, INF],
-         [2, INF, 3, 8, 5],
-         [INF, 3, INF, INF, 7],
-         [6, 8, INF, INF, 9],
-         [INF, 5, 7, 9, INF]]
+        self._G = matrix
+        self._V = len(matrix)
 
-    V = len(G)
+    def init_matrix(self, matrix):
+        self.__init__(matrix)
 
-    visited = [False] * len(G)
-    visited[0] = True
+    def calc(self):
+        if self._G is None:
+            raise ValueError("Matrix is empty!!")
 
-    no_edge = 0
+        visited = [False] * len(self._G)
+        visited[0] = True
+        cost = no_edge = 0
 
-    while no_edge < V - 1:
-        minimum = INF
-        x = 0
-        y = 0
-        for i in range(V):
-            if visited[i]:
-                for j in range(V):
-                    if (not visited[j]) and G[i][j]:
-                        if minimum > G[i][j]:
-                            minimum = G[i][j]
-                            x = i
-                            y = j
-        cost += G[x][y]
-        visited[y] = True
-        no_edge += 1
-    return cost
-
-
-if __name__ == '__main__':
-    print(prim_algo())
+        while no_edge < self._V - 1:
+            minimum = INF_NUMBER
+            v = 0
+            w = 0
+            for i in range(self._V):
+                if visited[i]:
+                    for j in range(self._V):
+                        if (not visited[j]) and self._G[i][j]:
+                            if minimum > self._G[i][j]:
+                                minimum = self._G[i][j]
+                                v = i
+                                w = j
+            cost += self._G[v][w]
+            visited[w] = True
+            no_edge += 1
+        return cost
