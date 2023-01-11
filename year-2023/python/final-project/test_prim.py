@@ -1,6 +1,9 @@
 import pytest
 
 from prim_algo import PrimAlgo
+import pytest
+
+from prim_algo import PrimAlgo
 
 
 @pytest.fixture
@@ -31,5 +34,8 @@ def test_given_none_matrix_when_calc_should_throw(prim_algo):
         prim_algo.calc()
 
 
+#TODO
+# imput/output file
+# output tree
 if __name__ == "__main__":
     pytest.main()

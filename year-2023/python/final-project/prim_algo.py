@@ -16,8 +16,8 @@ class PrimAlgo:
         if len(self._G) is 0:
             raise ValueError("Matrix is empty!!")
 
-        visited = [False] * len(self._G)
-        visited[0] = True
+        selected = [False] * len(self._G)
+        selected[0] = True
         cost = edge_quantity = 0
 
         while edge_quantity < self._V - 1:
@@ -25,14 +25,15 @@ class PrimAlgo:
             v = 0
             w = 0
             for i in range(self._V):
-                if visited[i]:
+                if selected[i]:
                     for j in range(self._V):
-                        if (not visited[j]) and self._G[i][j]:
+                        if (not selected[j]) and self._G[i][j]:
                             if minimum > self._G[i][j]:
                                 minimum = self._G[i][j]
                                 v = i
                                 w = j
             cost += self._G[v][w]
-            visited[w] = True
+            print(v, w, self._G[v][w])
+            selected[w] = True
             edge_quantity += 1
         return cost
