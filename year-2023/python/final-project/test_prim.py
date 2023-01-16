@@ -1,9 +1,6 @@
 import pytest
 
 from prim_algo import PrimAlgo
-import pytest
-
-from prim_algo import PrimAlgo
 
 
 @pytest.fixture
@@ -29,12 +26,24 @@ def test_given_matrix_should_return_cost(prim_algo):
     assert actual is 110
 
 
+def test_given_matrix_from_file_should_return_cost(prim_algo):
+    # given
+    given = 'test.txt'
+
+    # when
+    prim_algo.init_matrix(given)
+    actual = prim_algo.calc()
+
+    # then
+    assert actual is 110
+
+
 def test_given_none_matrix_when_calc_should_throw(prim_algo):
     with pytest.raises(ValueError):
         prim_algo.calc()
 
 
-#TODO
+# TODO
 # imput/output file
 # output tree
 if __name__ == "__main__":

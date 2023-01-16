@@ -1,5 +1,7 @@
 from sys import maxsize as INF_NUMBER
 
+from parser import MatrixParser
+
 
 class PrimAlgo:
 
@@ -9,13 +11,16 @@ class PrimAlgo:
         self._G = matrix
         self._V = len(matrix)
 
-    def init_matrix(self, matrix):
-        self.__init__(matrix)
+    def init_matrix(self, path):
+        if path is str:
+            self.__init__(MatrixParser.scan(path))
+            return
+        self.__init__(path)
 
     def calc(self):
         if len(self._G) is 0:
             raise ValueError("Matrix is empty!!")
-
+        out_matrix = []
         selected = [False] * len(self._G)
         selected[0] = True
         cost = edge_quantity = 0
