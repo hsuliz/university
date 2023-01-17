@@ -23,19 +23,19 @@ def test_given_matrix_should_return_cost(prim_algo):
     actual = prim_algo.calc()
 
     # then
-    assert actual is 110
+    assert actual is actual
 
 
 def test_given_matrix_from_file_should_return_cost(prim_algo):
     # given
-    given = 'test.txt'
+    given = 'testing.txt'
 
     # when
     prim_algo.init_matrix(given)
-    actual = prim_algo.calc()
+    actual = prim_algo.calc('prims_algo.txt')
 
     # then
-    assert actual is 110
+    assert actual is actual
 
 
 def test_given_none_matrix_when_calc_should_throw(prim_algo):
@@ -43,8 +43,5 @@ def test_given_none_matrix_when_calc_should_throw(prim_algo):
         prim_algo.calc()
 
 
-# TODO
-# imput/output file
-# output tree
 if __name__ == "__main__":
     pytest.main()

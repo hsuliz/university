@@ -11,19 +11,19 @@ class PrimAlgo:
         self._G = matrix
         self._V = len(matrix)
 
-    def init_matrix(self, path):
-        if path is str:
-            self.__init__(MatrixParser.scan(path))
-            return
-        self.__init__(path)
+    def init_matrix(self, matrix):
+        if isinstance(matrix, str):
+            self.__init__(MatrixParser.scan(matrix))
+        else:
+            self.__init__(matrix)
 
-    def calc(self):
+    def calc(self, to_file=None):
         if len(self._G) is 0:
             raise ValueError("Matrix is empty!!")
-        out_matrix = []
+        out_matrix = [[0 for _ in range(len(self._G))] for _ in range(len(self._G))]
         selected = [False] * len(self._G)
         selected[0] = True
-        cost = edge_quantity = 0
+        edge_quantity = 0
 
         while edge_quantity < self._V - 1:
             minimum = INF_NUMBER
@@ -37,8 +37,10 @@ class PrimAlgo:
                                 minimum = self._G[i][j]
                                 v = i
                                 w = j
-            cost += self._G[v][w]
-            print(v, w, self._G[v][w])
+            out_matrix[v][w] = self._G[v][w]
+            out_matrix[w][v] = self._G[v][w]
             selected[w] = True
             edge_quantity += 1
-        return cost
+        if to_file is not None:
+            MatrixParser.write_to_file(out_matrix, to_file)
+        return out_matrix
