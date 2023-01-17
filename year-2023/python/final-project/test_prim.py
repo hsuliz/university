@@ -3,7 +3,7 @@ import pytest
 from prim_algo import PrimAlgo
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def prim_algo():
     return PrimAlgo()
 
@@ -17,13 +17,37 @@ def test_given_matrix_should_return_cost(prim_algo):
         [0, 19, 51, 0, 31],
         [0, 42, 66, 31, 0]
     ]
+    expected = [
+        [0, 9, 0, 0, 0],
+        [9, 0, 0, 19, 0],
+        [0, 0, 0, 51, 0],
+        [0, 19, 51, 0, 31],
+        [0, 0, 0, 31, 0]]
 
     # when
     prim_algo.init_matrix(given)
     actual = prim_algo.calc()
 
     # then
-    assert actual is 110
+    assert actual == expected
+
+
+def test_given_matrix_from_file_should_return_cost(prim_algo):
+    # given
+    given = 'input_matrix.txt'
+    expected = [
+        [0, 9, 0, 0, 0],
+        [9, 0, 0, 19, 0],
+        [0, 0, 0, 51, 0],
+        [0, 19, 51, 0, 31],
+        [0, 0, 0, 31, 0]]
+
+    # when
+    prim_algo.init_matrix(given)
+    actual = prim_algo.calc('prims_algo.txt')
+
+    # then
+    assert actual == expected
 
 
 def test_given_none_matrix_when_calc_should_throw(prim_algo):
