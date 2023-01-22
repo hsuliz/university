@@ -3,7 +3,7 @@ from sys import maxsize as INF_NUMBER
 from parser import MatrixParser
 
 
-class PrimAlgo:
+class PrimAlgorithm:
 
     def __init__(self, matrix=None):
         if matrix is None:
