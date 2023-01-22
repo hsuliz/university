@@ -16,7 +16,7 @@ class PrimAlgorithm:
         """Constructor
 
         Args:
-            matrix (list): Optional. Matrix should be NxN. Default to None.
+            matrix (list, optional): Matrix should be NxN. Default to None.
 
         Returns:
             None
@@ -33,7 +33,8 @@ class PrimAlgorithm:
         Uses MatrixParses class for scan matrix from file
 
         Args:
-            matrix(list): Matrix should be NxN.
+            matrix(list || str): Matrix should be NxN. User can directly in provide matrix as list,
+                or provide path to file with matrix.
 
         Returns:
             None

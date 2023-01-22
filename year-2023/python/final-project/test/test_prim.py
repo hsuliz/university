@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from prim_algo import PrimAlgorithm
@@ -42,6 +44,7 @@ def test_given_matrix_from_file_should_return_matrix_and_safe_to_file(prim_algor
         [0, 19, 51, 0, 31],
         [0, 0, 0, 31, 0]]
     assert actual == expected
+    time.sleep(3)  # wait for out file
     prim_algorithm.init_matrix('test_matrix_out.txt')
     actual = prim_algorithm.calc()
     # then
