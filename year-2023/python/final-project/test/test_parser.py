@@ -10,7 +10,7 @@ def matrix_parser():
 
 def test_given_matrix_should_parse(matrix_parser):
     # given, when
-    given = matrix_parser.scan('testing.txt')
+    given = matrix_parser.scan('test_matrix_in.txt')
     expected = [
         [0, 9, 75, 0, 0],
         [9, 0, 95, 19, 42],
@@ -20,3 +20,7 @@ def test_given_matrix_should_parse(matrix_parser):
     ]
     # then
     assert given == expected
+
+
+if __name__ == '__main__':
+    pytest.main()
