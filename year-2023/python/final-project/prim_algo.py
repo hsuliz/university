@@ -10,6 +10,11 @@ class PrimAlgorithm:
     This class using MatrixParser for matrix serialization, which you can
     find in parser.py.
 
+    If you want import matrix from file, it should look like this:
+    0 1 2
+    5 0 6
+    9 1 0
+
     """
 
     def __init__(self, matrix=None):
