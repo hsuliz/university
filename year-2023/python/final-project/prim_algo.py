@@ -4,8 +4,24 @@ from parser import MatrixParser
 
 
 class PrimAlgorithm:
+    """Class for compute Prim's algorithm using adjacency matrix.
+
+    This class can get input from file and write solution to another file.
+    This class using MatrixParser for matrix serialization, which you can
+    find in parser.py.
+
+    """
 
     def __init__(self, matrix=None):
+        """Constructor
+
+        Args:
+            matrix (list): Optional. Matrix should be NxN. Default to None.
+
+        Returns:
+            None
+
+        """
         self.out_matrix = None
         if matrix is None:
             matrix = []
@@ -13,12 +29,33 @@ class PrimAlgorithm:
         self._V = len(matrix)
 
     def init_matrix(self, matrix):
+        """Matrix initialization
+        Uses MatrixParses class for scan matrix from file
+
+        Args:
+            matrix(list): Matrix should be NxN.
+
+        Returns:
+            None
+
+        """
         if isinstance(matrix, str):
             self.__init__(MatrixParser.scan(matrix))
         else:
             self.__init__(matrix)
 
     def calc(self, to_file=None):
+        """Minimum spanning tree finder.
+        Time complexity O(V^2)
+
+        Args:
+            to_file(str, optional): Name of output file.
+
+        Returns:
+            list: Minimum spanning tree as matrix NxN.
+                If to_file not None create a file with output.
+
+        """
         if len(self._G) is 0:
             raise ValueError("Matrix is empty!!")
         self.out_matrix = [[0 for _ in range(len(self._G))] for _ in range(len(self._G))]
@@ -47,9 +84,11 @@ class PrimAlgorithm:
         return self.out_matrix
 
     def print_mst_matrix(self):
+        """Prints Minimum spanning tree as matrix"""
         self.__print_as_matrix(self.out_matrix)
 
     def print_calc_matrix(self):
+        """Prints input matrix"""
         self.__print_as_matrix(self._G)
 
     @staticmethod
