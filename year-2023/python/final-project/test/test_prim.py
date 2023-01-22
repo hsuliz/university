@@ -30,10 +30,10 @@ def test_given_matrix_should_return_matrix(prim_algorithm):
     assert actual == expected
 
 
-def test_given_matrix_from_file_should_return_matrix(prim_algorithm):
+def test_given_matrix_from_file_should_return_matrix_and_safe_to_file(prim_algorithm):
     # given, when
-    prim_algorithm.init_matrix('test/test_matrix_in.txt')
-    actual = prim_algorithm.calc('test/test_matrix_out.txt')
+    prim_algorithm.init_matrix('test_matrix_in.txt')
+    actual = prim_algorithm.calc('test_matrix_out.txt')
     # then
     expected = [
         [0, 9, 0, 0, 0],
@@ -41,6 +41,10 @@ def test_given_matrix_from_file_should_return_matrix(prim_algorithm):
         [0, 0, 0, 51, 0],
         [0, 19, 51, 0, 31],
         [0, 0, 0, 31, 0]]
+    assert actual == expected
+    prim_algorithm.init_matrix('test_matrix_out.txt')
+    actual = prim_algorithm.calc()
+    # then
     assert actual == expected
 
 

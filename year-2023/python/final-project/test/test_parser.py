@@ -20,3 +20,7 @@ def test_given_matrix_should_parse(matrix_parser):
     ]
     # then
     assert given == expected
+
+
+if __name__ == '__main__':
+    pytest.main()
