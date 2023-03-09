@@ -1,6 +1,9 @@
-# IntelliJ
+# intelliJ
 .idea
 *.iml
+
+# compiled
+*.f95
 
 # jupyter notebook
 .ipynb_checkpoints
