@@ -15,7 +15,7 @@ program DijkstraProgram
     write(*, *) "Enter the output filename: "
     read(*, *) output_filename
 
-    if (trim(adjustl(upper(input_filename))) == "NULL") then
+    if (trim(adjustl(adjustl(input_filename))) == "NULL") then
         call generateGraph(num_vertices, num_edges, adjacency_matrix)
     else
         call readGraph(input_filename, num_vertices, num_edges, adjacency_matrix)
@@ -31,23 +31,6 @@ program DijkstraProgram
 
 contains
 
-    subroutine generateGraph(num_vertices, num_edges, adjacency_matrix)
-        integer, intent(out) :: num_vertices, num_edges
-        integer, intent(out) :: adjacency_matrix(:, :)
-        integer :: i, j, k, vertex
-        write(*, *) "Enter the number of vertices: "
-        read(*, *) num_vertices
-        write(*, *) "Enter the number of edges: "
-        read(*, *) num_edges
-        adjacency_matrix = infinity
-        write(*, *) "Enter the edges (j k vertex) for each edge:"
-        do i = 1, num_edges
-            write(*, *) "Edge ", i
-            read(*, *) j, k, vertex
-            adjacency_matrix(j, k) = vertex
-        end do
-    end subroutine generateGraph
-
     subroutine readGraph(filename, num_vertices, num_edges, adjacency_matrix)
         character(len = *), intent(in) :: filename
         integer, intent(out) :: num_vertices, num_edges
@@ -62,6 +45,23 @@ contains
         end do
         close(10)
     end subroutine readGraph
+
+    subroutine generateGraph(num_vertices, num_edges, adjacency_matrix)
+        integer, intent(out) :: num_vertices, num_edges
+        integer, intent(out) :: adjacency_matrix(:, :)
+        integer :: i, j, k, vertex
+        write(*, *) "Enter the number of vertices: "
+        read(*, *) num_vertices
+        write(*, *) "Enter the number of edges: "
+        read(*, *) num_edges
+        write(*, *) "Enter the edges (j k vertex) for each edge:"
+        adjacency_matrix = infinity
+        do i = 1, num_edges
+            write(*, *) "Edge ", i
+            read(*, *) j, k, vertex
+            adjacency_matrix(j, k) = vertex
+        end do
+    end subroutine generateGraph
 
     subroutine dijkstra(num_vertices, adjacency_matrix, distance)
         integer, intent(in) :: num_vertices
