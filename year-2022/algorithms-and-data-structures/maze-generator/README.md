@@ -1,1 +1,0 @@
-Maze generator using Prims algorithm and Java Swing.

@@ -1,0 +1,1 @@
+Write the values of 𝜋 and 𝜋² with precision from 4 to 18 decimal places.
