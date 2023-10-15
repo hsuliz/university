@@ -29,8 +29,8 @@ else
             echo "  tcsh ex_02.csh [-h --help] [arg1] [arg2]"
             echo "Options:"
             echo "  -h, --help  Displays this help message."
-            echo "  arg1        First number"
-            echo "  arg2        Second number"
+            echo "  arg1        First number."
+            echo "  arg2        Second number."
             echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
             exit 0
         endif
@@ -66,8 +66,6 @@ else
             set i = `expr $i + 1`
             set j = $num1
         end
-
-        echo
       endif
 
     else
@@ -95,7 +93,7 @@ else
                 set line = ""
 
                 while ($i <= $num2)
-                    set line = "$i "
+                    set line = "$i ->"
                     while ($j <= $num2)
                         set value = `expr $i \* $j`
                         set line = "$line $value"
@@ -107,7 +105,6 @@ else
                     set i = `expr $i + 1`
                     set j = $num1
                 end
-                echo
           endif
       endif
     endif
