@@ -1,7 +1,7 @@
 #!/bin/tcsh
 # Hlib-Oleksandr Suliz, Script Language, group no.2
 
-echo "~~~~~~~~~~~~~~~~~~~~~EXERCISE 01~~~~~~~~~~~~~~~~~~~~~\n"
+echo "~~~~~~~~~~~~~~~~~~~~~ EXERCISE 01 ~~~~~~~~~~~~~~~~~~~~~"
 
 set i = 1
 set j = 1

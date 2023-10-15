@@ -4,13 +4,13 @@
 SHOW_HELP=false
     
 help() {
-    echo "~~~~~~~~~~~~~~~~~~~~~EXERCISE 01~~~~~~~~~~~~~~~~~~~~~"
+    echo "~~~~~~~~~~~~~~~~~~~~~ EXERCISE 01 ~~~~~~~~~~~~~~~~~~~~~"
     echo "Help:"
     echo "      Printing current user login, name and surname."
-    echo "Usage: "
+    echo "Usage:"
     echo "      bash ex_01.sh [-h --help] [-q --quiet]"
     echo "Options:"
-    echo "      -h, --help    Display this help message."
+    echo "      -h, --help    Displays this help message."
     echo "      -q, --quiet   Quiet mode, do nothing."
     echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     exit 0
