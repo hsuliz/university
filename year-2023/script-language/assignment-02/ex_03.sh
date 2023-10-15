@@ -6,14 +6,15 @@ help() {
 ~~~~~~~~~~~~~~~~~~~~~ EXERCISE 03 ~~~~~~~~~~~~~~~~~~~~~
 Help:
   Printing a table of your desirable operator with two arguments.
+  Order of arguments doesn't matter.
   Operators to use: +, -, \*, /, ^, %
 Usage:
   bash ex_03.sh [-h --help] [num1] [num2] [operator]
 Options:
   -h, --help   Displays this help message.
-  num1        First number.
-  num2        Second number.
-  operator    The operator (+, -, *, /, ^, %).
+  num1         First number.
+  num2         Second number.
+  operator     The operator (+, -, *, /, ^, %).
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 EOF
   exit 0
