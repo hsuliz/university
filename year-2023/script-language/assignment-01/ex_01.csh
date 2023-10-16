@@ -4,11 +4,11 @@
 set SHOW_HELP = 0
 set QUIET_MODE = 0
 
-alias help 'echo "~~~~~~~~~~~~~~~~~~~~~EXERCISE 01~~~~~~~~~~~~~~~~~~~~~"; \
+alias help 'echo "~~~~~~~~~~~~~~~~~~~~~ EXERCISE 01 ~~~~~~~~~~~~~~~~~~~~~"; \
             echo "Help:"; \
             echo "      Printing current user login, name, and surname."; \
             echo "Usage: "; \
-            echo "      ex_01.tcsh [-h --help] [-q --quiet]"; \
+            echo "      tcsh ex_01.tcsh [-h --help] [-q --quiet]"; \
             echo "Options:"; \
             echo "      -h, --help    Display this help message."; \
             echo "      -q, --quiet   Quiet mode, do nothing."; \
