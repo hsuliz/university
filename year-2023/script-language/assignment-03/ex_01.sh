@@ -30,15 +30,11 @@ IS_VALID_IP() {
 }
 
 INCORRECT_IP_ERROR() {
-    cat <<EOF
-EXCEPTION: Given ip $1 is incorrect!!
-EOF
+    echo "Given IP $1 is incorrect!!"
 }
 
 NO_ARGUMENTS_ERROR() {
-    cat <<EOF
-EXCEPTION: How i supposed to work without arguments? Provide some..
-EOF
+    echo "EXCEPTION: How i supposed to work without arguments\? Provide some.."
 }
 
 PING_ON_IP() {

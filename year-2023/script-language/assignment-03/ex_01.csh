@@ -8,6 +8,7 @@ if ($#argv <= 1) then
       cat <<EOF
 Help:
   This program pings a range of IP addresses and provides their status.
+  DONT FORGET!! IT'S USING EXTERNAL SCRIPT NAMED BY 'valid_ip.csh'!! ヽ༼ ಠ益ಠ ༽ﾉ
 Usage:
   tcsh ex_01.tcsh [-h --help] [IP1] [IP2]
 Options:
