@@ -3,16 +3,16 @@
 
 echo "~~~~~~~~~~~~~~~~~~~~~ EXERCISE 02 ~~~~~~~~~~~~~~~~~~~~~"
 
-VALID_IP() {
-    IP=$1
+valid_ip() {
+    ip=$1
 
-    if [[ $IP =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+    if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
         OIFS=$IFS
         IFS='.'
-        IP=($IP)
+        ip=($ip)
         IFS=$OIFS
 
-        if [[ ${IP[0]} -le 255 && ${IP[1]} -le 255 && ${IP[2]} -le 255 && ${IP[3]} -le 255 ]]; then
+        if [[ ${ip[0]} -le 255 && ${ip[1]} -le 255 && ${ip[2]} -le 255 && ${ip[3]} -le 255 ]]; then
             echo 1
             exit
         fi
@@ -20,153 +20,138 @@ VALID_IP() {
     echo 0
 }
 
-IS_VALID_IP() {
-    local IP="$1"
+valid_port() {
+    port=$1
 
-    if [[ $IP =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
-        IFS='.' read -ra IP_PARTS <<< "$IP"
-
-        if [[ ${IP_PARTS[0]} -le 255 && ${IP_PARTS[1]} -le 255 && ${IP_PARTS[2]} -le 255 && ${IP_PARTS[3]} -le 255 ]]; then
-            return 0
-        fi
-    fi
-    return 1
-}
-
-HELP() {
-  cat <<EOF
-Help:
-  This program pings a range of IP addresses and provides their status.
-Usage:
-  bash ex_02.sh [-h --help] [IP1] [IP2] [PORT]
-Options:
-  -h, --help   Displays this help message.
-  IP1          The first IP address (or the starting IP in a range).
-  IP2          The second IP address (or the ending IP in a range).
-  PORT         Port of IP address.
-EOF
-}
-
-IS_VALID_PORT() {
-    PORT=$1
-
-    if [[ $PORT =~ ^[0-9]+$ ]]; then
-        echo 1
+    if [[ $port =~ ^[0-9]+$ ]]; then
+      echo 1
     else
-        echo 0
+      echo 0
     fi
 }
 
-INCORRECT_IP() {
-    echo "Given IP $1 is incorrect!!"
+
+incorrect_ip() {
+    echo "EXCEPTION: IP is incorrect!!"
 }
 
-NO_PORT_ERROR() {
-    echo "EXCEPTION: port is invalid.."
+no_port_error() {
+    echo "EXCEPTION: Provide port number.."
 }
 
-NO_ARGUMENTS_ERROR() {
-    echo "EXCEPTION: How i supposed to work without arguments? Provide some.."
+
+invalid_arg() {
+    echo "EXCEPTION: Too much arguments.."
 }
 
-PING_ON_IP() {
-    PORTS=("$2")
-    RESULT="$1: "
 
-    for PORT in "${PORTS[@]}"; do
-        if [ $PORT -eq 22 ]; then
-            EXTRA=$(ssh -v -o ConnectTimeout=1 "$1" sleep 1 2>&1 | grep -E -o '^[a-zA-Z0-9 _.]+ ')
-            if [ "$EXTRA" != "" ]; then
-                RESULT="${RESULT}${PORT} - ${EXTRA},"
-            fi
-            continue
-        fi
+ping_on_ip() {
+  ports=$2
+  result="$1: "
 
-        RESP=$(echo "stats" | nc -w 1 -v "$1" "$PORT" 2>&1)
+  for port in "${ports[@]}"; do
+    if [ $port -eq 22 ]; then
+      extra=`ssh -v -o  ConnectTimeout=1 $1 sleep 1 2>&1 | grep -E -o '^[a-zA-Z0-9 _.]+ '`
+      if [ "$extra" != "" ]; then
+        result="${result}${port} - ${extra},"
+      fi
+      continue
+    fi
 
+    resp=$(echo "stats" | nc -w 1 -v $1 $port 2>&1)
+
+    if [ $? -eq 0 ]; then
+        server=$(echo "$resp" | grep "Server")
         if [ $? -eq 0 ]; then
-            SERVER=$(echo "$RESP" | grep "Server")
-            if [ $? -eq 0 ]; then
-                RESP_SPLIT=($SERVER)
-                CLEANED_SERVER=${RESP_SPLIT[1]//[$'\t\r\n']}
-                RESULT="${RESULT} $PORT - ${CLEANED_SERVER}"
-            fi
-            RESP_SPLIT=($RESP)
-            RESULT="${RESULT}${RESP_SPLIT[5]} - opened :) "
-        else
-            RESULT="${RESULT}$PORT - closed ;( "
+            respSplit=(${server//:/ })
+            cleanedServer=${respSplit[1]//[$'\t\r\n']}
+            result="${result} $port - ${cleanedServer}"
         fi
+        respSplit=(${resp// / })
+        result="${result}${respSplit[5]} - opened, "
+    else
+        result="${result}$port - closed, "
+    fi
 
-    done
-    echo $RESULT
+  done
+  echo $result
+
 }
 
-IPS=()
-PORTS=()
+ips=()
+ports=()
 
-for ARG in "$@"; do
-    if [ "$ARG" == "-h" ] || [ "$ARG" == "--help" ]
-    then
-      HELP
-      exit 0
-    fi
-    RES=$(VALID_IP $ARG)
+for arg in "$@"
+do
+  res=$(valid_ip $arg)
 
-    if [ "$RES" == "1" ]; then
-        IPS+=($ARG)
-    else
-        PORTS_ARG=(${ARG//,/ })
+  if [ "$res" == "1" ]; then
+    ips+=($arg)
+  else
+    ports_arg=(${arg//,/ })
 
-        for PORT in "${PORTS_ARG[@]}"; do
-            VALID=$(IS_VALID_PORT $PORT)
-            if [ "$VALID" == "1" ]; then
-                PORTS+=($PORT)
-            else
-                NO_ARGUMENTS_ERROR
-                exit 1
-            fi
-        done
-    fi
+    for port in "${ports_arg[@]}"; do
+      valid=$(valid_port $port)
+      if [ "$valid" == "1" ]; then
+        ports+=(${port})
+      else
+        invalid_arg
+        exit 1
+      fi
+    done
+  fi
 done
 
+ip_nr=${#ips[@]}
+ports_nr=${#ports[@]}
 
-if [ $# -lt 3 ]; then
-    NO_ARGUMENTS_ERROR
-    exit 0
+if [ $ip_nr -eq 0 ]; then
+  incorrect_ip
+  exit 1
+elif [ $ports_nr -eq 0 ]; then
+  no_port_error
+  exit 1
+fi
+
+if [ "${#ips[@]}" -eq 1 ]; then
+   ping_on_ip $1 $ports
 else
-    OIFS=$IFS
-        IFS='.'
-        PING_1=(${IPS[0]})
-        PING_2=(${IPS[1]})
-        IFS=$OIFS
+  OIFS=$IFS
+  IFS='.'
+  ping_1=(${ips[0]})
+  ping_2=(${ips[1]})
+  IFS=$OIFS
 
-        for ((i=0; i<${#PING_1[@]}; i++)); do
-            if [ ${PING_1[$i]} -gt ${PING_2[$i]} ]; then
-                TEMP=(" ${PING_1[@]}")
-                PING_1=(" ${PING_2[@]}")
-                PING_2=(" ${TEMP[@]}")
-                break
-            elif [ ${PING_1[$i]} -lt ${PING_2[$i]} ]; then
-                break
-            fi
-        done
+  for (( i=0; i<${#ping_1[@]}; i++ ))
+  do
+    if [ ${ping_1[$i]} -gt ${ping_2[$i]} ]; then
+      temp=( "${ping_1[@]}" )
+      ping_1=( "${ping_2[@]}" )
+      ping_2=( "${temp[@]}" )
+      break;
+    elif [ ${ping_1[$i]} -lt ${ping_2[$i]} ]; then
+      break;
+    fi
+  done
 
-        P_1=$(IFS=$'.'; echo "${PING_1[*]}")
-        P_2=$(IFS=$'.'; echo "${PING_2[*]}")
+  p_1=$( IFS=$'.'; echo "${ping_1[*]}" )
+  p_2=$( IFS=$'.'; echo "${ping_2[*]}" )
 
-        PING_ON_IP $P_1 $PORTS
+  ping_on_ip $p_1 $ports
 
-        while [ "$P_1" != "$P_2" ]; do
-            I=3
+  while [ "$p_1" != "$p_2" ];
+  do
+    i=3
 
-            while [ ${PING_1[$I]} -eq 255 ]; do
-                PING_1[$I]=0
-                I=$(($I - 1))
-            done
+    while [ ${ping_1[$i]} -eq 255 ];
+    do
+      ping_1[$i]=0
+      i=$(( $i - 1 ))
+    done
 
-            PING_1[$I]=$((${PING_1[$I]} + 1))
-            P_1=$(IFS=$'.'; echo "${PING_1[*]}")
+    ping_1[$i]=$(( ${ping_1[$i]} + 1 ))
+    p_1=$( IFS=$'.'; echo "${ping_1[*]}" )
 
-            PING_ON_IP $P_1 $PORTS
-        done
+      ping_on_ip $p_1 $ports
+  done
 fi
