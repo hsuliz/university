@@ -1,6 +1,7 @@
 # intelliJ
 *.idea/
 *.iml
+.DS_Store
 
 # jupyter notebook
 .ipynb_checkpoints
