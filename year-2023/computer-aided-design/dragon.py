@@ -65,12 +65,10 @@ for i, char in enumerate(dragon_string):
     if char == 'F':
         x += cube_size
     elif char == '-':
-        # Turn left
+
         angle = math.radians(-90)
         x, y = x * math.cos(angle) - y * math.sin(angle), x * math.sin(angle) + y * math.cos(angle)
     elif char == '+':
-        # Turn right
+
         angle = math.radians(90)
         x, y = x * math.cos(angle) - y * math.sin(angle), x * math.sin(angle) + y * math.cos(angle)
-
-
