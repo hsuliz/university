@@ -7,5 +7,5 @@ public interface ResultListener {
      *
      * @param result rezultat ekspoloracji lokacji
      */
-    public void result(Result result);
+    void result(Result result);
 }

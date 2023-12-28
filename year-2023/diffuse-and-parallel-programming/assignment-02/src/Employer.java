@@ -10,7 +10,7 @@ public interface Employer {
      *
      * @param order narzędzie do eksploracji labiryntu
      */
-    public void setOrderInterface(OrderInterface order);
+    void setOrderInterface(OrderInterface order);
 
     /**
      * Rozpoczyna się poszukiwanie wyjścia. Do metody przekazywane jest początkowe
@@ -23,5 +23,5 @@ public interface Employer {
      * @param allowedDirections dozwolone kierunki dalszej ekspoloracji labiryntu
      * @return położenie, w którym znajduje się wyjście z labiryntu
      */
-    public Location findExit(Location startLocation, List<Direction> allowedDirections);
+    Location findExit(Location startLocation, List<Direction> allowedDirections);
 }

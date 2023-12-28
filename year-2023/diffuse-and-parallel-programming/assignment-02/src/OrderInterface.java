@@ -10,7 +10,7 @@ public interface OrderInterface {
      *
      * @param listener obiekt oczekujący na wyniki eksploracji
      */
-    public void setResultListener(ResultListener listener);
+    void setResultListener(ResultListener listener);
 
     /**
      * Zlecenie eksploracji wskazanej lokacji labiryntu. Metoda zapisuje zlecenie i
@@ -19,5 +19,5 @@ public interface OrderInterface {
      * @param location położenie w labiryncie do zbadania
      * @return unikalny identyfikator zlecenia.
      */
-    public int order(Location location);
+    int order(Location location);
 }

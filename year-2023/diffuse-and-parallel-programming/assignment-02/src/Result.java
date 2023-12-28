@@ -9,14 +9,14 @@ public interface Result {
      *
      * @return numer zlecenia
      */
-    public int orderID();
+    int orderID();
 
     /**
      * Typ lokacji
      *
      * @return typ lokacji
      */
-    public LocationType type();
+    LocationType type();
 
     /**
      * Możliwe kierunki ruchu z danej lokacji. Sensowna wartość zwracana jest w
@@ -25,5 +25,7 @@ public interface Result {
      *
      * @return lista kierunków
      */
-    public List<Direction> allowedDirections();
+    List<Direction> allowedDirections();
+
+
 }

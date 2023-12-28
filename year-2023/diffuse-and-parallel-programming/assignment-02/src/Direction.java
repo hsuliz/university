@@ -28,7 +28,6 @@ public enum Direction {
         public Location step(Location currentLocation) {
             return new Location(currentLocation.col() + 1, currentLocation.row());
         }
-
     },
     /**
      * Na zachód
@@ -46,5 +45,5 @@ public enum Direction {
      * @param currentLocation aktualne położenie
      * @return następne położenie
      */
-    abstract public Location step(Location currentLocation);
+    public abstract Location step(Location currentLocation);
 }

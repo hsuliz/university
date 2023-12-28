@@ -15,5 +15,5 @@ public enum LocationType {
      * Przejście, generalnie pusta przestrzeń pozwalająca na przemieszczanie
      * się w labiryncie
      */
-    PASSAGE;
+    PASSAGE
 }
