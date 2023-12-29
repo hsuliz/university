@@ -1,23 +1,27 @@
-import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ParallelEmployer implements Employer {
 
-    private final int availableProcessors = Runtime.getRuntime().availableProcessors();
-    private final ExecutorService executorService = Executors.newCachedThreadPool();
-    private final HashMap<Integer, Result> map = new HashMap<>();
+    private final Map<Integer, Location> orderMap = new ConcurrentHashMap<>();
+    private final BlockingQueue<Result> dataQueue = new LinkedBlockingQueue<>();
+    private final ForkJoinPool forkJoinPool = new ForkJoinPool();
     private final Lock lock = new ReentrantLock();
     private final Condition condition = lock.newCondition();
+    // orderID, type, allowedDirections
     private final ResultListener resultListener = result -> {
         lock.lock();
         try {
-            map.put(result.orderID(), result);
-            condition.signalAll();
+            dataQueue.put(result);
+            condition.signal();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         } finally {
             lock.unlock();
         }
@@ -25,35 +29,67 @@ public class ParallelEmployer implements Employer {
     private OrderInterface orderInterface;
 
     @Override
-    public synchronized void setOrderInterface(OrderInterface order) {
+    public void setOrderInterface(OrderInterface order) {
         this.orderInterface = order;
+        orderInterface.setResultListener(resultListener);
     }
 
     @Override
-    public synchronized Location findExit(Location startLocation, List<Direction> allowedDirections) {
-        ExecutorService executorService = Executors.newCachedThreadPool();
+    public Location findExit(Location startLocation, List<Direction> allowedDirections) {
+        DataConsumer consumer = new DataConsumer();
+        forkJoinPool.execute(consumer);
 
-        for (int i = 0; i < 10; i++) {
-            int finalI = i;
-            executorService.submit(() -> {
-                lock.lock();
-                try {
-                    orderInterface.setResultListener(resultListener);
-                    var orderId = orderInterface.order(new Location(startLocation.col() - finalI, startLocation.row()));
-                    while (map.get(orderId) == null) {
-                        condition.await();
+        orderMap.put(orderInterface.order(startLocation), startLocation);
+
+        return null;
+    }
+
+    private class DataConsumer extends RecursiveAction {
+        private final Set<Location> visitedLocations = ConcurrentHashMap.newKeySet();
+
+        @Override
+        protected void compute() {
+            try {
+                while (true) {
+                    Result result = dataQueue.take();
+                    // Process the data as needed
+                    System.out.println("Consumed: " + result);
+                    Location location = orderMap.get(result.orderID());
+
+                    if (visitedLocations.contains(location)) {
+                        // Skip exploring if the location has already been visited
+                        continue;
                     }
 
-                    System.out.println(map.get(orderId));
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    visitedLocations.add(location);
+
+                    result.allowedDirections().forEach(direction -> {
+                        forkJoinPool.execute(() -> {
+                            exploreDirection(direction, location);
+                        });
+                    });
+
+                    if (Objects.equals(result.type(), LocationType.EXIT)) {
+                        System.out.println("Found exit!!");
+                        break;
+                    }
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        private void exploreDirection(Direction direction, Location location) {
+            forkJoinPool.execute(() -> {
+                Location newLocation = direction.step(location);
+                lock.lock();
+                try {
+                    var orderId = orderInterface.order(newLocation);
+                    orderMap.put(orderId, newLocation);
                 } finally {
                     lock.unlock();
                 }
             });
         }
-
-        executorService.shutdown();
-        return null;
     }
 }
