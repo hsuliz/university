@@ -49,7 +49,7 @@ public class ParallelEmployer implements Employer {
         return exitLocation;
     }
 
-    private class DataConsumer extends RecursiveTask<Location> {
+    private class DataConsumer extends RecursiveAction {
 
         private final AtomicBoolean exitFound = new AtomicBoolean(false);
         private final Set<Location> visitedLocations = ConcurrentHashMap.newKeySet();
@@ -60,34 +60,27 @@ public class ParallelEmployer implements Employer {
         }
 
         @Override
-        protected Location compute() {
+        protected void compute() {
             try {
                 while (!exitFound.get()) {
                     Result result = dataQueue.take();
-                    // Process the data as needed
-                    // System.out.println("Consumed: " + result);
                     Location location = orderMap.get(result.orderID());
 
                     lock.lock();
-                    try{
+                    try {
                         if (visitedLocations.contains(location)) {
                             System.out.println("Same loc");
                             visitedLocations.add(location);
-                            // Skip exploring if the location has already been visited
                             continue;
                         }
-                    } finally{
+                    } finally {
                         lock.unlock();
                     }
 
-
                     visitedLocations.add(location);
 
-                    result.allowedDirections().forEach(direction -> {
-                        forkJoinPool.execute(() -> {
-                            exploreDirection(direction, location);
-                        });
-                    });
+                    result.allowedDirections()
+                            .forEach(direction -> forkJoinPool.execute(() -> exploreDirection(direction, location)));
 
                     if (Objects.equals(result.type(), LocationType.EXIT)) {
                         exitFound.set(true);
@@ -99,7 +92,6 @@ public class ParallelEmployer implements Employer {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            return exitLocation;
         }
 
         private void exploreDirection(Direction direction, Location location) {
@@ -108,7 +100,6 @@ public class ParallelEmployer implements Employer {
                 lock.lock();
                 try {
                     var orderId = orderInterface.order(newLocation);
-                    System.out.println("Exploring: " + newLocation + ", OrderID: " + orderId);
                     orderMap.put(orderId, newLocation);
                 } finally {
                     lock.unlock();
