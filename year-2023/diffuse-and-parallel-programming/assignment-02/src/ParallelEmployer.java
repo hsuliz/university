@@ -3,6 +3,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -16,16 +17,13 @@ public class ParallelEmployer implements Employer {
     private final Condition condition = lock.newCondition();
     // orderID, type, allowedDirections
     private final ResultListener resultListener = result -> {
-        lock.lock();
         try {
             dataQueue.put(result);
-            condition.signal();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        } finally {
-            lock.unlock();
         }
     };
+    private Location exitLocation;
     private OrderInterface orderInterface;
 
     @Override
@@ -37,29 +35,51 @@ public class ParallelEmployer implements Employer {
     @Override
     public Location findExit(Location startLocation, List<Direction> allowedDirections) {
         DataConsumer consumer = new DataConsumer();
+        CountDownLatch latch = new CountDownLatch(1);
+        consumer.setLatch(latch);
         forkJoinPool.execute(consumer);
-
         orderMap.put(orderInterface.order(startLocation), startLocation);
 
-        return null;
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        return exitLocation;
     }
 
-    private class DataConsumer extends RecursiveAction {
+    private class DataConsumer extends RecursiveTask<Location> {
+
+        private final AtomicBoolean exitFound = new AtomicBoolean(false);
         private final Set<Location> visitedLocations = ConcurrentHashMap.newKeySet();
+        private CountDownLatch latch;
+
+        public void setLatch(CountDownLatch latch) {
+            this.latch = latch;
+        }
 
         @Override
-        protected void compute() {
+        protected Location compute() {
             try {
-                while (true) {
+                while (!exitFound.get()) {
                     Result result = dataQueue.take();
                     // Process the data as needed
-                    System.out.println("Consumed: " + result);
+                    // System.out.println("Consumed: " + result);
                     Location location = orderMap.get(result.orderID());
 
-                    if (visitedLocations.contains(location)) {
-                        // Skip exploring if the location has already been visited
-                        continue;
+                    lock.lock();
+                    try{
+                        if (visitedLocations.contains(location)) {
+                            System.out.println("Same loc");
+                            visitedLocations.add(location);
+                            // Skip exploring if the location has already been visited
+                            continue;
+                        }
+                    } finally{
+                        lock.unlock();
                     }
+
 
                     visitedLocations.add(location);
 
@@ -70,13 +90,16 @@ public class ParallelEmployer implements Employer {
                     });
 
                     if (Objects.equals(result.type(), LocationType.EXIT)) {
-                        System.out.println("Found exit!!");
+                        exitFound.set(true);
+                        exitLocation = location;
+                        latch.countDown();
                         break;
                     }
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
+            return exitLocation;
         }
 
         private void exploreDirection(Direction direction, Location location) {
@@ -85,6 +108,7 @@ public class ParallelEmployer implements Employer {
                 lock.lock();
                 try {
                     var orderId = orderInterface.order(newLocation);
+                    System.out.println("Exploring: " + newLocation + ", OrderID: " + orderId);
                     orderMap.put(orderId, newLocation);
                 } finally {
                     lock.unlock();
