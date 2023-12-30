@@ -10,8 +10,7 @@ public class ParallelEmployer implements Employer {
 
     private final Map<Integer, Location> orderMap = new ConcurrentHashMap<>();
     private final BlockingQueue<Result> dataQueue = new LinkedTransferQueue<>();
-    private final ExecutorService executorService =
-            Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private final ExecutorService executorService = Executors.newCachedThreadPool();
     private final ConcurrentHashMap<Location, Boolean> visitedLocations = new ConcurrentHashMap<>();
     private final Lock lock = new ReentrantLock();
     private final ResultListener resultListener = result -> {
@@ -92,8 +91,7 @@ public class ParallelEmployer implements Employer {
                 Location newLocation = direction.step(location);
                 lock.lock();
                 try {
-                    var directions = orderMap.values();
-                    if (directions.contains(newLocation)) {
+                    if (orderMap.containsValue(newLocation)) {
                         return;
                     }
                     var orderId = orderInterface.order(newLocation);
