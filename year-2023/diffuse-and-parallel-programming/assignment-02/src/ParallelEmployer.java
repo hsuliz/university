@@ -1,7 +1,6 @@
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
@@ -9,13 +8,12 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ParallelEmployer implements Employer {
 
-    private final Set<Location> locations = ConcurrentHashMap.newKeySet();
     private final Map<Integer, Location> orderMap = new ConcurrentHashMap<>();
     private final BlockingQueue<Result> dataQueue = new LinkedTransferQueue<>();
-    private final ForkJoinPool forkJoinPool = new ForkJoinPool();
-    private final Set<Location> visitedLocations = ConcurrentHashMap.newKeySet();
+    private final ExecutorService executorService =
+            Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private final ConcurrentHashMap<Location, Boolean> visitedLocations = new ConcurrentHashMap<>();
     private final Lock lock = new ReentrantLock();
-    // orderID, type, allowedDirections
     private final ResultListener resultListener = result -> {
         try {
             dataQueue.put(result);
@@ -37,13 +35,15 @@ public class ParallelEmployer implements Employer {
         DataConsumer consumer = new DataConsumer();
         CountDownLatch latch = new CountDownLatch(1);
         consumer.setLatch(latch);
-        forkJoinPool.execute(consumer);
+        executorService.submit(consumer);
         orderMap.put(orderInterface.order(startLocation), startLocation);
 
         try {
             latch.await();
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
+        } finally {
+            executorService.shutdown();
         }
 
         return exitLocation;
@@ -65,26 +65,17 @@ public class ParallelEmployer implements Employer {
                     Result result = dataQueue.take();
                     Location location = orderMap.get(result.orderID());
 
-                    lock.lock();
-                    try {
-                        if (visitedLocations.contains(location)) {
-                            //visitedLocations.add(location);
-                            continue;
-                        }
-                    } finally {
-                        lock.unlock();
+                    if (isVisited(location)) {
+                        continue;
                     }
 
-                    visitedLocations.add(location);
-
                     result.allowedDirections()
-                            .forEach(direction -> forkJoinPool.execute(() -> exploreDirection(direction, location)));
+                            .forEach(direction -> executorService.submit(() -> exploreDirection(direction, location)));
 
                     if (Objects.equals(result.type(), LocationType.EXIT)) {
                         exitFound.set(true);
                         exitLocation = location;
                         latch.countDown();
-                        break;
                     }
                 }
             } catch (InterruptedException e) {
@@ -92,8 +83,12 @@ public class ParallelEmployer implements Employer {
             }
         }
 
+        private boolean isVisited(Location location) {
+            return visitedLocations.putIfAbsent(location, true) != null;
+        }
+
         private void exploreDirection(Direction direction, Location location) {
-            forkJoinPool.execute(() -> {
+            executorService.submit(() -> {
                 Location newLocation = direction.step(location);
                 lock.lock();
                 try {
@@ -102,7 +97,6 @@ public class ParallelEmployer implements Employer {
                         return;
                     }
                     var orderId = orderInterface.order(newLocation);
-                    //System.out.println(Thread.currentThread() + " -> " + orderId + " -> " + newLocation);
                     orderMap.put(orderId, newLocation);
                 } finally {
                     lock.unlock();

@@ -2,6 +2,7 @@
  * Możliwe typy lokacji znajdujących się w labiryncie.
  */
 public enum LocationType {
+
     /**
      * Ściana. Odebranie tego typu lokacji oznacza niestety porażkę. Program
      * źle przetwarzał otrzymywane wyniki i trafił do wnętrza ściany.

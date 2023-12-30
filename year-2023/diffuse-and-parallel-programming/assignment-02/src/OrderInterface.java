@@ -11,7 +11,6 @@ public interface OrderInterface {
      * @param listener obiekt oczekujący na wyniki eksploracji
      */
     void setResultListener(ResultListener listener);
-
     /**
      * Zlecenie eksploracji wskazanej lokacji labiryntu. Metoda zapisuje zlecenie i
      * kończy pracę. Zlecenie wykonane zostanie w dowolnym terminie.

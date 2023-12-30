@@ -4,6 +4,7 @@ import java.util.List;
  * Interfejs zleceniodawcy zadań eksporacji labiryntu.
  */
 public interface Employer {
+
     /**
      * Metoda ustawia dostęp do obiektu umożliwiającego zlecanie eksploracji
      * wskazanych lokacji labiryntu.
