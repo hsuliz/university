@@ -4,17 +4,17 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ParallelEmployer implements Employer {
 
+    private final Set<Location> locations = ConcurrentHashMap.newKeySet();
     private final Map<Integer, Location> orderMap = new ConcurrentHashMap<>();
-    private final BlockingQueue<Result> dataQueue = new LinkedBlockingQueue<>();
+    private final BlockingQueue<Result> dataQueue = new LinkedTransferQueue<>();
     private final ForkJoinPool forkJoinPool = new ForkJoinPool();
+    private final Set<Location> visitedLocations = ConcurrentHashMap.newKeySet();
     private final Lock lock = new ReentrantLock();
-    private final Condition condition = lock.newCondition();
     // orderID, type, allowedDirections
     private final ResultListener resultListener = result -> {
         try {
@@ -49,10 +49,9 @@ public class ParallelEmployer implements Employer {
         return exitLocation;
     }
 
-    private class DataConsumer extends RecursiveAction {
+    private class DataConsumer implements Runnable {
 
         private final AtomicBoolean exitFound = new AtomicBoolean(false);
-        private final Set<Location> visitedLocations = ConcurrentHashMap.newKeySet();
         private CountDownLatch latch;
 
         public void setLatch(CountDownLatch latch) {
@@ -60,7 +59,7 @@ public class ParallelEmployer implements Employer {
         }
 
         @Override
-        protected void compute() {
+        public void run() {
             try {
                 while (!exitFound.get()) {
                     Result result = dataQueue.take();
@@ -69,8 +68,7 @@ public class ParallelEmployer implements Employer {
                     lock.lock();
                     try {
                         if (visitedLocations.contains(location)) {
-                            System.out.println("Same loc");
-                            visitedLocations.add(location);
+                            //visitedLocations.add(location);
                             continue;
                         }
                     } finally {
@@ -99,7 +97,12 @@ public class ParallelEmployer implements Employer {
                 Location newLocation = direction.step(location);
                 lock.lock();
                 try {
+                    var directions = orderMap.values();
+                    if (directions.contains(newLocation)) {
+                        return;
+                    }
                     var orderId = orderInterface.order(newLocation);
+                    //System.out.println(Thread.currentThread() + " -> " + orderId + " -> " + newLocation);
                     orderMap.put(orderId, newLocation);
                 } finally {
                     lock.unlock();
