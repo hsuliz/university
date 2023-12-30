@@ -13,13 +13,7 @@ public class ParallelEmployer implements Employer {
     private final ExecutorService executorService = Executors.newCachedThreadPool();
     private final ConcurrentHashMap<Location, Boolean> visitedLocations = new ConcurrentHashMap<>();
     private final Lock lock = new ReentrantLock();
-    private final ResultListener resultListener = result -> {
-        try {
-            dataQueue.put(result);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    };
+    private final ResultListener resultListener = this::putResultToQueue;
     private Location exitLocation;
     private OrderInterface orderInterface;
 
@@ -31,55 +25,70 @@ public class ParallelEmployer implements Employer {
 
     @Override
     public Location findExit(Location startLocation, List<Direction> allowedDirections) {
-        DataConsumer consumer = new DataConsumer();
         CountDownLatch latch = new CountDownLatch(1);
-        consumer.setLatch(latch);
+        DataConsumer consumer = new DataConsumer(latch);
         executorService.submit(consumer);
         orderMap.put(orderInterface.order(startLocation), startLocation);
+        waitForExit(latch);
+        return exitLocation;
+    }
 
+    private void waitForExit(CountDownLatch latch) {
         try {
             latch.await();
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
         } finally {
             executorService.shutdown();
         }
+    }
 
-        return exitLocation;
+    private void putResultToQueue(Result result) {
+        try {
+            dataQueue.put(result);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private class DataConsumer implements Runnable {
 
         private final AtomicBoolean exitFound = new AtomicBoolean(false);
-        private CountDownLatch latch;
+        private final CountDownLatch latch;
 
-        public void setLatch(CountDownLatch latch) {
+        public DataConsumer(CountDownLatch latch) {
             this.latch = latch;
         }
 
         @Override
         public void run() {
-            try {
-                while (!exitFound.get()) {
-                    Result result = dataQueue.take();
-                    Location location = orderMap.get(result.orderID());
+            while (!exitFound.get()) {
+                Result result = getResult();
+                Location location = orderMap.get(result.orderID());
 
-                    if (isVisited(location)) {
-                        continue;
-                    }
-
-                    result.allowedDirections()
-                            .forEach(direction -> executorService.submit(() -> exploreDirection(direction, location)));
-
-                    if (Objects.equals(result.type(), LocationType.EXIT)) {
-                        exitFound.set(true);
-                        exitLocation = location;
-                        latch.countDown();
-                    }
+                if (isVisited(location)) {
+                    continue;
                 }
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+
+                result.allowedDirections()
+                        .forEach(direction -> executorService.submit(() -> exploreDirection(direction, location)));
+
+                if (Objects.equals(result.type(), LocationType.EXIT)) {
+                    exitFound.set(true);
+                    exitLocation = location;
+                    latch.countDown();
+                }
             }
+        }
+
+        private Result getResult() {
+            Result result;
+            try {
+                result = dataQueue.take();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return result;
         }
 
         private boolean isVisited(Location location) {
