@@ -1,10 +1,10 @@
-## Assignment 02
+# Assignment 02
 
-### Task Idea
+## Task Idea
 
 Find the exit from an unknown labyrinth.
 
-### Problem Description
+## Problem Description
 
 We start a journey through an unknown labyrinth. The labyrinth has many paths arranged on one level of a game board. The
 board is divided into square fields (locations) of the same size. Some paths are dead ends, and some introduce loops.
@@ -18,7 +18,7 @@ An example labyrinth is shown in the image below:
 
 The location placed in the bottom-left corner of the labyrinth has the position (row=0, col=0).
 
-### Searching for the Exit
+## Searching for the Exit
 
 When searching for the exit, follow these rules:
 
@@ -31,14 +31,14 @@ When searching for the exit, follow these rules:
   orders for rooms to the east and west should be immediately triggered (if these rooms have not been explored yet).
 - In general, always delegate exploration orders to all positions that can be explored according to the previous points.
 
-### Feedback
+## Feedback
 
 Orders will be executed in the background, but the execution time is generally unknown. Later orders may finish earlier.
 Orders may even finish at the same time. Each order will be executed.
 
 Expect that each call to the `result` method of the `ResultListener` interface will be executed by a different thread.
 
-### Defeat
+## Defeat
 
 Reasons for failure:
 
@@ -54,14 +54,14 @@ Reasons for failure:
 - Using CPU time when the program has nothing to do, i.e., when waiting for the results of orders. Unused threads must
   be put to sleep!
 
-### Observer
+## Observer
 
 Since it is unknown when an order will be executed by my code, and there are no methods for "querying," the observer
 pattern must be used. The object receiving orders must be provided by you before the first order. Each order will
 receive a unique number. The observer will receive information about the specified location along with the order number,
 allowing the result to be associated with the order.
 
-### Communication
+## Communication
 
 Your code communicates solely through the `Employer` interface.
 
@@ -73,7 +73,7 @@ Your code communicates solely through the `Employer` interface.
 5. My program will, at any time, provide the result of an order.
 6. The last steps are repeated until the exit is found. Finding the exit should conclude the `start()` method.
 
-### Delivering the Solution
+## Delivering the Solution
 
 Please provide the source code for the `ParallelEmployer` class. You can include your own methods and fields in the
 class. The class should implement the `Employer` interface.
@@ -86,11 +86,11 @@ Do not include the code I provide in the solutions. It will be available during 
 
 The programs will be tested using Java version 17.
 
-### Appendix
+## Appendix
 
 I added the `Location` record, which is used by the `Direction` enum. You can apply it in your solution if you wish.
 It's optional.
 
-#### Test
+## Test result
 
-<img title="a title" alt="Alt text" src="cute.png">
+![Test result](cute.png)
