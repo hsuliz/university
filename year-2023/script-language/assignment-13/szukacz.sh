@@ -9,22 +9,14 @@ count_pattern_occurrences() {
 
     find "$directory" -type f | while read -r file_path; do
         local content
-        if content=$(cat "$file_path" 2>/dev/null); then
-            for pattern in "${patterns[@]}"; do
-                local count=$(grep -o -F "$pattern" <<< "$content" | wc -l)
-                if [ "$count" -gt 0 ]; then
-                    echo "$file_path: $count $pattern occurrences"
-                fi
-            done
-        else
-            error_files+=("$file_path")
-        fi
+        content=$(cat "$file_path" 2>/dev/null)
+        for pattern in "${patterns[@]}"; do
+            local count=$(grep -o -F "$pattern" <<< "$content" | wc -l)
+            if [ "$count" -gt 0 ]; then
+                echo "$file_path: $count $pattern occurrences"
+            fi
+        done
     done
-
-    if [ ${#error_files[@]} -gt 0 ]; then
-        echo "Error accessing the following files/folders:"
-        printf "%s\n" "${error_files[@]}"
-    fi
 }
 
 main() {
