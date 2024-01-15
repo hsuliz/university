@@ -1,48 +1,75 @@
-class Student:
-    first_name = ''
-    second_name = ''
-    grades = list()
+import sys
+import os
+import re
 
+def parse_score(score_str):
+    # Funkcja do parsowania ocen z uwzględnieniem różnych formatów
+    # Przyjmuje napis zawierający ocenę i zwraca wartość liczbową
+    # uwzględniając poprawki o 0.25 w górę i w dół
+    score = float(score_str)
+    if score.is_integer():
+        return score
+    else:
+        return round(score * 4) / 4
 
-def open_file(file_name):
-    with open(file_name) as file:
-        return file.read()
+def generate_summary(filename):
+    # Funkcja generująca podsumowanie z danego pliku
+    # Tworzy tabelkę z posortowaną alfabetycznie listą
+    # oraz liczy średnią ocen
+    summary = {}
+    total_score = 0
+    total_count = 0
 
+    try:
+        with open(filename, 'r') as file:
+            for line in file:
+                line = line.strip()
+                parts = line.split()
 
-def parse_file(file):
-    parsed_file = list()
+                if len(parts) < 3:
+                    sys.stderr.write(f"Ignoring invalid line: {line}\n")
+                    continue
 
-    students = file.split("\n")
+                name = parts[1] + ' ' + parts[0]
+                score = parse_score(parts[2])
 
-    for student in students:
-        split_student = student.split()
-        student = Student()
-        student.first_name = normalize_string(split_student[0])
-        student.second_name = normalize_string(split_student[1])
-        student.grades.append(split_student[2])
-        parsed_file.append(student)
-    return parsed_file
+                if name not in summary:
+                    summary[name] = {'scores': [], 'average': 0}
 
+                summary[name]['scores'].append(score)
+                total_score += score
+                total_count += 1
 
-def normalize_string(string_to_normalize):
-    x = string_to_normalize.lower()
-    return x[0].upper() + x[1:]
+        for name, data in summary.items():
+            scores = data['scores']
+            average = round(sum(scores) / len(scores), 2)
+            data['average'] = average
 
+        sorted_summary = sorted(summary.items(), key=lambda x: x[0].lower())
 
-if __name__ == '__main__':
-    file_list = list()
+        output_filename = os.path.splitext(filename)[0] + '.oceny'
+        with open(output_filename, 'w') as output_file:
+            for name, data in sorted_summary:
+                output_file.write(f"{name}: Lista ocen: {data['scores']} średnia: {data['average']}\n")
 
-    # for arg in sys.argv[1:]:
-    #    file_list.append(arg)
-    file_list.append("test.txt")
-    data_base = {}
+        total_average = round(total_score / total_count, 2)
+        return total_average
 
-    for file_name in file_list:
-        opened_file = open_file(file_name)
-        data_base[file_name] = parse_file(opened_file)
+    except FileNotFoundError:
+        sys.stderr.write(f"File not found: {filename}\n")
+        return None
 
-    for i in range(4):
-        print(data_base["test.txt"][i].first_name, end=" ")
-        print(data_base["test.txt"][i].second_name, end=" ")
-        print(data_base["test.txt"][i].grades)
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python script.py file1.txt [file2.txt ...]")
+        sys.exit(1)
 
+    total_averages = []
+    for filename in sys.argv[1:]:
+        average = generate_summary(filename)
+        if average is not None:
+            total_averages.append(average)
+
+    if total_averages:
+        total_average = round(sum(total_averages) / len(total_averages), 2)
+        print(f"Total average for all files: {total_average}")
