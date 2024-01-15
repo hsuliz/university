@@ -1,75 +1,109 @@
-import sys
+#!/usr/bin/python3
+# Hlib-Oleksandr Suliz, Script Language, group no.2
+
 import os
 import re
+import sys
 
-def parse_score(score_str):
-    # Funkcja do parsowania ocen z uwzględnieniem różnych formatów
-    # Przyjmuje napis zawierający ocenę i zwraca wartość liczbową
-    # uwzględniając poprawki o 0.25 w górę i w dół
-    score = float(score_str)
-    if score.is_integer():
-        return score
+
+def print_error(file, line_nr, line):
+    print('ERROR at line ' + str(line_nr) + ' (' + str(file) + '): ' + str(line))
+
+
+def change_name(name):
+    return name.capitalize()
+
+
+def get_grade(grade):
+    if (re.search("^[+-]?\d*[.]?\d*$", grade) or re.search("^\d*[.]?\d*[+-]?$", grade)):
+        if (re.search("^[+]+\d*[.]?\d*$", grade)):
+            value = float(re.split(r'^[+]', grade)[1])
+
+            if (value == 0 or (value >= 2 and value <= 5)):
+                value += 0.25
+                return value
+            else:
+                return -1
+
+        elif (re.search("^\d*[.]?\d*[+]+$", grade)):
+            value = float(re.split(r'[+]$', grade)[0])
+
+            if (value == 0 or (value >= 2 and value <= 5)):
+                value += 0.25
+                return value
+            else:
+                return -1
+
+        elif (re.search("^[-]+\d*[.]?\d*$", grade)):
+            value = float(re.split(r'^[-]', grade)[1])
+
+            if (value == 0 or (value >= 2.25 and value <= 5)):
+                value -= 0.25
+                return value
+            else:
+                return -1
+
+        elif (re.search("^\d*[.]?\d*[-]+$", grade)):
+            value = float(re.split(r'[-]$', grade)[0])
+
+            if (value == 0 or (value >= 2.25 and value <= 5)):
+                value -= 0.25
+                return value
+            else:
+                return -1
+
+        elif re.search("^\d*[.]?\d*$", grade):
+            value = float(grade)
+            if value == 0 or (value >= 2 and value <= 5):
+                return value
+            else:
+                return -1
+
     else:
-        return round(score * 4) / 4
+        return -1
 
-def generate_summary(filename):
-    # Funkcja generująca podsumowanie z danego pliku
-    # Tworzy tabelkę z posortowaną alfabetycznie listą
-    # oraz liczy średnią ocen
-    summary = {}
-    total_score = 0
-    total_count = 0
 
-    try:
-        with open(filename, 'r') as file:
-            for line in file:
-                line = line.strip()
-                parts = line.split()
+if __name__ == '__main__':
+    for i in range(1, len(sys.argv)):
+        with open(sys.argv[i], 'r') as my_file:
+            line_nr = 1
+            grades = {}
+            for line in my_file:
+                split_line = line.split()
 
-                if len(parts) < 3:
-                    sys.stderr.write(f"Ignoring invalid line: {line}\n")
-                    continue
+                if len(split_line) < 3:
+                    print_error(sys.argv[i], line_nr, line)
+                else:
+                    name = change_name(split_line[0]) + " " + change_name(split_line[1])
+                    grade = get_grade(split_line[2])
 
-                name = parts[1] + ' ' + parts[0]
-                score = parse_score(parts[2])
+                    if grade != -1:
+                        if name not in grades:
+                            grades[name] = ['0.0']
 
-                if name not in summary:
-                    summary[name] = {'scores': [], 'average': 0}
+                        grade_temp = str(float(grades[name][0]) + float(grade))
+                        grades[name][0] = grade_temp
+                        grades[name].append(split_line[2])
 
-                summary[name]['scores'].append(score)
-                total_score += score
-                total_count += 1
+                    else:
+                        print_error(sys.argv[i], line_nr, line)
 
-        for name, data in summary.items():
-            scores = data['scores']
-            average = round(sum(scores) / len(scores), 2)
-            data['average'] = average
+                line_nr += 1
 
-        sorted_summary = sorted(summary.items(), key=lambda x: x[0].lower())
+            file_name = os.path.splitext(os.path.basename(sys.argv[i]))[0]
+            file_name = file_name + ".oceny"
 
-        output_filename = os.path.splitext(filename)[0] + '.oceny'
-        with open(output_filename, 'w') as output_file:
-            for name, data in sorted_summary:
-                output_file.write(f"{name}: Lista ocen: {data['scores']} średnia: {data['average']}\n")
+            new_file = open(file_name, 'w')
 
-        total_average = round(total_score / total_count, 2)
-        return total_average
+            g_avg = 0.0
+            for key in sorted(grades):
+                new_file.write(key + ": ")
 
-    except FileNotFoundError:
-        sys.stderr.write(f"File not found: {filename}\n")
-        return None
+                for i in range(1, len(grades[key])):
+                    new_file.write(str(grades[key][i]) + " ")
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python script.py file1.txt [file2.txt ...]")
-        sys.exit(1)
+                avg = round(float(grades[key][0]) / (len(grades[key]) - 1), 2)
+                g_avg += avg
+                new_file.write(": " + str(avg) + "\n")
 
-    total_averages = []
-    for filename in sys.argv[1:]:
-        average = generate_summary(filename)
-        if average is not None:
-            total_averages.append(average)
-
-    if total_averages:
-        total_average = round(sum(total_averages) / len(total_averages), 2)
-        print(f"Total average for all files: {total_average}")
+            new_file.write("\nAverage of all grades: " + str(round(g_avg / len(grades), 2)))
