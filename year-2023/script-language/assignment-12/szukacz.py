@@ -1,44 +1,58 @@
-#!/usr/bin/python3
-# Hlib-Oleksandr Suliz, Script Language, group no.2
-
-
 import os
-import re
 import sys
 
-argv = sys.argv
-to_find = {}
+
+def count_pattern_occurrences(directory, patterns):
+    pattern_counts = {}
+    error_files = []
+
+    for root, _, files in os.walk(directory):
+        for filename in files:
+            file_path = os.path.join(root, filename)
+            try:
+                with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
+                    content = file.read()
+                    for pattern in patterns:
+                        count = content.count(pattern)
+                        if count > 0:
+                            if file_path not in pattern_counts:
+                                pattern_counts[file_path] = {}
+                            if pattern not in pattern_counts[file_path]:
+                                pattern_counts[file_path][pattern] = 0
+                            pattern_counts[file_path][pattern] += count
+            except PermissionError:
+                error_files.append(file_path)
+
+    return pattern_counts, error_files
 
 
-def get_args():
+def main():
     directories = []
+    patterns = []
+
     i = 1
-    while i < (len(argv)):
-        if argv[i] == '-d':
-            directories.append(argv[i + 1])
-            i = i + 2
+    while i < len(sys.argv):
+        if sys.argv[i] == "-d":
+            i += 1
+            if i < len(sys.argv):
+                directories.append(sys.argv[i])
+            else:
+                print("Missing directory argument after -d option.")
+                return
         else:
-            to_find[argv[i]] = directories
-            directories = []
-            i = i + 1
+            patterns.append(sys.argv[i])
+        i += 1
 
-    print(to_find)
+    if not directories:
+        print("No directories specified. Use -d option to specify at least one directory.")
+        return
+
+    for directory in directories:
+        pattern_counts, error_files = count_pattern_occurrences(directory, patterns)
+        for file_path, pattern_count in pattern_counts.items():
+            for pattern, count in pattern_count.items():
+                print(f"{file_path}: {count} {pattern} occurrences")
 
 
-if __name__ == '__main__':
-    get_args()
-
-    for word, folders in to_find.items():
-        for folder in folders:
-            path = folder
-            to_find = word
-            files_name = []
-            for subdir, dirs, files in os.walk(path):
-                for file in files:
-                    filepath = subdir + os.sep + file
-                    files_name.append(filepath)
-
-            for file_name in files_name:
-                founded = re.search(to_find, file_name)
-                if founded is not None:
-                    print(file_name)
+if __name__ == "__main__":
+    main()
