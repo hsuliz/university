@@ -15,17 +15,17 @@ def change_name(name):
 
 
 def get_grade(grade):
-    if (re.search("^[+-]?\d*[.]?\d*$", grade) or re.search("^\d*[.]?\d*[+-]?$", grade)):
-        if (re.search("^[+]+\d*[.]?\d*$", grade)):
+    if re.search("^[+-]?\d*[.]?\d*$", grade) or re.search("^\d*[.]?\d*[+-]?$", grade):
+        if re.search("^[+]+\d*[.]?\d*$", grade):
             value = float(re.split(r'^[+]', grade)[1])
 
-            if (value == 0 or (value >= 2 and value <= 5)):
+            if value == 0 or (value >= 2 and value <= 5):
                 value += 0.25
                 return value
             else:
                 return -1
 
-        elif (re.search("^\d*[.]?\d*[+]+$", grade)):
+        elif re.search("^\d*[.]?\d*[+]+$", grade):
             value = float(re.split(r'[+]$', grade)[0])
 
             if (value == 0 or (value >= 2 and value <= 5)):
@@ -34,16 +34,16 @@ def get_grade(grade):
             else:
                 return -1
 
-        elif (re.search("^[-]+\d*[.]?\d*$", grade)):
+        elif re.search("^[-]+\d*[.]?\d*$", grade):
             value = float(re.split(r'^[-]', grade)[1])
 
-            if (value == 0 or (value >= 2.25 and value <= 5)):
+            if value == 0 or (value >= 2.25 and value <= 5):
                 value -= 0.25
                 return value
             else:
                 return -1
 
-        elif (re.search("^\d*[.]?\d*[-]+$", grade)):
+        elif re.search("^\d*[.]?\d*[-]+$", grade):
             value = float(re.split(r'[-]$', grade)[0])
 
             if (value == 0 or (value >= 2.25 and value <= 5)):
