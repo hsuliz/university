@@ -24,7 +24,8 @@ require './number_checker.pm';
     foreach my $file (@ARGV) {
         if (-e $file) {
             push(@files, $file);
-        } else {
+        }
+        else {
             print_error("Main script", 0, "File '$file' does not exist.");
         }
     }
@@ -72,7 +73,7 @@ require './number_checker.pm';
 
         my $all_avg = 0;
         foreach my $k (sort keys %grades) {
-            printf $of_fh "%-20s: %s\n", $k, join(' ', @{$grades{$k}}[1..$#{$grades{$k}}]);
+            printf $of_fh "%-20s: %s\n", $k, join(' ', @{$grades{$k}}[1 .. $#{$grades{$k}}]);
             $all_avg += @{$grades{$k}}[0] / ($#{$grades{$k}} - 1);
         }
 

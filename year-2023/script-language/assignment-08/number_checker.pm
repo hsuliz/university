@@ -1,6 +1,3 @@
-use strict;
-use warnings;
-
 package NumberChecker;
 
 use strict;
