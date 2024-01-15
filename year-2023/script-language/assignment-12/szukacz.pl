@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+# Hlib-Oleksandr Suliz, Script Language, group no.2
+
 
 use strict;
 use warnings;

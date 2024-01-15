@@ -1,4 +1,6 @@
 #!/bin/bash
+# Hlib-Oleksandr Suliz, Script Language, group no.2
+
 
 count_pattern_occurrences() {
     local directory="$1"

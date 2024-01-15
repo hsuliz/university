@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+# Hlib-Oleksandr Suliz, Script Language, group no.2
+
+
 import os
 import sys
 
