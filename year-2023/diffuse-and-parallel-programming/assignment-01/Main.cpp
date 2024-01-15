@@ -59,8 +59,8 @@ void simulationInit(Life *life) {
 
 int main(int argc, char **argv) {
     srand(time(NULL));
-    const int simulationSize = 7500;
-    const int steps = 100;
+    const int simulationSize = 1000;
+    const int steps = 3;
     double start;
     int procs, rank;
 

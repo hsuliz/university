@@ -26,7 +26,7 @@ public:
     Life();
     virtual ~Life();
     void setRules(Rules *rules);
-    void setSize(int size);
+    virtual void setSize(int size);
     void bringToLife(int row, int col);
     int getCellState(int row, int col);
     int getPollution(int row, int col);
