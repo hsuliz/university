@@ -22,52 +22,8 @@ void LifeParallelImplementation::oneStep() {
 }
 
 void LifeParallelImplementation::realStep() {
-    int startRow, endRow;
-
-    int rowsPerProcess = size_1 - 1 / mpiSize;
-
-    if (mpiRank == 0) {
-        startRow = 1;
-        endRow = rowsPerProcess;
-    } else {
-        startRow = mpiRank * rowsPerProcess;
-        endRow = (mpiRank + 1) * rowsPerProcess;
-
-        if (mpiRank == mpiSize - 1) {
-            endRow = size_1;
-        }
-    }
-    this->compute(startRow, endRow);
-}
-
-void LifeParallelImplementation::compute(int startRow, int endRow) {
     int currentState, currentPollution;
-
-    MPI_Datatype rowType;
-    MPI_Type_contiguous(size_1, MPI_INT, &rowType);
-    MPI_Type_commit(&rowType);
-
-    int prevRank = mpiRank - 1;
-    int nextRank = mpiRank + 1;
-
-    int *sendBuffer = new int[size_1];
-    int *recvBuffer = new int[size_1];
-
-    if (mpiRank > 0) {
-        memcpy(sendBuffer, cells[startRow], size_1 * sizeof(int));
-        MPI_Recv(recvBuffer, 1, rowType, prevRank, 0, MPI_COMM_WORLD, status);
-        MPI_Send(sendBuffer, 1, rowType, prevRank, 0, MPI_COMM_WORLD);
-        memcpy(cells[startRow - 1], recvBuffer, size_1 * sizeof(int));
-    }
-
-    if (mpiRank < mpiSize - 1) {
-        memcpy(sendBuffer, cells[endRow - 1], size_1 * sizeof(int));
-        MPI_Send(sendBuffer, 1, rowType, nextRank, 0, MPI_COMM_WORLD);
-        MPI_Recv(recvBuffer, 1, rowType, nextRank, 0, MPI_COMM_WORLD, status);
-        memcpy(cells[endRow], recvBuffer, size_1 * sizeof(int));
-    }
-
-    for (int row = startRow; row < endRow; row++) {
+    for (int row = startRow + 1; row < endRow - 1; row++) {
         for (int col = 1; col < size_1; col++) {
             currentState = cells[row][col];
             currentPollution = pollution[row][col];
@@ -78,8 +34,33 @@ void LifeParallelImplementation::compute(int startRow, int endRow) {
                                          pollution[row - 1][col - 1] + pollution[row - 1][col + 1] + pollution[row + 1][col - 1] + pollution[row + 1][col + 1]);
         }
     }
+}
 
-    delete[] sendBuffer;
-    delete[] recvBuffer;
-    MPI_Type_free(&rowType);
+void LifeParallelImplementation::beforeFirstStep() {
+    Life::beforeFirstStep();
+
+    int chunk_size = size / mpiSize;
+
+    startRow = mpiRank * chunk_size;
+    endRow = (mpiRank + 1) * chunk_size - 1;
+
+    printf("%d: %d-%d\n", mpiRank, startRow, endRow);
+
+    for (int row = 0; row < size; row++) {
+        MPI_Bcast(cells[row], size, MPI_INT, 0, MPI_COMM_WORLD);
+        MPI_Bcast(pollution[row], size, MPI_INT, 0, MPI_COMM_WORLD);
+    }
+}
+
+void LifeParallelImplementation::afterLastStep() {
+    Life::afterLastStep();
+    for (int col = 0; col < size; col++) {
+        if (!mpiRank) {
+            MPI_Send(cells[col], size, MPI_INT, 1, 0, MPI_COMM_WORLD);
+            MPI_Send(pollution[col], size, MPI_INT, 1, 0, MPI_COMM_WORLD);
+        } else {
+            MPI_Recv(cells[col], size, MPI_INT, 0, 0, MPI_COMM_WORLD, status);
+            MPI_Recv(pollution[col], size, MPI_INT, 0, 0, MPI_COMM_WORLD, status);
+        }
+    }
 }

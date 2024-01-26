@@ -76,6 +76,7 @@ int Life::sumTable(int **table) {
 }
 
 void Life::beforeFirstStep() {
+
 }
 
 void Life::afterLastStep() {

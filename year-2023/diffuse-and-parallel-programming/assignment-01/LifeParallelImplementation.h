@@ -8,7 +8,7 @@ class LifeParallelImplementation : public Life {
 private:
     MPI_Status *status{};
     int mpiSize{}, mpiRank{};
-    void compute(int x, int y);
+    int startRow{}, endRow{};
 
 protected:
     void realStep() override;
@@ -18,6 +18,8 @@ public:
     int numberOfLivingCells() override;
     double averagePollution() override;
     void oneStep() override;
+    void beforeFirstStep() override;
+    void afterLastStep() override;
 };
 
 #endif
