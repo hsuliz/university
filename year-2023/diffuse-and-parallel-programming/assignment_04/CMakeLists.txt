@@ -15,4 +15,5 @@ add_executable(assignment_04
         DataSupplier.h
         Simulation.cpp
         Simulation.h
+        Simulation1.cpp
 )
