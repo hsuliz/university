@@ -1,10 +1,10 @@
 #include "LifeParallelImplementation.h"
 #include "mpi.h"
 #include <cstdio>
-#include <vector>
 #include <iostream>
+#include <vector>
 
-void printMatrix(int** matrix, int rows, int cols) {
+void printMatrix(int **matrix, int rows, int cols) {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             std::cout << matrix[i][j] << " ";
@@ -55,11 +55,14 @@ void LifeParallelImplementation::beforeFirstStep() {
     rowsPerProcess = size / mpiSize;
     remainingRows = size % mpiSize;
 
-    if (mpiRank == 0) {
-        startRow = 0;
-        endRow = rowsPerProcess + remainingRows;
+    // Calculate the start and end row for each process
+    if (mpiRank < remainingRows) {
+        // Distribute the remaining rows among the first 'remainingRows' processes
+        startRow = mpiRank * (rowsPerProcess + 1);
+        endRow = startRow + rowsPerProcess + 1;
     } else {
-        startRow = remainingRows + mpiRank * rowsPerProcess;
+        // Processes after the first 'remainingRows' processes handle 'rowsPerProcess' rows
+        startRow = remainingRows * (rowsPerProcess + 1) + (mpiRank - remainingRows) * rowsPerProcess;
         endRow = startRow + rowsPerProcess;
     }
 
@@ -72,11 +75,13 @@ void LifeParallelImplementation::beforeFirstStep() {
 
 void LifeParallelImplementation::afterLastStep() {
     if (mpiRank != 0) {
-        int sendSize = rowsPerProcess * size;
+        // Calculate the actual number of rows handled by this process
+        int actualRowsHandled = endRow - startRow;
+        int sendSize = actualRowsHandled * size;
         std::vector<int> sendCells(sendSize);
         std::vector<int> sendPollution(sendSize);
 
-        for (int i = 0; i < rowsPerProcess; ++i) {
+        for (int i = 0; i < actualRowsHandled; ++i) {
             for (int j = 0; j < size; ++j) {
                 sendCells[i * size + j] = cells[startRow + i][j];
                 sendPollution[i * size + j] = pollution[startRow + i][j];
@@ -86,7 +91,9 @@ void LifeParallelImplementation::afterLastStep() {
         MPI_Send(sendPollution.data(), sendSize, MPI_INT, 0, 0, MPI_COMM_WORLD);
     } else {
         for (int i = 1; i < mpiSize; ++i) {
-            int recvSize = rowsPerProcess * size;
+            // Calculate the actual number of rows to be received from process i
+            int actualRowsToReceive = (i < remainingRows) ? rowsPerProcess + 1 : rowsPerProcess;
+            int recvSize = actualRowsToReceive * size;
 
             std::vector<int> recvCells(recvSize);
             std::vector<int> recvPollution(recvSize);
@@ -94,10 +101,12 @@ void LifeParallelImplementation::afterLastStep() {
             MPI_Recv(recvCells.data(), recvSize, MPI_INT, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             MPI_Recv(recvPollution.data(), recvSize, MPI_INT, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-            for (int j = 0; j < rowsPerProcess; ++j) {
+            int startRowIndex = (i < remainingRows) ? i * (rowsPerProcess + 1) : remainingRows * (rowsPerProcess + 1) + (i - remainingRows) * rowsPerProcess;
+
+            for (int j = 0; j < actualRowsToReceive; ++j) {
                 for (int k = 0; k < size; ++k) {
-                    cells[i * rowsPerProcess + j][k] = recvCells[j * size + k];
-                    pollution[i * rowsPerProcess + j][k] = recvPollution[j * size + k];
+                    cells[startRowIndex + j][k] = recvCells[j * size + k];
+                    pollution[startRowIndex + j][k] = recvPollution[j * size + k];
                 }
             }
         }
