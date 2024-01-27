@@ -1,10 +1,3 @@
-/*
-* Simulation.cpp
-*
-*  Created on: 10 gru 2023
-*      Author: oramus
-*/
-
 #include "Simulation.h"
 #include <iostream>
 #include <math.h>
@@ -55,7 +48,7 @@ void Simulation::updateVelocity() {
 
     double oldFx, oldFy;
     double dx, dy, distance, frc;
-#pragma omp parallel for private(oldFx, oldFy, dx, dy, distance, frc) shared(Fx, Fy, x, y, Vx, Vy, m) schedule(dynamic)
+    #pragma omp parallel for private(oldFx, oldFy, dx, dy, distance, frc) shared(Fx, Fy, x, y, Vx, Vy, m)
     for (int idx = 0; idx < particles; idx++) {
         oldFx = Fx[idx];
         oldFy = Fy[idx];
@@ -116,7 +109,7 @@ double Simulation::Ekin() {
 }
 
 void Simulation::pairDistribution(double *histogram, int size, double coef) {
-#pragma omp parallel for schedule(static)
+#pragma omp parallel for
     for (int i = 0; i < size; i++)
         histogram[i] = 0;
 
@@ -141,7 +134,7 @@ void Simulation::pairDistribution(double *histogram, int size, double coef) {
         }
     }
 
-#pragma omp parallel for schedule(static)
+#pragma omp parallel for
     for (int i = 0; i < size; i++) {
         distance = (i + 0.5) * coef;
         histogram[i] *= 1.0 / (2.0 * M_PI * distance * coef);
