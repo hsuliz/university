@@ -132,7 +132,6 @@ void Simulation::pairDistribution(double *histogram, int size, double coef) {
             if (distance < maxDistanceSQ) {
                 distance = sqrt(distance);
                 idx = (int) (distance / coef);
-
                 histogram[idx]++;
             }
         }
