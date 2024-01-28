@@ -32,9 +32,32 @@ double LifeParallelImplementation::averagePollution() {
     return (double) sumTable(pollution) / size_1_squared / rules->getMaxPollution();
 }
 
+void LifeParallelImplementation::sendRow(int destination, int row) {
+    MPI_Send(cells[row], size, MPI_INT, destination, 0, MPI_COMM_WORLD);
+    MPI_Send(pollution[row], size, MPI_INT, destination, 0, MPI_COMM_WORLD);
+}
+
+void LifeParallelImplementation::receiveRow(int source, int row) {
+    MPI_Status status;
+    MPI_Recv(cells[row], size, MPI_INT, source, 0, MPI_COMM_WORLD, &status);
+    MPI_Recv(pollution[row], size, MPI_INT, source, 0, MPI_COMM_WORLD, &status);
+}
+
+
 void LifeParallelImplementation::oneStep() {
     realStep();
+
+
     swapTables();
+    // Send and receive border rows
+    if (mpiRank > 0) {
+        receiveRow(mpiRank - 1, startRow - 1);
+        sendRow(mpiRank - 1, startRow);
+    }
+    if (mpiRank < mpiSize - 1) {
+        sendRow(mpiRank + 1, endRow - 1);
+        receiveRow(mpiRank + 1, endRow);
+    }
     MPI_Barrier(MPI_COMM_WORLD);
 }
 
@@ -47,21 +70,18 @@ void LifeParallelImplementation::beforeFirstStep() {
     rowsPerProcess = size / mpiSize;
     remainingRows = size % mpiSize;
 
-    // Calculate the start and end row for each process
     if (mpiRank < remainingRows) {
         startRow = mpiRank * (rowsPerProcess + 1) + 1;
-        endRow = startRow + rowsPerProcess; // endRow is exclusive for this process
+        endRow = startRow + rowsPerProcess;
     } else {
         startRow = remainingRows * (rowsPerProcess + 1) + (mpiRank - remainingRows) * rowsPerProcess + 1;
-        endRow = startRow + rowsPerProcess - 1; // Adjust for processes without an extra row
+        endRow = startRow + rowsPerProcess - 1;
     }
 
-    // Adjust startRow for processes after the first one
     if (mpiRank > 0) {
         startRow--;
     }
 
-    // Adjust endRow for the last process
     if (mpiRank == mpiSize - 1) {
         endRow = size - 1;
     }
@@ -71,7 +91,6 @@ void LifeParallelImplementation::beforeFirstStep() {
         MPI_Bcast(pollution[i], size, MPI_INT, 0, MPI_COMM_WORLD);
     }
 }
-
 
 
 void LifeParallelImplementation::afterLastStep() {

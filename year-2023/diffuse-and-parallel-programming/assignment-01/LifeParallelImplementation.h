@@ -9,6 +9,8 @@ private:
     int mpiRank, mpiSize;
     int startRow, endRow;
     int rowsPerProcess, remainingRows;
+    void sendRow(int destination, int row);
+    void receiveRow(int source, int row);
 
 protected:
     void realStep();
