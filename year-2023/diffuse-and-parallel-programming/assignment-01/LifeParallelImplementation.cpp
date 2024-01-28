@@ -4,22 +4,13 @@
 #include <iostream>
 #include <vector>
 
-void printMatrix(int **matrix, int rows, int cols) {
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            std::cout << matrix[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-}
-
 LifeParallelImplementation::LifeParallelImplementation() {
 }
 
 void LifeParallelImplementation::realStep() {
     int currentState, currentPollution;
-    MPI_Barrier(MPI_COMM_WORLD);
-    for (int row = startRow; row < endRow; row++)
+    std::cout << "Process " << mpiRank << ": startRow = " << startRow << ", endRow = " << endRow << std::endl;
+    for (int row = startRow; row < endRow; row++) {
         for (int col = 1; col < size_1; col++) {
             currentState = cells[row][col];
             currentPollution = pollution[row][col];
@@ -29,6 +20,7 @@ void LifeParallelImplementation::realStep() {
                     rules->nextPollution(currentState, currentPollution, pollution[row + 1][col] + pollution[row - 1][col] + pollution[row][col - 1] + pollution[row][col + 1],
                                          pollution[row - 1][col - 1] + pollution[row - 1][col + 1] + pollution[row + 1][col - 1] + pollution[row + 1][col + 1]);
         }
+    }
     MPI_Barrier(MPI_COMM_WORLD);
 }
 
@@ -57,13 +49,21 @@ void LifeParallelImplementation::beforeFirstStep() {
 
     // Calculate the start and end row for each process
     if (mpiRank < remainingRows) {
-        // Distribute the remaining rows among the first 'remainingRows' processes
-        startRow = mpiRank * (rowsPerProcess + 1);
-        endRow = startRow + rowsPerProcess + 1;
+        startRow = mpiRank * (rowsPerProcess + 1) + 1;
+        endRow = startRow + rowsPerProcess; // endRow is exclusive for this process
     } else {
-        // Processes after the first 'remainingRows' processes handle 'rowsPerProcess' rows
-        startRow = remainingRows * (rowsPerProcess + 1) + (mpiRank - remainingRows) * rowsPerProcess;
-        endRow = startRow + rowsPerProcess;
+        startRow = remainingRows * (rowsPerProcess + 1) + (mpiRank - remainingRows) * rowsPerProcess + 1;
+        endRow = startRow + rowsPerProcess - 1; // Adjust for processes without an extra row
+    }
+
+    // Adjust startRow for processes after the first one
+    if (mpiRank > 0) {
+        startRow--;
+    }
+
+    // Adjust endRow for the last process
+    if (mpiRank == mpiSize - 1) {
+        endRow = size - 1;
     }
 
     for (int i = 0; i < size; ++i) {
@@ -73,14 +73,13 @@ void LifeParallelImplementation::beforeFirstStep() {
 }
 
 
+
 void LifeParallelImplementation::afterLastStep() {
     if (mpiRank != 0) {
-        // Calculate the actual number of rows handled by this process
         int actualRowsHandled = endRow - startRow;
         int sendSize = actualRowsHandled * size;
         std::vector<int> sendCells(sendSize);
         std::vector<int> sendPollution(sendSize);
-
         for (int i = 0; i < actualRowsHandled; ++i) {
             for (int j = 0; j < size; ++j) {
                 sendCells[i * size + j] = cells[startRow + i][j];
@@ -91,7 +90,6 @@ void LifeParallelImplementation::afterLastStep() {
         MPI_Send(sendPollution.data(), sendSize, MPI_INT, 0, 0, MPI_COMM_WORLD);
     } else {
         for (int i = 1; i < mpiSize; ++i) {
-            // Calculate the actual number of rows to be received from process i
             int actualRowsToReceive = (i < remainingRows) ? rowsPerProcess + 1 : rowsPerProcess;
             int recvSize = actualRowsToReceive * size;
 
@@ -102,7 +100,7 @@ void LifeParallelImplementation::afterLastStep() {
             MPI_Recv(recvPollution.data(), recvSize, MPI_INT, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
             int startRowIndex = (i < remainingRows) ? i * (rowsPerProcess + 1) : remainingRows * (rowsPerProcess + 1) + (i - remainingRows) * rowsPerProcess;
-
+            printf("startRowIndex: %d\n", startRowIndex);
             for (int j = 0; j < actualRowsToReceive; ++j) {
                 for (int k = 0; k < size; ++k) {
                     cells[startRowIndex + j][k] = recvCells[j * size + k];

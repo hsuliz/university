@@ -59,7 +59,7 @@ void simulationInit(Life *life) {
 
 int main(int argc, char **argv) {
     srand(time(NULL));
-    const int simulationSize = 20;
+    const int simulationSize = 4000;
     const int steps = 1;
     double start;
     int procs, rank;
@@ -99,7 +99,7 @@ int main(int argc, char **argv) {
     lifes->afterLastStep();
 
     if (!rank) {
-        lifes->printMatrix();
+        //lifes->printMatrix();
         int livingCells = lifes->numberOfLivingCells();
         double averagePollution = 100.0 * lifes->averagePollution();
         double end = MPI_Wtime();
@@ -137,7 +137,7 @@ int main(int argc, char **argv) {
     lifep->afterLastStep();
 
     if (!rank) {
-        lifep->printMatrix();
+        //lifep->printMatrix();
         int livingCells = lifep->numberOfLivingCells();
         double averagePollution = 100.0 * lifep->averagePollution();
         double end = MPI_Wtime();
