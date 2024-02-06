@@ -1,7 +1,5 @@
 #include "LifeParallelImplementation.h"
 #include "mpi.h"
-#include <cstdio>
-#include <iostream>
 #include <vector>
 
 LifeParallelImplementation::LifeParallelImplementation() {
@@ -9,7 +7,7 @@ LifeParallelImplementation::LifeParallelImplementation() {
 
 void LifeParallelImplementation::realStep() {
     int currentState, currentPollution;
-    std::cout << "Process " << mpiRank << ": startRow = " << startRow << ", endRow = " << endRow << std::endl;
+
     for (int row = startRow; row < endRow; row++) {
         for (int col = 1; col < size_1; col++) {
             currentState = cells[row][col];
@@ -46,10 +44,7 @@ void LifeParallelImplementation::receiveRow(int source, int row) {
 
 void LifeParallelImplementation::oneStep() {
     realStep();
-
-
     swapTables();
-    // Send and receive border rows
     if (mpiRank > 0) {
         receiveRow(mpiRank - 1, startRow - 1);
         sendRow(mpiRank - 1, startRow);
@@ -119,7 +114,7 @@ void LifeParallelImplementation::afterLastStep() {
             MPI_Recv(recvPollution.data(), recvSize, MPI_INT, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
             int startRowIndex = (i < remainingRows) ? i * (rowsPerProcess + 1) : remainingRows * (rowsPerProcess + 1) + (i - remainingRows) * rowsPerProcess;
-            printf("startRowIndex: %d\n", startRowIndex);
+
             for (int j = 0; j < actualRowsToReceive; ++j) {
                 for (int k = 0; k < size; ++k) {
                     cells[startRowIndex + j][k] = recvCells[j * size + k];
