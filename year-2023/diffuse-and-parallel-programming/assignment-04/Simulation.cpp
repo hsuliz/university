@@ -48,8 +48,7 @@ void Simulation::updateVelocity() {
 
   double oldFx, oldFy;
   double dx, dy, distance, frc;
-#pragma omp parallel for private(oldFx, oldFy, dx, dy, distance, frc)          \
-    shared(Fx, Fy, x, y, Vx, Vy, m)
+#pragma omp parallel for private(oldFx, oldFy, dx, dy, distance, frc)
   for (int idx = 0; idx < particles; idx++) {
     oldFx = Fx[idx];
     oldFy = Fy[idx];
@@ -91,6 +90,7 @@ void Simulation::updatePosition() {
 
 void Simulation::preventMoveAgainstForce() {
   double dotProduct;
+#pragma omp parallel for private(dotProduct)
   for (int idx = 0; idx < particles; idx++) {
     dotProduct = Vx[idx] * Fx[idx] + Vy[idx] * Fy[idx];
     if (dotProduct < 0.0) {
@@ -119,9 +119,8 @@ void Simulation::pairDistribution(double *histogram, int size, double coef) {
   double distance;
   int idx;
 
-#pragma omp parallel for private(dx, dy, distance, idx)
-  shared(histogram, x, y)
-      schedule(dynamic) for (int idx1 = 0; idx1 < particles; idx1++) {
+#pragma omp parallel for private(dx, dy, distance, idx) schedule(dynamic)
+  for (int idx1 = 0; idx1 < particles; idx1++) {
     for (int idx2 = 0; idx2 < idx1; idx2++) {
       dx = x[idx2] - x[idx1];
       dy = y[idx2] - y[idx1];
@@ -135,7 +134,7 @@ void Simulation::pairDistribution(double *histogram, int size, double coef) {
     }
   }
 
-#pragma omp parallel for
+#pragma omp parallel for private(distance)
   for (int i = 0; i < size; i++) {
     distance = (i + 0.5) * coef;
     histogram[i] *= 1.0 / (2.0 * M_PI * distance * coef);
