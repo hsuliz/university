@@ -99,18 +99,24 @@ fi
 
 fetch_weather_data() {
     local UNIT_PARAM="m"
-    local STATUS_Code
+    local STATUS_CODE
     local CURL_OUTPUT
     local CURL_FILENAME="/tmp/curl_error_$$"
 
+    if [ "$CITY" == "Cracow" ]; then
+        CITY="Krakow"
+    fi
+
+    local ENCODED_CITY="${CITY// /+}"
+
     if [ -n "$CITY" ]; then
-        URL="https://wttr.in/${CITY}?format=j1&u=${UNIT_PARAM}"
+        URL="https://wttr.in/${ENCODED_CITY}?format=j1&u=${UNIT_PARAM}"
     else
         URL="https://wttr.in/?format=j1&u=${UNIT_PARAM}"
     fi
 
     CURL_OUTPUT=$(curl -s -w "%{http_code}" --connect-timeout 8 --max-time 8 -o - "$URL" --stderr "$CURL_FILENAME")
-    STATUS_Code=$(echo "$CURL_OUTPUT" | tail -n1)
+    STATUS_CODE=$(echo "$CURL_OUTPUT" | tail -n1)
     WEATHER_DATA=$(echo "$CURL_OUTPUT" | head -n -1)
 
     if [ -n "$CURL_FILENAME" ] && [ -s "$CURL_FILENAME" ]; then
@@ -119,8 +125,9 @@ fetch_weather_data() {
         exit 1
     fi
 
-    if [ "$STATUS_Code" -ne 200 ]; then
-        echo "Error: Failed to fetch weather data. HTTP Status Code: $STATUS_Code"
+    # Check the HTTP status code
+    if [ "$STATUS_CODE" -ne 200 ]; then
+        echo "Error: Failed to fetch weather data. HTTP Status Code: $STATUS_CODE"
         rm "$CURL_FILENAME" 2>/dev/null
         exit 1
     fi
@@ -137,6 +144,9 @@ populate_weather_info() {
     WEATHER_INFO[timestamp]=$(jq -r ".current_condition[0].localObsDateTime" <<< "$WEATHER_DATA")
     WEATHER_INFO[country]=$(jq -r ".nearest_area[0].country[0].value" <<< "$WEATHER_DATA")
     WEATHER_INFO[city]=$(jq -r ".nearest_area[0].areaName[0].value" <<< "$WEATHER_DATA")
+    if [ "${WEATHER_INFO[city]}" == "Cracow" ]; then
+        WEATHER_INFO[city]="Krakow"
+    fi
     WEATHER_INFO[temp_C]=$(jq -r ".current_condition[0].temp_C" <<< "$WEATHER_DATA")
     WEATHER_INFO[FeelsLikeC]=$(jq -r ".current_condition[0].FeelsLikeC" <<< "$WEATHER_DATA")
     WEATHER_INFO[weatherDesc]=$(jq -r ".current_condition[0].weatherDesc[0].value" <<< "$WEATHER_DATA")
@@ -145,11 +155,11 @@ populate_weather_info() {
     WEATHER_INFO[precipMM]=$(jq -r ".current_condition[0].precipMM" <<< "$WEATHER_DATA")
     WEATHER_INFO[visibility]=$(jq -r ".current_condition[0].visibility" <<< "$WEATHER_DATA")
     WEATHER_INFO[pressure]=$(jq -r ".current_condition[0].pressure" <<< "$WEATHER_DATA")
+    WEATHER_INFO[chanceOfRain]=$(jq -r ".weather[0].hourly[0].chanceofrain" <<< "$WEATHER_DATA")
 
     if [ "$VERBOSITY_LEVEL" -eq 2 ]; then
         WEATHER_INFO[sunrise]=$(jq -r ".weather[0].astronomy[0].sunrise" <<< "$WEATHER_DATA")
         WEATHER_INFO[sunset]=$(jq -r ".weather[0].astronomy[0].sunset" <<< "$WEATHER_DATA")
-        WEATHER_INFO[chanceOfRain]="$(jq -r '.weather[0].hourly[0].chanceofrain' <<< "$WEATHER_DATA")"
         WEATHER_INFO[moonrise]=$(jq -r ".weather[0].astronomy[0].moonrise" <<< "$WEATHER_DATA")
         WEATHER_INFO[moonset]=$(jq -r ".weather[0].astronomy[0].moonset" <<< "$WEATHER_DATA")
         WEATHER_INFO[maxtempC]=$(jq -r ".weather[0].maxtempC" <<< "$WEATHER_DATA")
