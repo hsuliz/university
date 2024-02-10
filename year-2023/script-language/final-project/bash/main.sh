@@ -16,7 +16,6 @@ else
     source "$CONFIG_FILE"
 fi
 
-# Help function
 print_help() {
     echo "Weather Report Script Usage Guide"
     echo "=================================="
@@ -51,8 +50,8 @@ print_help() {
     echo "  $0 --city \"Los Angeles\" --vv"
     echo "      Fetches detailed weather information for Los Angeles."
     echo ""
-    echo "  $0 --set-default-city \"Cracow\""
-    echo "      Sets Cracow as the default city for future queries."
+    echo "  $0 --set-default-city \"Krakow"
+    echo "      Sets Krakow as the default city for future queries."
     echo ""
     echo "  $0 --reset"
     echo "      Resets the default city to no specific city."
@@ -99,45 +98,45 @@ fi
 
 fetch_weather_data() {
     local UNIT_PARAM="m"
-    local STATUS_CODE
-    local CURL_OUTPUT
-    local CURL_FILENAME="/tmp/curl_error_$$"
-
-    if [ "$CITY" == "Cracow" ]; then
-        CITY="Krakow"
-    fi
-
     local ENCODED_CITY="${CITY// /+}"
 
-    if [ -n "$CITY" ]; then
-        URL="https://wttr.in/${ENCODED_CITY}?format=j1&u=${UNIT_PARAM}"
+    if [ "$CITY" == "Cracow" ]; then
+        ENCODED_CITY="Krakow"
+    fi
+
+    local URL="wttr.in/${ENCODED_CITY}?format=j1&u=${UNIT_PARAM}"
+
+    if command -v curl &>/dev/null; then
+        WEATHER_DATA=$(curl -s -w "%{http_code}" --connect-timeout 8 --max-time 8 "https://$URL")
+        STATUS_CODE=$(echo "$WEATHER_DATA" | tail -n1)
+        WEATHER_DATA=$(echo "$WEATHER_DATA" | head -n -1)
+    elif command -v wget &>/dev/null; then
+        TEMP_WGET=$(mktemp)
+        WEATHER_DATA=$(wget -qO- --timeout=8 "https://$URL" > "$TEMP_WGET")
+        if jq . "$TEMP_WGET" &>/dev/null; then
+            STATUS_CODE=200
+            WEATHER_DATA=$(<"$TEMP_WGET")
+        else
+            STATUS_CODE=404
+        fi
+        rm "$TEMP_WGET"
     else
-        URL="https://wttr.in/?format=j1&u=${UNIT_PARAM}"
-    fi
-
-    CURL_OUTPUT=$(curl -s -w "%{http_code}" --connect-timeout 8 --max-time 8 -o - "$URL" --stderr "$CURL_FILENAME")
-    STATUS_CODE=$(echo "$CURL_OUTPUT" | tail -n1)
-    WEATHER_DATA=$(echo "$CURL_OUTPUT" | head -n -1)
-
-    if [ -n "$CURL_FILENAME" ] && [ -s "$CURL_FILENAME" ]; then
-        echo "Error fetching weather data: $(<"$CURL_FILENAME")"
-        rm "$CURL_FILENAME"
+        echo "Error: 'curl' or 'wget' is required but none is installed."
         exit 1
     fi
 
-    # Check the HTTP status code
-    if [ "$STATUS_CODE" -ne 200 ]; then
+    if [ "$STATUS_CODE" -eq 404 ]; then
+        echo "Error: The specified city was not found. Please check the city name and try again."
+        exit 1
+    elif [ "$STATUS_CODE" -ne 200 ]; then
         echo "Error: Failed to fetch weather data. HTTP Status Code: $STATUS_CODE"
-        rm "$CURL_FILENAME" 2>/dev/null
         exit 1
     fi
 
-    if ! jq empty <<< "$WEATHER_DATA" 2>/dev/null; then
+    if ! echo "$WEATHER_DATA" | jq empty &>/dev/null; then
         echo "Error: Invalid JSON content received."
         exit 1
     fi
-
-    rm "$CURL_FILENAME" 2>/dev/null
 }
 
 populate_weather_info() {
@@ -240,7 +239,6 @@ process_weather_data() {
         print_weather
     fi
 }
-
 
 check_internet_connection() {
     if ! ping -c 1 google.com > /dev/null 2>&1; then
