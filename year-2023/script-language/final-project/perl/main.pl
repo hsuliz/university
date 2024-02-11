@@ -1,119 +1,115 @@
 #!/usr/bin/perl
+# Hlib-Oleksandr Suliz, Script Language, group no.2
 use strict;
 use warnings;
-use Getopt::Long;
-use POSIX qw(strftime);
 
-my $data_dir = '.memory';
-my $report_base_dir = 'expense_reports';
+my $memory_file = ".memory";
 
-# Ensure base directories exist
-mkdir $data_dir unless -d $data_dir;
-mkdir $report_base_dir unless -d $report_base_dir;
+if (@ARGV < 1) {
+    print_usage();
+    exit;
+}
 
-# Command-line options
-my ($add, $list, $remove, $file, $description, $price, $date_input, $all);
+if ($ARGV[0] eq '--add') {
+    add_expense(@ARGV[1 .. $#ARGV]);
+}
+elsif ($ARGV[0] eq '--remove') {
+    remove_expense($ARGV[1]);
+}
+elsif ($ARGV[0] eq '--list') {
+    list_expenses();
+}
+elsif ($ARGV[0] eq '--file') {
+    export_to_csv();
+}
+elsif ($ARGV[0] eq '--help' || $ARGV[0] eq '--h') {
+    print_help();
+}
+else {
+    print "Invalid command.\n";
+    print_usage();
+}
 
-GetOptions(
-    'add' => \$add,
-    'list' => \$list,
-    'remove=i' => \$remove,
-    'file' => \$file,
-    'description=s' => \$description,
-    'price=f' => \$price,
-    'date=s' => \$date_input,
-    'all' => \$all,
-);
+sub print_usage {
+    print "Usage:\n";
+    print "  --add <name> <amount>  Add a new expense with a name and amount.\n";
+    print "  --remove <id>          Remove an expense by its ID (line number in the .memory file).\n";
+    print "  --list                 List all current expenses with their IDs.\n";
+    print "  --file                 Export all expenses to a CSV file named 'expenses.csv'.\n";
+    print "  --help, -h             Show this help message.\n";
+}
+
+sub print_help {
+    print "Expense Tracker\n";
+    print "----------------\n";
+    print "This program is a simple Perl script designed to help you manage your expenses.\n";
+    print "You can use it to add, remove, list, and export expenses to a CSV file.\n";
+    print "\n";
+    print "Usage:\n";
+    print "  --add <name> <amount>  Add a new expense with a name and amount.\n";
+    print "  --remove <id>          Remove an expense by its ID (line number in the .memory file).\n";
+    print "  --list                 List all current expenses with their IDs.\n";
+    print "  --file                 Export all expenses to a CSV file named 'expenses.csv'.\n";
+    print "  --help, -h             Show this help message.\n";
+}
 
 sub add_expense {
-    my $date = $date_input || strftime "%Y-%m", localtime;
-    my $data_file = "$data_dir/expenses_$date.txt";
-
-    open my $fh, '>>', $data_file or die "Could not open $data_file: $!";
-    print $fh strftime("%Y-%m-%d", localtime) . ",$description,$price\n";
+    my ($name, $amount, @extra_args) = @_;
+    if (scalar @extra_args > 0) {
+        print "Invalid input. Usage: $0 --add <name> <amount>\n";
+        return;
+    }
+    unless (defined $name && defined $amount && $amount =~ /^[0-9]+(\.[0-9]{1,2})?$/) {
+        print "Invalid input. Usage: $0 --add <name> <amount>\n";
+        return;
+    }
+    open my $fh, '>>', $memory_file or die "Could not open file '$memory_file' $!";
+    print $fh "$name,$amount\n";
     close $fh;
     print "Expense added.\n";
 }
 
-sub list_expenses {
-    my @files;
-    if ($all) {
-        @files = glob("$data_dir/expenses_*.txt");
-    } elsif (defined $date_input) {
-        @files = glob("$data_dir/expenses_$date_input*.txt");
-    } else {
-        my $current_month = strftime "%Y-%m", localtime;
-        @files = glob("$data_dir/expenses_$current_month*.txt");
-    }
-
-    print "Listing expenses:\n";
-    foreach my $file (@files) {
-        open my $fh, '<', $file or die "Could not open file: $!";
-        while (my $line = <$fh>) {
-            print $line;
-        }
-        close $fh;
-    }
-}
-
 sub remove_expense {
-    my ($index) = @_;
-    my $date = $date_input || strftime "%Y-%m", localtime;
-    my $data_file = "$data_dir/expenses_$date.txt";
-
-    unless (-e $data_file) {
-        print "No expenses recorded for $date.\n";
+    my $id = shift;
+    unless (defined $id && $id =~ /^\d+$/) {
+        print "Invalid id. Usage: $0 --remove <id>\n";
         return;
     }
-
-    open my $fh, '<', $data_file or die "Could not open $data_file: $!";
-    my @lines = <$fh>;
+    my @expenses;
+    open my $fh, '<', $memory_file or die "Could not open file '$memory_file' $!";
+    while (my $line = <$fh>) {
+        push @expenses, $line;
+    }
     close $fh;
 
-    if ($index > 0 && $index <= scalar @lines) {
-        splice(@lines, $index - 1, 1);
-        open $fh, '>', $data_file or die "Could not write to $data_file: $!";
-        print $fh @lines;
+    if ($id > 0 && $id <= scalar @expenses) {
+        splice @expenses, $id - 1, 1;
+        open my $fh, '>', $memory_file or die "Could not open file '$memory_file' $!";
+        print $fh $_ for @expenses;
         close $fh;
         print "Expense removed.\n";
-    } else {
-        print "Invalid expense number.\n";
+    }
+    else {
+        print "Invalid id.\n";
     }
 }
 
-sub generate_csv {
-    my $year = defined $date_input ? substr($date_input, 0, 4) : strftime "%Y", localtime;
-    my $report_dir = "$report_base_dir/$year";
-    mkdir $report_dir unless -d $report_dir;
-
-    my $filename = $all ? "expenses_report_all_$year.csv" : defined $date_input ? "expenses_report_$date_input.csv" : "expenses_report_$year.csv";
-    my $output_file = "$report_dir/$filename";
-
-    my @files = $all ? glob("$data_dir/expenses_*.txt") : defined $date_input ? glob("$data_dir/expenses_$date_input*.txt") : glob("$data_dir/expenses_$year*.txt");
-
-    open my $out, '>', $output_file or die "Could not open $output_file: $!";
-    foreach my $file (@files) {
-        open my $fh, '<', $file or die "Could not open $file: $!";
-        while (my $line = <$fh>) {
-            print $out $line;
-        }
-        close $fh;
+sub list_expenses {
+    open my $fh, '<', $memory_file or die "Could not open file '$memory_file' $!";
+    my $id = 1;
+    while (my $line = <$fh>) {
+        print $id++ . ". $line";
     }
+    close $fh;
+}
+
+sub export_to_csv {
+    open my $in, '<', $memory_file or die "Could not open file '$memory_file' $!";
+    open my $out, '>', 'expenses.csv' or die "Could not open file 'expenses.csv' $!";
+    while (my $line = <$in>) {
+        print $out $line;
+    }
+    close $in;
     close $out;
-    print "Report generated: $output_file\n";
-}
-
-# Main program logic
-if ($add) {
-    die "Description and price are required to add an expense.\n" unless defined $description && defined $price;
-    add_expense();
-} elsif ($list) {
-    list_expenses();
-} elsif (defined $remove) {
-    die "A date is required to remove an expense.\n" unless defined $date_input;
-    remove_expense($remove);
-} elsif ($file) {
-    generate_csv();
-} else {
-    print STDERR "Invalid or missing command. Use --add, --list, --remove, or --file.\n";
+    print "Expenses exported to expenses.csv\n";
 }
