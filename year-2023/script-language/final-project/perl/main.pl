@@ -36,7 +36,7 @@ sub print_usage {
     print "  --remove <id>          Remove an expense by its ID (line number in the .memory file).\n";
     print "  --list                 List all current expenses with their IDs.\n";
     print "  --file                 Export all expenses to a CSV file named 'expenses.csv'.\n";
-    print "  --help, -h             Show this help message.\n";
+    print "  --help, --h             Show this help message.\n";
 }
 
 sub print_help {
@@ -45,12 +45,7 @@ sub print_help {
     print "This program is a simple Perl script designed to help you manage your expenses.\n";
     print "You can use it to add, remove, list, and export expenses to a CSV file.\n";
     print "\n";
-    print "Usage:\n";
-    print "  --add <name> <amount>  Add a new expense with a name and amount.\n";
-    print "  --remove <id>          Remove an expense by its ID (line number in the .memory file).\n";
-    print "  --list                 List all current expenses with their IDs.\n";
-    print "  --file                 Export all expenses to a CSV file named 'expenses.csv'.\n";
-    print "  --help, -h             Show this help message.\n";
+    print_usage()
 }
 
 sub add_expense {
