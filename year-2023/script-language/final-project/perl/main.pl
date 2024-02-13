@@ -126,7 +126,8 @@ sub remove_expense {
         print $fh $_ for @expenses;
         close $fh;
         print "Expense #$id removed.\n";
-    } else {
+    }
+    else {
         print "Invalid id. No expense found with ID $id.\n";
     }
 }
@@ -154,13 +155,11 @@ sub export_to_csv {
         return;
     }
 
-    if (defined $encrypt) {
-        unless (defined $key) {
-            die "Encryption key is required for encrypted exports.\n";
-        }
-
+    if ($encrypt && !defined $key) {
+        die "Encryption key is required for encrypted exports.\n";
+    }
+    elsif ($encrypt && defined $key) {
         my $encrypted_file_path = $csv_file_path =~ s/\.csv$/.enc/r;
-
         open my $in, '<', $memory_file or die "Could not open file '$memory_file': $!";
         open my $out, '|-', "openssl enc -aes-256-cbc -salt -pbkdf2 -iter 10000 -out '$encrypted_file_path' -pass pass:$key" or die "Could not open openssl for writing: $!";
         while (my $line = <$in>) {
@@ -169,7 +168,8 @@ sub export_to_csv {
         close $in;
         close $out;
         print "Expenses encrypted and exported to $encrypted_file_path\n";
-    } else {
+    }
+    else {
         open my $in, '<', $memory_file or die "Could not open file '$memory_file': $!";
         open my $out, '>', $csv_file_path or die "Could not open file '$csv_file_path': $!";
         while (my $line = <$in>) {
