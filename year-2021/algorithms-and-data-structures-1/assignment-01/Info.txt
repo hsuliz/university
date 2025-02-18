@@ -1,0 +1,3 @@
+Dany program sluzy dla pokazywania implementacji algorytmu sortowania przez wstawianie(InsertSort).
+Zlozonosc czasowa dla posortowanej tablicy bedzie O(n), a dla nie posortowanej O(n^2)
+Zeby uruchomic program nalezy wpisac make, a potem ./zad1

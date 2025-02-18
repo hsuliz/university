@@ -1,0 +1,65 @@
+Zeby uruchomić program, proszę wpisać:
+make
+./ex3
+
+Operacje dominujące:
+
+    insert:
+        for;
+        O(n);
+
+    remove:
+        for;
+        O(n);
+
+    retrieve:
+        for;
+        O(n);
+
+    locate:
+        while;
+        O(n);
+
+    empty:
+        if;
+        O(1);
+
+    first:
+        return;
+        O(1);
+
+    front:
+        return;
+        O(1);
+
+    last:
+        while;
+        O(n);
+
+    back:
+        for;
+        O(n)
+
+    len:
+        return;
+        O(1);
+
+    push front:
+        head = new Node;
+        O(1);
+
+    push back:
+         while;
+         O(n);
+
+    pop front:
+        delete;
+        O(1);
+
+    pop back:
+        remove;
+        O(n);
+
+    reverseList:
+        while;
+        O(n);

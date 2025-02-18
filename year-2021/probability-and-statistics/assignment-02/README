@@ -1,0 +1,5 @@
+Program powinien wygenerować 3 unormowane histogramy dla liczb 10^3, 10^5, 10^6
+
+Żeby uruchomić program, proszę wpisać do konsoli:
+python3 main.py
+
